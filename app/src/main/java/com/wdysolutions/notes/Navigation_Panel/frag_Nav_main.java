@@ -24,6 +24,8 @@ import java.util.List;
 
 
 public class frag_Nav_main extends Fragment {
+
+
     Spinner spinner;
     SQLite sqLite;
     String selectedBranch="";
