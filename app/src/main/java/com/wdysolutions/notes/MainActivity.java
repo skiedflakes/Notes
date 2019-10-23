@@ -10,6 +10,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.wdysolutions.notes.Globals.Micro_Filming.Microfilming_main;
 import com.wdysolutions.notes.Home.frag_Home_main;
