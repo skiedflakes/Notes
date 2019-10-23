@@ -4,12 +4,14 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.EditText;
 
+import com.wdysolutions.notes.Globals.Micro_Filming.Microfilming_main;
 import com.wdysolutions.notes.Home.frag_Home_main;
 import com.wdysolutions.notes.Login.frag_Login_main;
 
@@ -37,6 +39,18 @@ public class MainActivity extends AppCompatActivity {
         sharedPref = new SharedPref(getBaseContext());
 
         //openDialogDebug();
+    }
+
+    public void openMicro(String tracking_num){
+        Bundle bundle = new Bundle();
+        bundle.putString("tracking_num", tracking_num);
+        DialogFragment dialogFragment = new Microfilming_main();
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        Fragment prev = getSupportFragmentManager().findFragmentByTag("dialog");
+        if (prev != null) {ft.remove(prev);}
+        ft.addToBackStack(null);
+        dialogFragment.setArguments(bundle);
+        dialogFragment.show(ft, "dialog");
     }
 
     public ProgressDialog showLoading(ProgressDialog loading, String msg){

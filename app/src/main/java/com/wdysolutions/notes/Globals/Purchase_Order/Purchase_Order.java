@@ -32,6 +32,7 @@ import com.wdysolutions.notes.Constants;
 import com.wdysolutions.notes.DatePicker.DatePickerCustom;
 import com.wdysolutions.notes.DatePicker.DatePickerSelectionInterfaceCustom;
 import com.wdysolutions.notes.Dialog_Action;
+import com.wdysolutions.notes.Globals.Micro_Filming.Microfilming_main;
 import com.wdysolutions.notes.Globals.Purchase_Order.purchase_order_dialog.Purchase_Order_dialog_main;
 import com.wdysolutions.notes.MainActivity;
 import com.wdysolutions.notes.R;
@@ -439,8 +440,8 @@ public class Purchase_Order extends Fragment implements DatePickerSelectionInter
             //
             openDialog_approve("",false,position);
         }else if(chosen.equals("micro_filming")){
-            //
-
+            
+            ((MainActivity)getActivity()).openMicro(selected_po_number);
         }
     }
 
