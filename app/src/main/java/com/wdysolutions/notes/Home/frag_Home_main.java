@@ -31,9 +31,6 @@ public class frag_Home_main extends Fragment {
     String selectedNOTES="";
     SharedPref sharedPref;
 
-    //test aron
-
-
     private void initMenu(View view){
         final Toolbar toolbar = view.findViewById(R.id.toolbar);
         toolbar.inflateMenu(R.menu.menu_main);
