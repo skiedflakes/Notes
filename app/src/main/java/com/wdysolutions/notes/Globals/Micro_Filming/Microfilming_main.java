@@ -259,16 +259,4 @@ public class Microfilming_main extends DialogFragment implements clickRecycler {
             }
         };
     }
-
-    private void openMicro(String tracking_num){
-        Bundle bundle = new Bundle();
-        bundle.putString("tracking_num", tracking_num);
-        DialogFragment dialogFragment = new Microfilming_main();
-        FragmentTransaction ft = getFragmentManager().beginTransaction();
-        Fragment prev = getFragmentManager().findFragmentByTag("dialog");
-        if (prev != null) {ft.remove(prev);}
-        ft.addToBackStack(null);
-        dialogFragment.setArguments(bundle);
-        dialogFragment.show(ft, "dialog");
-    }
 }

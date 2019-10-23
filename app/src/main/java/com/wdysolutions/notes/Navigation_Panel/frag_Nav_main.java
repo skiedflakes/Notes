@@ -24,6 +24,8 @@ import java.util.List;
 
 
 public class frag_Nav_main extends Fragment {
+
+
     Spinner spinner;
     SQLite sqLite;
     String selectedBranch="";
@@ -226,249 +228,251 @@ public class frag_Nav_main extends Fragment {
     String[] expense_RF;
     String[] expense_CAV;
 
-    private void limited_initExpandableListview(View view){
+    private void limited_initExpandableListview(View view) {
+        try {
+            String program_code = Constants.program_code;
+            // Toast.makeText(getContext(), String.valueOf(sqLite.get_levelzero(program_code,selectedBranch).size()), Toast.LENGTH_SHORT).show();
+            List<LinkedHashMap<String, String[]>> data = new ArrayList<>();
+            parent = new String[sqLite.get_levelzero(program_code, selectedBranch).size()];
 
-        String program_code = Constants.program_code;
-       // Toast.makeText(getContext(), String.valueOf(sqLite.get_levelzero(program_code,selectedBranch).size()), Toast.LENGTH_SHORT).show();
-        List<LinkedHashMap<String, String[]>> data = new ArrayList<>();
-        parent = new String[sqLite.get_levelzero(program_code,selectedBranch).size()];
+            for (int i = 0; i < sqLite.get_levelzero(program_code, selectedBranch).size(); i++) {
+                Menu_model menu = sqLite.get_levelzero(program_code, selectedBranch).get(i);
+                String sql_menu_id = menu.getMenu_id();
+                String sql_level = menu.getLevel();
+                String sql_parent = menu.getParent();
+                String sql_name = menu.getMenu_name();
+                parent[i] = sql_name;
 
-        for (int i=0; i<sqLite.get_levelzero(program_code,selectedBranch).size(); i++){
-            Menu_model menu = sqLite.get_levelzero(program_code,selectedBranch).get(i);
-            String sql_menu_id = menu.getMenu_id();
-            String sql_level = menu.getLevel();
-            String sql_parent = menu.getParent();
-            String sql_name = menu.getMenu_name();
-            parent[i] = sql_name;
+                if (sql_name.equals("TRANSACTIONS")) {
 
-            if(sql_name.equals("TRANSACTIONS")){
+                    int expense_counter = 0;
+                    int initial_expense = 0;
 
-                int expense_counter = 0;
-                int initial_expense = 0;
+                    //count expense
+                    for (int x = 0; x < sqLite.get_Transactions(sql_menu_id, program_code, selectedBranch).size(); x++) {
+                        Menu_model trans_menu = sqLite.get_Transactions(sql_menu_id, program_code, selectedBranch).get(x);
+                        String t_menu_id = trans_menu.getMenu_id();
+                        String t_name = trans_menu.getMenu_name();
+                        if (t_name.equals("Expense")) {
+                            initial_expense = sqLite.get_Expense(t_menu_id, program_code, selectedBranch).size();
 
-                //count expense
-                for (int x=0; x<sqLite.get_Transactions(sql_menu_id,program_code,selectedBranch).size(); x++){
-                    Menu_model trans_menu = sqLite.get_Transactions(sql_menu_id,program_code,selectedBranch).get(x);
-                    String t_menu_id = trans_menu.getMenu_id();
-                    String t_name = trans_menu.getMenu_name();
-                    if(t_name.equals("Expense")) {
-                        initial_expense = sqLite.get_Expense(t_menu_id,program_code,selectedBranch).size();
+                        }
 
                     }
 
-                }
+                    int transaction = sqLite.get_Transactions(sql_menu_id, program_code, selectedBranch).size();
 
-                int transaction =sqLite.get_Transactions(sql_menu_id,program_code,selectedBranch).size();
-
-                transactionsSecondLevel = new String[(transaction-1)+initial_expense];
-                for (int x=0; x<sqLite.get_Transactions(sql_menu_id,program_code,selectedBranch).size(); x++){
-                    Menu_model trans_menu = sqLite.get_Transactions(sql_menu_id,program_code,selectedBranch).get(x);
-                    String t_menu_id = trans_menu.getMenu_id();
-                    String t_level = trans_menu.getLevel();
-                    String t_parent = trans_menu.getParent();
-                    String t_name = trans_menu.getMenu_name();
-                    String prog = trans_menu.getProgram_type();
+                    transactionsSecondLevel = new String[(transaction - 1) + initial_expense];
+                    for (int x = 0; x < sqLite.get_Transactions(sql_menu_id, program_code, selectedBranch).size(); x++) {
+                        Menu_model trans_menu = sqLite.get_Transactions(sql_menu_id, program_code, selectedBranch).get(x);
+                        String t_menu_id = trans_menu.getMenu_id();
+                        String t_level = trans_menu.getLevel();
+                        String t_parent = trans_menu.getParent();
+                        String t_name = trans_menu.getMenu_name();
+                        String prog = trans_menu.getProgram_type();
 
 //                    Toast.makeText(getContext(), prog, Toast.LENGTH_SHORT).show();
 
 
+                        if (t_name.equals("Expense")) {
 
-                    if(t_name.equals("Expense")){
+                            for (int y = 0; y < sqLite.get_Expense(t_menu_id, program_code, selectedBranch).size(); y++) {
+                                Menu_model expense_menu = sqLite.get_Expense(t_menu_id, program_code, selectedBranch).get(y);
+                                String emenu_id = expense_menu.getMenu_id();
+                                String e_name = expense_menu.getMenu_name();
 
-                        for (int y=0; y<sqLite.get_Expense(t_menu_id,program_code,selectedBranch).size(); y++){
-                            Menu_model expense_menu = sqLite.get_Expense(t_menu_id,program_code,selectedBranch).get(y);
-                            String emenu_id = expense_menu.getMenu_id();
-                            String e_name = expense_menu.getMenu_name();
-
-                            if(e_name.equals("Check Voucher")){
-                                expense_CV = new String[sqLite.get_child(emenu_id,program_code,selectedBranch).size()];
-                                for (int z=0; z<sqLite.get_child(emenu_id,program_code,selectedBranch).size(); z++){
-                                    Menu_model cv_menu = sqLite.get_child(emenu_id,program_code,selectedBranch).get(z);
-                                    String cv_name = cv_menu.getMenu_name();
-                                    expense_CV[z] = cv_name;
-                                }
+                                if (e_name.equals("Check Voucher")) {
+                                    expense_CV = new String[sqLite.get_child(emenu_id, program_code, selectedBranch).size()];
+                                    for (int z = 0; z < sqLite.get_child(emenu_id, program_code, selectedBranch).size(); z++) {
+                                        Menu_model cv_menu = sqLite.get_child(emenu_id, program_code, selectedBranch).get(z);
+                                        String cv_name = cv_menu.getMenu_name();
+                                        expense_CV[z] = cv_name;
+                                    }
 //
-                                transactionsSecondLevel[expense_counter] = e_name;
-                                thirdLevelTransactions.put(transactionsSecondLevel[expense_counter], expense_CV);
-                                expense_counter++;
-                            }else if(e_name.equals("Petty Cash")){
+                                    transactionsSecondLevel[expense_counter] = e_name;
+                                    thirdLevelTransactions.put(transactionsSecondLevel[expense_counter], expense_CV);
+                                    expense_counter++;
+                                } else if (e_name.equals("Petty Cash")) {
 
-                                expense_PC = new String[sqLite.get_child(emenu_id,program_code,selectedBranch).size()];
-                                for (int z=0; z<sqLite.get_child(emenu_id,program_code,selectedBranch).size(); z++){
-                                    Menu_model cv_menu = sqLite.get_child(emenu_id,program_code,selectedBranch).get(z);
-                                    String cv_name = cv_menu.getMenu_name();
-                                    expense_PC[z] = cv_name;
+                                    expense_PC = new String[sqLite.get_child(emenu_id, program_code, selectedBranch).size()];
+                                    for (int z = 0; z < sqLite.get_child(emenu_id, program_code, selectedBranch).size(); z++) {
+                                        Menu_model cv_menu = sqLite.get_child(emenu_id, program_code, selectedBranch).get(z);
+                                        String cv_name = cv_menu.getMenu_name();
+                                        expense_PC[z] = cv_name;
+                                    }
+
+                                    transactionsSecondLevel[expense_counter] = e_name;
+                                    thirdLevelTransactions.put(transactionsSecondLevel[expense_counter], expense_PC);
+                                    expense_counter++;
+                                } else if (e_name.equals("Revolving Fund")) {
+
+                                    expense_RF = new String[sqLite.get_child(emenu_id, program_code, selectedBranch).size()];
+                                    for (int z = 0; z < sqLite.get_child(emenu_id, program_code, selectedBranch).size(); z++) {
+                                        Menu_model cv_menu = sqLite.get_child(emenu_id, program_code, selectedBranch).get(z);
+                                        String cv_name = cv_menu.getMenu_name();
+                                        expense_RF[z] = cv_name;
+                                    }
+
+                                    transactionsSecondLevel[expense_counter] = e_name;
+                                    thirdLevelTransactions.put(transactionsSecondLevel[expense_counter], expense_RF);
+                                    expense_counter++;
+                                } else if (e_name.equals("Cash Voucher")) {
+
+                                    expense_CAV = new String[sqLite.get_child(emenu_id, program_code, selectedBranch).size()];
+                                    for (int z = 0; z < sqLite.get_child(emenu_id, program_code, selectedBranch).size(); z++) {
+                                        Menu_model cv_menu = sqLite.get_child(emenu_id, program_code, selectedBranch).get(z);
+                                        String cv_name = cv_menu.getMenu_name();
+                                        expense_CAV[z] = cv_name;
+                                    }
+
+                                    transactionsSecondLevel[expense_counter] = e_name;
+                                    thirdLevelTransactions.put(transactionsSecondLevel[expense_counter], expense_CAV);
+                                    expense_counter++;
                                 }
-
-                                transactionsSecondLevel[expense_counter] = e_name;
-                                thirdLevelTransactions.put(transactionsSecondLevel[expense_counter], expense_PC);
-                                expense_counter++;
-                            }else if(e_name.equals("Revolving Fund")){
-
-                                expense_RF = new String[sqLite.get_child(emenu_id,program_code,selectedBranch).size()];
-                                for (int z=0; z<sqLite.get_child(emenu_id,program_code,selectedBranch).size(); z++){
-                                    Menu_model cv_menu = sqLite.get_child(emenu_id,program_code,selectedBranch).get(z);
-                                    String cv_name = cv_menu.getMenu_name();
-                                    expense_RF[z] = cv_name;
-                                }
-
-                                transactionsSecondLevel[expense_counter] = e_name;
-                                thirdLevelTransactions.put(transactionsSecondLevel[expense_counter], expense_RF);
-                                expense_counter++;
-                            }else if(e_name.equals("Cash Voucher")){
-
-                                expense_CAV = new String[sqLite.get_child(emenu_id,program_code,selectedBranch).size()];
-                                for (int z=0; z<sqLite.get_child(emenu_id,program_code,selectedBranch).size(); z++){
-                                    Menu_model cv_menu = sqLite.get_child(emenu_id,program_code,selectedBranch).get(z);
-                                    String cv_name = cv_menu.getMenu_name();
-                                    expense_CAV[z] = cv_name;
-                                }
-
-                                transactionsSecondLevel[expense_counter] = e_name;
-                                thirdLevelTransactions.put(transactionsSecondLevel[expense_counter], expense_CAV);
-                                expense_counter++;
                             }
+
+                        } else {
+
+                            transactionsSecondLevel[expense_counter] = t_name;
+                            thirdLevelTransactions.put(transactionsSecondLevel[expense_counter], null);
+                            expense_counter++;
+
                         }
 
-                    }else{
 
-                        transactionsSecondLevel[expense_counter] = t_name;
-                        thirdLevelTransactions.put(transactionsSecondLevel[expense_counter], null);
-                        expense_counter++;
+                    }
+                    secondLevel.add(transactionsSecondLevel);
+                    data.add(thirdLevelTransactions);
+
+                } else if (sql_name.equals("REPORTS")) {
+
+                    int count_farm_reports = 0;
+                    int count_reports = 0;
+                    int report_counter = 0;
+                    int last_counter = 0;
+
+                    //exceptions counting farm reports
+                    count_reports = sqLite.get_Reports(sql_menu_id, program_code, selectedBranch).size();
+
+                    for (int x = 0; x < sqLite.get_Reports(sql_menu_id, program_code, selectedBranch).size(); x++) {
+                        Menu_model rep_menu = sqLite.get_Reports(sql_menu_id, program_code, selectedBranch).get(x);
+                        String r_menu_id = rep_menu.getMenu_id();
+                        String r_name = rep_menu.getMenu_name();
+                        if (r_name.equals("Farm Reports")) {
+                            count_reports--;
+                            count_farm_reports = sqLite.get_farm_reports(r_menu_id, program_code, selectedBranch).size();
+                        }
 
                     }
 
+                    reportsSecondLevel = new String[count_farm_reports + count_reports];
+                    for (int x = 0; x < sqLite.get_Reports(sql_menu_id, program_code, selectedBranch).size(); x++) {
 
-                }
-                secondLevel.add(transactionsSecondLevel);
-                data.add(thirdLevelTransactions);
+                        Menu_model rep_menu = sqLite.get_Reports(sql_menu_id, program_code, selectedBranch).get(x);
+                        String r_menu_id = rep_menu.getMenu_id();
+                        String r_level = rep_menu.getLevel();
+                        String r_parent = rep_menu.getParent();
+                        String r_name = rep_menu.getMenu_name();
 
-            }else if(sql_name.equals("REPORTS")){
+                        if (r_name.equals("Farm Reports")) {
 
-                int count_farm_reports = 0;
-                int count_reports = 0;
-                int report_counter = 0;
-                int last_counter =0;
+                            for (int y = 0; y < sqLite.get_farm_reports(r_menu_id, program_code, selectedBranch).size(); y++) {
+                                Menu_model f_menu = sqLite.get_farm_reports(r_menu_id, program_code, selectedBranch).get(y);
+                                String f_menu_id = f_menu.getMenu_id();
+                                String f_level = f_menu.getLevel();
+                                String f_parent = f_menu.getParent();
+                                String f_name = f_menu.getMenu_name();
+                                if (f_name.equals("Farm Statistics")) {
+                                    reportsThirdLevel_FS = new String[sqLite.get_child(f_menu_id, program_code, selectedBranch).size()];
+                                    for (int z = 0; z < sqLite.get_child(f_menu_id, program_code, selectedBranch).size(); z++) {
+                                        Menu_model fs_menu = sqLite.get_child(f_menu_id, program_code, selectedBranch).get(z);
+                                        String fs_name = fs_menu.getMenu_name();
+                                        reportsThirdLevel_FS[z] = fs_name;
+                                    }
 
-                //exceptions counting farm reports
-                count_reports = sqLite.get_Reports(sql_menu_id,program_code,selectedBranch).size();
+                                    reportsSecondLevel[report_counter] = f_name;
+                                    thirdLevelReports.put(reportsSecondLevel[report_counter], reportsThirdLevel_FS);
+                                    report_counter++;
 
-                for (int x=0; x<sqLite.get_Reports(sql_menu_id,program_code,selectedBranch).size(); x++){
-                    Menu_model rep_menu = sqLite.get_Reports(sql_menu_id,program_code,selectedBranch).get(x);
-                    String r_menu_id = rep_menu.getMenu_id();
-                    String r_name = rep_menu.getMenu_name();
-                    if(r_name.equals("Farm Reports")){
-                        count_reports--;
-                        count_farm_reports = sqLite.get_farm_reports(r_menu_id,program_code,selectedBranch).size();
+                                } else if (f_name.equals("Swine Population")) {
+
+                                    reportsThirdLevel_SP = new String[sqLite.get_child(f_menu_id, program_code, selectedBranch).size()];
+                                    for (int z = 0; z < sqLite.get_child(f_menu_id, program_code, selectedBranch).size(); z++) {
+                                        Menu_model sp_menu = sqLite.get_child(f_menu_id, program_code, selectedBranch).get(z);
+                                        String fs_name = sp_menu.getMenu_name();
+                                        reportsThirdLevel_SP[z] = fs_name;
+                                    }
+
+                                    reportsSecondLevel[report_counter] = f_name;
+                                    thirdLevelReports.put(reportsSecondLevel[report_counter], reportsThirdLevel_SP);
+                                    report_counter++;
+                                }
+                            }
+                        } else if (r_name.equals("Swine Delivery Report")) {
+                            reportsThirdLevel_SD = new String[sqLite.get_swine_del_reports(r_menu_id, program_code, selectedBranch).size()];
+                            for (int y = 0; y < sqLite.get_swine_del_reports(r_menu_id, program_code, selectedBranch).size(); y++) {
+                                Menu_model d_menu = sqLite.get_swine_del_reports(r_menu_id, program_code, selectedBranch).get(y);
+                                String d_menu_id = d_menu.getMenu_id();
+                                String d_level = d_menu.getLevel();
+                                String d_parent = d_menu.getParent();
+                                String d_name = d_menu.getMenu_name();
+
+                                if (d_name.equals("Daily Swine Delivery")) {
+                                    reportsThirdLevel_SD[y] = d_name;
+                                }
+                            }
+                            reportsSecondLevel[report_counter] = r_name;
+                            thirdLevelReports.put(reportsSecondLevel[report_counter], reportsThirdLevel_SD);
+                            report_counter++;
+
+                        } else if (r_name.equals("Income Statement")) {
+                            reportsThirdLevel_IS = new String[sqLite.get_income_statement(r_menu_id, program_code, selectedBranch).size()];
+                            for (int y = 0; y < sqLite.get_income_statement(r_menu_id, program_code, selectedBranch).size(); y++) {
+                                Menu_model d_menu = sqLite.get_income_statement(r_menu_id, program_code, selectedBranch).get(y);
+                                String d_menu_id = d_menu.getMenu_id();
+                                String d_level = d_menu.getLevel();
+                                String d_parent = d_menu.getParent();
+                                String d_name = d_menu.getMenu_name();
+
+                                if (d_name.equals("Perpetual") || d_name.equals("Periodic")) {
+                                    reportsThirdLevel_IS[y] = d_name;
+                                }
+                            }
+                            reportsSecondLevel[report_counter] = r_name;
+                            thirdLevelReports.put(reportsSecondLevel[report_counter], reportsThirdLevel_IS);
+                            report_counter++;
+                        } else if (r_name.equals("Price Watch")) {
+
+                            reportsSecondLevel[report_counter] = r_name;
+                            thirdLevelReports.put(reportsSecondLevel[report_counter], null);
+                            report_counter++;
+                        }
                     }
-
+                    secondLevel.add(reportsSecondLevel);
+                    data.add(thirdLevelReports);
                 }
 
-                reportsSecondLevel = new String[count_farm_reports+count_reports];
-                 for (int x=0; x<sqLite.get_Reports(sql_menu_id,program_code,selectedBranch).size(); x++){
-
-                     Menu_model rep_menu = sqLite.get_Reports(sql_menu_id,program_code,selectedBranch).get(x);
-                     String r_menu_id = rep_menu.getMenu_id();
-                     String r_level = rep_menu.getLevel();
-                     String r_parent = rep_menu.getParent();
-                     String r_name = rep_menu.getMenu_name();
-
-                     if(r_name.equals("Farm Reports")){
-
-                         for (int y=0; y<sqLite.get_farm_reports(r_menu_id,program_code,selectedBranch).size(); y++){
-                             Menu_model f_menu = sqLite.get_farm_reports(r_menu_id,program_code,selectedBranch).get(y);
-                             String f_menu_id = f_menu.getMenu_id();
-                             String f_level = f_menu.getLevel();
-                             String f_parent = f_menu.getParent();
-                             String f_name = f_menu.getMenu_name();
-                             if(f_name.equals("Farm Statistics")){
-                                 reportsThirdLevel_FS = new String[sqLite.get_child(f_menu_id,program_code,selectedBranch).size()];
-                                 for (int z=0; z<sqLite.get_child(f_menu_id,program_code,selectedBranch).size(); z++){
-                                     Menu_model fs_menu = sqLite.get_child(f_menu_id,program_code,selectedBranch).get(z);
-                                     String fs_name = fs_menu.getMenu_name();
-                                     reportsThirdLevel_FS[z] = fs_name;
-                                 }
-
-                                 reportsSecondLevel[report_counter] = f_name;
-                                 thirdLevelReports.put(reportsSecondLevel[report_counter], reportsThirdLevel_FS);
-                                 report_counter++;
-
-                             }else if(f_name.equals("Swine Population")){
-
-                                 reportsThirdLevel_SP = new String[sqLite.get_child(f_menu_id,program_code,selectedBranch).size()];
-                                 for (int z=0; z<sqLite.get_child(f_menu_id,program_code,selectedBranch).size(); z++){
-                                     Menu_model sp_menu = sqLite.get_child(f_menu_id,program_code,selectedBranch).get(z);
-                                     String fs_name = sp_menu.getMenu_name();
-                                     reportsThirdLevel_SP[z] = fs_name;
-                                 }
-
-                                 reportsSecondLevel[report_counter] = f_name;
-                                 thirdLevelReports.put(reportsSecondLevel[report_counter], reportsThirdLevel_SP);
-                                 report_counter++;
-                             }
-                         }
-                     }else if(r_name.equals("Swine Delivery Report")){
-                         reportsThirdLevel_SD = new String[sqLite.get_swine_del_reports(r_menu_id,program_code,selectedBranch).size()];
-                         for (int y=0; y<sqLite.get_swine_del_reports(r_menu_id,program_code,selectedBranch).size(); y++){
-                             Menu_model d_menu = sqLite.get_swine_del_reports(r_menu_id,program_code,selectedBranch).get(y);
-                             String d_menu_id = d_menu.getMenu_id();
-                             String d_level = d_menu.getLevel();
-                             String d_parent = d_menu.getParent();
-                             String d_name = d_menu.getMenu_name();
-
-                             if(d_name.equals("Daily Swine Delivery")){
-                                 reportsThirdLevel_SD[y] = d_name;
-                             }
-                         }
-                         reportsSecondLevel[report_counter] = r_name;
-                         thirdLevelReports.put(reportsSecondLevel[report_counter], reportsThirdLevel_SD);
-                         report_counter++;
-
-                     }else if(r_name.equals("Income Statement")){
-                         reportsThirdLevel_IS = new String[sqLite.get_income_statement(r_menu_id,program_code,selectedBranch).size()];
-                         for (int y=0; y<sqLite.get_income_statement(r_menu_id,program_code,selectedBranch).size(); y++){
-                             Menu_model d_menu = sqLite.get_income_statement(r_menu_id,program_code,selectedBranch).get(y);
-                             String d_menu_id = d_menu.getMenu_id();
-                             String d_level = d_menu.getLevel();
-                             String d_parent = d_menu.getParent();
-                             String d_name = d_menu.getMenu_name();
-
-                             if(d_name.equals("Perpetual")||d_name.equals("Periodic")){
-                                 reportsThirdLevel_IS[y] = d_name;
-                             }
-                         }
-                         reportsSecondLevel[report_counter] = r_name;
-                         thirdLevelReports.put(reportsSecondLevel[report_counter], reportsThirdLevel_IS);
-                         report_counter++;
-                     }else if(r_name.equals("Price Watch")){
-
-                         reportsSecondLevel[report_counter] = r_name;
-                         thirdLevelReports.put(reportsSecondLevel[report_counter], null);
-                         report_counter++;
-                     }
-                }
-                secondLevel.add(reportsSecondLevel);
-                data.add(thirdLevelReports);
             }
 
+            expandableListView = view.findViewById(R.id.expandible_listview);
+            ThreeLevelListAdapter threeLevelListAdapterAdapter = new ThreeLevelListAdapter(getActivity(), parent, secondLevel, data, reportsThirdLevel_SP, reportsThirdLevel_IS, reportsThirdLevel_SD
+                    , reportsThirdLevel_FS, expense_CV, expense_CAV,
+                    expense_PC, expense_RF);
+            expandableListView.setAdapter(threeLevelListAdapterAdapter);
+
+            // OPTIONAL : Show one list at a time
+            expandableListView.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
+                int previousGroup = -1;
+
+                @Override
+                public void onGroupExpand(int groupPosition) {
+                    if (groupPosition != previousGroup)
+                        expandableListView.collapseGroup(previousGroup);
+                    previousGroup = groupPosition;
+                }
+            });
+        }catch (Exception e){
+            Toast.makeText(getContext(), "No Navigation found", Toast.LENGTH_SHORT).show();
         }
-
-        expandableListView = view.findViewById(R.id.expandible_listview);
-        ThreeLevelListAdapter threeLevelListAdapterAdapter = new ThreeLevelListAdapter(getActivity(), parent, secondLevel, data, reportsThirdLevel_SP,reportsThirdLevel_IS,reportsThirdLevel_SD
-                ,reportsThirdLevel_FS,expense_CV,expense_CAV,
-                expense_PC, expense_RF);
-        expandableListView.setAdapter(threeLevelListAdapterAdapter);
-
-        // OPTIONAL : Show one list at a time
-        expandableListView.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
-            int previousGroup = -1;
-            @Override
-            public void onGroupExpand(int groupPosition) {
-                if (groupPosition != previousGroup)
-                    expandableListView.collapseGroup(previousGroup);
-                previousGroup = groupPosition;
-            }
-        });
     }
-
 }
