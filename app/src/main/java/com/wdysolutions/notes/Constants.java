@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Constants {
+   public static String variants = BuildConfig.BASE_URL;
    public static String branch = "";
    public static String branch_id = "";
    public static int branch_current_pos = 0;
