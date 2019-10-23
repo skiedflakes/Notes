@@ -51,6 +51,7 @@ public class PettyCash_liquidation_main extends Fragment implements DatePickerSe
     boolean isStartDateClick = false;
     String selectedStartDate = "", selectedEndDate = "", req_stat = "";
     String selected_id,selected_tracking_num,user_name;
+    PettyCash_liquidation_adapter pettyCashliquidation_adapter;
 
     ProgressDialog loadingScan;
     @Override
@@ -62,6 +63,7 @@ public class PettyCash_liquidation_main extends Fragment implements DatePickerSe
         category_id = sharedPref.getUserInfo().get(sharedPref.KEY_CATEGORYID);
         user_id = sharedPref.getUserInfo().get(sharedPref.KEY_USERID);
         selected_branch_id = Constants.branch_id;
+        user_name= sharedPref.getUserInfo().get(sharedPref.KEY_NAME);
 
         //others
         loadingScan = new ProgressDialog(getActivity(), R.style.MyAlertDialogStyle);
@@ -151,7 +153,7 @@ public class PettyCash_liquidation_main extends Fragment implements DatePickerSe
                                 jsonObject1.getString("approved_by")));
                     }
 
-                    PettyCash_liquidation_adapter pettyCashliquidation_adapter = new PettyCash_liquidation_adapter(getActivity(), pettyCashliquidation_models,PettyCash_liquidation_main.this);
+                    pettyCashliquidation_adapter = new PettyCash_liquidation_adapter(getActivity(), pettyCashliquidation_models,PettyCash_liquidation_main.this);
                     rec_cv.setLayoutManager(new LinearLayoutManager(getActivity()));
                     rec_cv.setAdapter(pettyCashliquidation_adapter);
                     rec_cv.setNestedScrollingEnabled(false);
@@ -281,7 +283,7 @@ public class PettyCash_liquidation_main extends Fragment implements DatePickerSe
                     });
             alertDialog.setNegativeButton("OK",  new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int which) {
-                    approve_po(user_id,position);
+                    approve_disapprove(user_id,position);
                 }
             });
             alertDialog.setCancelable(false);
@@ -297,7 +299,7 @@ public class PettyCash_liquidation_main extends Fragment implements DatePickerSe
                     });
             alertDialog.setNegativeButton("OK",  new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int which) {
-                    approve_po(user_id,position);
+                    approve_disapprove(user_id,position);
                 }
             });
             alertDialog.setCancelable(false);
@@ -312,7 +314,7 @@ public class PettyCash_liquidation_main extends Fragment implements DatePickerSe
         return loading;
     }
 
-    public void approve_po(final String user_id,final int position){
+    public void approve_disapprove(final String user_id,final int position){
 
         showLoading(loadingScan, "Loading...").show();
         String URL = getString(R.string.URL_online)+"petty_cash/approve_liquidate.php";
@@ -323,35 +325,42 @@ public class PettyCash_liquidation_main extends Fragment implements DatePickerSe
                     showLoading(loadingScan, null).dismiss();
                     if(response.equals("1")){
 
-//                        Cash_Voucher_request_model main_list = cav_main_list.get(position);
-//
-//                        String id = main_list.getId();
-//                        String count =  main_list.getCount();
-//                        String cv_number =  main_list.getCv_number();
-//
-//                        String account =  main_list.getAccount();
-//                        String date =  main_list.getDate();
-//                        String amount =  main_list.getAmount();
-//                        String encodedBY = main_list.getEncoded_by();
-//                        String status = main_list.getStatus();
-////                        String stat = Obj.getString("stat");
-//                        String approved_by =  main_list.getApproved_by();
-//
-//                        Cash_Voucher_request_model newval;
-//                        if(user_id.equals("")){
-//                            newval = new Cash_Voucher_request_model(id,count,cv_number,
-//                                    account,date,amount,encodedBY,status,"");
-//
-//                            Toast.makeText(getContext(), "Disapprove success!", Toast.LENGTH_SHORT).show();
-//                        }else{
-//                            newval = new Cash_Voucher_request_model(id,count,cv_number,
-//                                    account,date,amount,encodedBY,status,user_name);
-//
-//                            Toast.makeText(getContext(), "Approve success!", Toast.LENGTH_SHORT).show();
-//                        }
-//
-//                        cav_main_list.set(position,newval);
-//                        cav_adapter.notifyItemChanged(position);
+                        PettyCash_liquidation_model main_list = pettyCashliquidation_models.get(position);
+
+                                String id = main_list.getId();
+                                String tracking_num = main_list.getTracking_num();
+                                String br_id  = main_list.getBr_id();
+                                String date_covered  = main_list.getDate_covered();
+                                String branch  = main_list.getBranch();
+                                String amount = main_list.getAmount();
+                                String date_liquidated = main_list.getDate_liquidated();
+                                String stats = main_list.getStats();
+                                String stats_color = main_list.getStats_color();
+                                String rfr_stat = main_list.getRfr_stat();
+                                String rfr_stat_color = main_list.getRfr_stat_color();
+                                String status = main_list.getStatus();
+                                String status_color = main_list.getStatus_color();
+                                String liquidate_by  = main_list.getLiquidate_by();
+                                String rfr_status = main_list.getRfr_status();
+                                String approved_by  = main_list.getApproved_by();
+
+                        PettyCash_liquidation_model newval;
+                        if(user_id.equals("")){
+                            newval = new PettyCash_liquidation_model(id,tracking_num,br_id,
+                                    date_covered,branch,amount,date_liquidated,stats,stats_color,
+                                    rfr_stat,rfr_stat_color,status,status_color,liquidate_by,rfr_status,"");
+
+                            Toast.makeText(getContext(), "Disapprove success!", Toast.LENGTH_SHORT).show();
+                        }else{
+                            newval = new PettyCash_liquidation_model(id,tracking_num,br_id,
+                                    date_covered,branch,amount,date_liquidated,stats,stats_color,
+                                    rfr_stat,rfr_stat_color,status,status_color,liquidate_by,rfr_status,user_name);
+
+                            Toast.makeText(getContext(), "Approve success!", Toast.LENGTH_SHORT).show();
+                        }
+
+                        pettyCashliquidation_models.set(position,newval);
+                        pettyCashliquidation_adapter.notifyItemChanged(position);
 
                     }
                 }catch (Exception e){
