@@ -30,8 +30,8 @@ public class frag_Home_main extends Fragment {
     ImageView menu_selection, eggnotes, pignotes, feednotes, bronotes;
     String selectedNOTES="";
     SharedPref sharedPref;
-    
-////changes ko sa debuging hello
+
+////debuging
 
     private void initMenu(View view){
         final Toolbar toolbar = view.findViewById(R.id.toolbar);
