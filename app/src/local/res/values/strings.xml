@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Local Notes</string>
+
+    <!--local database-->
+    <string name="URL_online">http://192.168.0.110/notes_mobile/</string>
+
+</resources>

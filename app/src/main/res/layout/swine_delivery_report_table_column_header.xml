@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="1dp"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/btn_"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="left"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="1dp"
+            android:background="#4e6882"
+            android:gravity="center"
+            android:paddingLeft="2dp"
+            android:paddingTop="5dp"
+            android:paddingRight="2dp"
+            android:paddingBottom="5dp"
+            android:text="Reference #"
+            android:textColor="@android:color/white"
+            android:textSize="12sp" />
+
+        <LinearLayout
+            android:layout_width="150dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="1dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginRight="1dp"
+                android:layout_weight="1"
+                android:background="#4e6882"
+                android:gravity="center|right"
+                android:paddingLeft="2dp"
+                android:paddingRight="2dp"
+                android:text="Total"
+                android:textColor="@android:color/white"
+                android:textSize="12sp"
+                android:visibility="visible" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#4e6882"
+                android:gravity="center|right"
+                android:paddingLeft="2dp"
+                android:paddingRight="2dp"
+                android:text="Ave."
+                android:textColor="@android:color/white"
+                android:textSize="12sp"
+                android:visibility="visible" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="200dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="1dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginRight="1dp"
+                android:layout_weight="1"
+                android:background="#4e6882"
+                android:gravity="center|right"
+                android:paddingLeft="2dp"
+                android:paddingRight="2dp"
+                android:text="Total"
+                android:textColor="@android:color/white"
+                android:textSize="12sp"
+                android:visibility="visible" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#4e6882"
+                android:gravity="center|right"
+                android:paddingLeft="2dp"
+                android:paddingRight="2dp"
+                android:text="Ave."
+                android:textColor="@android:color/white"
+                android:textSize="12sp"
+                android:visibility="visible" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="1dp"
+            android:background="#4e6882"
+            android:gravity="center|right"
+            android:paddingLeft="2dp"
+            android:paddingRight="2dp"
+            android:text="Swine Type"
+            android:textColor="@android:color/white"
+            android:textSize="12sp"
+            android:visibility="visible" />
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="1dp"
+            android:background="#4e6882"
+            android:gravity="center|right"
+            android:paddingLeft="2dp"
+            android:paddingRight="2dp"
+            android:text="Ave. age (days)"
+            android:textColor="@android:color/white"
+            android:textSize="12sp"
+            android:visibility="visible" />
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="1dp"
+            android:background="#4e6882"
+            android:gravity="center|right"
+            android:paddingLeft="2dp"
+            android:paddingRight="2dp"
+            android:text="Live WT. Price/kg"
+            android:textColor="@android:color/white"
+            android:textSize="12sp"
+            android:visibility="visible" />
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="1dp"
+            android:background="#4e6882"
+            android:gravity="center|right"
+            android:paddingLeft="2dp"
+            android:paddingRight="2dp"
+            android:text="ADG"
+            android:textColor="@android:color/white"
+            android:textSize="12sp"
+            android:visibility="visible" />
+
+        <LinearLayout
+            android:layout_width="200dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="1dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginRight="1dp"
+                android:layout_weight="1"
+                android:background="#4e6882"
+                android:gravity="center|right"
+                android:paddingLeft="2dp"
+                android:paddingRight="2dp"
+                android:text="Total"
+                android:textColor="@android:color/white"
+                android:textSize="12sp"
+                android:visibility="visible" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#4e6882"
+                android:gravity="center|right"
+                android:paddingLeft="2dp"
+                android:paddingRight="2dp"
+                android:text="Ave."
+                android:textColor="@android:color/white"
+                android:textSize="12sp"
+                android:visibility="visible" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="1dp"
+            android:background="#4e6882"
+            android:gravity="center|right"
+            android:paddingLeft="2dp"
+            android:paddingRight="2dp"
+            android:text="Total Sales"
+            android:textColor="@android:color/white"
+            android:textSize="12sp"
+            android:visibility="visible" />
+
+
+    </LinearLayout>
+</LinearLayout>

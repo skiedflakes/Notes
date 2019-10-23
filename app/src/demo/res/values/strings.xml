@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Demo Notes</string>
+
+    <!--demo database-->
+    <!--<string name="URL_online">https://demo.wdysolutions.com/v8/notes_mobile/</string>-->
+    <string name="URL_online">https://demo.wdysolutions.com/v11/notes_mobile/</string>
+
+</resources>

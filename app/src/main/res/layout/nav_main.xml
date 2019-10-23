@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_navigation_bg"
+    android:orientation="vertical"
+    android:clickable="true"
+    tools:context=".Navigation_Panel.frag_Nav_main">
+
+
+    <TextView
+        android:id="@+id/txt_username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="menu selection"
+        android:textColor="@android:color/white"
+        android:textSize="17sp"
+        android:textStyle="bold" />
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical"
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/color_navigation_bg2"
+            android:padding="10dp"
+            android:text="Navigation Panel"
+            android:textAllCaps="true"
+            android:textColor="#4a6462"
+            android:textSize="14sp" />
+
+        <ExpandableListView
+            android:id="@+id/expandible_listview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:groupIndicator="@drawable/custom_expandablelistview"
+            android:visibility="gone"/>
+    </LinearLayout>
+
+</LinearLayout>

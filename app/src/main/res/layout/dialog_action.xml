@@ -1,0 +1,84 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.wdysolutions.notes.Dialog_Action"
+    android:minWidth="500dp"
+    android:orientation="vertical"
+    >
+
+    <!-- TODO: Update blank fragment layout -->
+        <RelativeLayout
+            android:id="@+id/l_view_details"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginBottom="1dp"
+            android:background="#383838">
+        <Button
+            android:id="@+id/btn_view_details"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#383838"
+            android:textColor="#ffff"
+            android:text="View Details"
+            android:drawablePadding="10dp"
+            android:drawableStart="@drawable/search_white"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/l_micro_filming"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:background="#383838"
+            >
+            <Button
+                android:id="@+id/btn_micro_filming"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#383838"
+                android:textColor="#ffff"
+                android:text="Micro filming"
+                android:drawablePadding="10dp"
+                android:drawableStart="@drawable/image"/>
+        </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/l_disapprove"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:background="#383838"
+        android:layout_marginTop="1dp"
+        >
+        <Button
+            android:id="@+id/btn_disapprove"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#383838"
+            android:textColor="#ffff"
+            android:text="Disaprrove"
+            android:drawablePadding="10dp"
+            android:drawableStart="@drawable/green_check_box"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/l_approve"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:background="#383838"
+        android:layout_marginTop="1dp"
+        >
+        <Button
+            android:id="@+id/btn_approve"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#383838"
+            android:textColor="#ffff"
+            android:text="Approve"
+            android:drawablePadding="10dp"
+            android:drawableStart="@drawable/aprrove2"/>
+    </RelativeLayout>
+</LinearLayout>

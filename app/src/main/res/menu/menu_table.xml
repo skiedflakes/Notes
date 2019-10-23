@@ -1,0 +1,16 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:compat="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@+id/action_curr"
+        android:title="Graph Current"
+        android:visible="false"/>
+
+    <item android:id="@+id/action_ave"
+        android:title="Graph Average"
+        android:visible="false" />
+
+    <item android:id="@+id/action_perc"
+        android:title="Graph Percentage"
+        android:visible="false"/>
+
+</menu>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/btn_weeks"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="2dp">
+
+    <CheckBox
+        android:id="@+id/chckbox_week"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Week 1"
+        android:textSize="12sp" />
+</LinearLayout>

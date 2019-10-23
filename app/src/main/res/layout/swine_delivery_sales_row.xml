@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="left"
+        android:orientation="horizontal"
+
+        android:paddingTop="1dp"
+        android:paddingBottom="1dp">
+
+
+        <TextView
+            android:id="@+id/tv_counter"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="1dp"
+            android:background="#7f99b2"
+            android:gravity="center"
+            android:paddingLeft="2dp"
+            android:paddingTop="5dp"
+            android:paddingRight="2dp"
+            android:paddingBottom="5dp"
+            android:text="#"
+            android:textColor="@android:color/white"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/tv_eartag"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+
+            android:layout_marginRight="1dp"
+            android:background="#7f99b2"
+            android:gravity="center"
+            android:paddingLeft="2dp"
+            android:paddingRight="2dp"
+            android:text="Ear Tag"
+            android:textColor="@android:color/white"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/tv_swine_type"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+
+            android:layout_marginRight="1dp"
+            android:background="#7f99b2"
+            android:gravity="center"
+            android:paddingLeft="2dp"
+            android:paddingRight="2dp"
+            android:text="Swine Type"
+            android:textColor="@android:color/white"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/tv_birth"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="1dp"
+            android:background="#7f99b2"
+            android:gravity="center"
+            android:paddingLeft="2dp"
+            android:paddingRight="2dp"
+            android:text="Birth WT."
+            android:textColor="@android:color/white"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/tv_age"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="1dp"
+            android:background="#7f99b2"
+            android:gravity="center"
+            android:paddingLeft="2dp"
+            android:paddingRight="2dp"
+            android:text="Age(days)"
+            android:textColor="@android:color/white"
+            android:textSize="12sp"
+            android:visibility="visible" />
+
+        <TextView
+            android:id="@+id/tv_final_wt"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="1dp"
+            android:background="#7f99b2"
+            android:gravity="center"
+            android:paddingLeft="2dp"
+            android:paddingRight="2dp"
+            android:text="Final WT."
+            android:textColor="@android:color/white"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/tv_live_weight"
+            android:layout_width="150dp"
+            android:layout_height="match_parent"
+
+            android:layout_marginRight="1dp"
+            android:background="#7f99b2"
+            android:gravity="center"
+            android:paddingLeft="2dp"
+            android:paddingRight="2dp"
+            android:text="Live Weight Price"
+            android:textColor="@android:color/white"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/tv_adg"
+            android:layout_width="70dp"
+            android:layout_height="match_parent"
+
+            android:layout_marginRight="1dp"
+            android:background="#7f99b2"
+            android:gravity="center"
+            android:paddingLeft="2dp"
+            android:paddingRight="2dp"
+            android:text="ADG"
+            android:textColor="@android:color/white"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/tv_cost"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="1dp"
+            android:background="#7f99b2"
+            android:gravity="center"
+            android:paddingLeft="2dp"
+            android:paddingRight="2dp"
+            android:text="Cost"
+            android:textColor="@android:color/white"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/tv_sold_amount"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="1dp"
+            android:background="#7f99b2"
+            android:gravity="center|left"
+            android:paddingLeft="2dp"
+            android:paddingRight="2dp"
+            android:text="Sold Amount"
+            android:textColor="@android:color/white"
+            android:textSize="12sp"
+            android:visibility="visible" />
+
+        <TextView
+            android:id="@+id/tv_gross_profit"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="1dp"
+            android:background="#7f99b2"
+            android:gravity="center|left"
+            android:paddingLeft="2dp"
+            android:paddingRight="2dp"
+            android:text="Gross Profit"
+            android:textColor="@android:color/white"
+            android:textSize="12sp"
+            android:visibility="visible" />
+
+
+    </LinearLayout>
+</LinearLayout>

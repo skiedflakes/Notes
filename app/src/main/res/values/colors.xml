@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="color_txt">#696969</color>
+    <color name="colorPrimary">#607D8B</color>
+    <color name="colorPrimaryDark">#000000</color>
+    <color name="colorAccent">#647780</color>
+    <color name="color_green">#00a65a</color>
+    <color name="color_orange">#e6991e</color>
+    <color name="color_eggnotes">#3c8dbc</color>
+    <color name="color_pignotes">#00a65a</color>
+    <color name="color_feednotes">#c73624</color>
+    <color name="color_bronotes">#e6991e</color>
+    <color name="color_navigation_bg">#222d32</color>
+    <color name="color_navigation_bg2">#1a2226</color>
+    <color name="color_login_bg">#2d2d31</color>
+    <color name="color_button_bg">#286090</color>
+    <color name="color_button_bg_click">#164C7A</color>
+    <color name="color_login_text">#CCCCCC</color>
+    <color name="color_navigation_collapse">#1e282c</color>
+    <color name="color_login_text_copyright">#535B5C</color>
+    <color name="color_module_title_color_blue">#286090</color>
+    <color name="grey">#ababab</color>
+    <color name="color_btn">#286090</color>
+    <color name="color_btn2">#417EB3</color>
+    <color name="color_btn_red">#c9302c</color>
+    <color name="color_btn_red2">#D64440</color>
+    <color name="color_btn_green">#5cb85c</color>
+    <color name="color_btn_green2">#979E97</color>
+    <color name="color_blue">#0000ff</color>
+    <color name="color_text_light_black">#535353</color>
+    <color name="color_table_color_red">#6d0c0b</color>
+    <color name="color_table_color_light_blue">#7f99b2</color>
+    <color name="color_black">#000000</color>
+    <color name="white">#FFFFFF</color>
+
+
+    <color name="cell_background_color">#ffffff</color>
+    <color name="cell_text_color">#1f1f1f</color>
+    <color name="header_line_color">@android:color/holo_red_light</color>
+
+    <!-- Material Design TableView Colors -->
+    <color name="md_cell_text_color">#1f1f1f</color>
+    <color name="md_column_header_text_color">#696969</color>
+    <color name="md_highlight_row_background_color">#EEEEEE</color>
+    <color name="md_selected_background_color">#F5F5F5</color>
+    <color name="md_cell_line_color">#dbdbdb</color>
+
+
+    <color name="text_grey">#FF6A6A6A</color>
+    <color name="light_black">#bfbfbf</color>
+    <color name="light_black2">#737373</color>
+    <color name="dark_blue">#1a5dba</color>
+    <color name="dark_blue2">#4b89df</color>
+    <color name="light2x_blue">#FFD6DDE7</color>
+    <color name="light_grey">#dcdcdc</color>
+    <color name="default_">#fafafa</color>
+
+    <color name="btn_red_color1">#ca2429</color>
+    <color name="btn_red_color2">#dc676b</color>
+
+    <color name="btn_blue_color1">#345f92</color>
+    <color name="btn_blue_color2">#58789e</color>
+
+    <color name="btn_brown_color1">#765547</color>
+    <color name="btn_brown_color2">#876b60</color>
+
+    <color name="btn_yellow_color1">#decf5d</color>
+    <color name="btn_yellow_color2">#e4d97d</color>
+
+    <color name="btn_violet_color1">#6836bb</color>
+    <color name="btn_violet_color2">#865fc7</color>
+
+    <color name="btn_violet_light_color1">#6836bb</color>
+    <color name="btn_violet_light_color2">#9f7dd7</color>
+
+    <color name="btn_yellow_light_color1">#decf5d</color>
+    <color name="btn_yellow_light_color2">#dcd388</color>
+
+    <color name="btn_brown_light_color1">#765547</color>
+    <color name="btn_brown_light_color2">#a39590</color>
+
+    <color name="btn_red_light_color1">#ea4431</color>
+    <color name="btn_red_light_color2">#df9990</color>
+
+    <color name="btn_light_red_color1">#ea4431</color>
+    <color name="btn_light_red_color2">#d45447</color>
+
+    <color name="btn_light_blue_color1">#74a2d0</color>
+    <color name="btn_light_blue_color2">#94bce4</color>
+
+    <color name="btn_lightgreen_color1">#83e67e</color>
+    <color name="btn_lightgreen_color2">#54c450</color>
+
+    <color name="btn_color1">#3a9436</color>
+    <color name="btn_color2">#54c450</color>
+
+</resources>

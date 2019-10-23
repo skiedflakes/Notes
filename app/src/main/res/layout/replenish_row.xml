@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="left"
+        android:orientation="horizontal"
+
+        >
+
+
+        <LinearLayout
+            android:layout_width="80dp"
+            android:layout_height="match_parent"
+            android:background="#E7E4B5"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/actions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_settings" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/txt_count"
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="1dp"
+            android:layout_marginRight="1dp"
+            android:background="#E7E4B5"
+            android:gravity="center"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:text="#"
+            android:textColor="@android:color/black"
+            android:textSize="12sp" />
+
+
+        <TextView
+            android:id="@+id/txt_tracking_num"
+            android:layout_width="135dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="1dp"
+
+            android:layout_marginRight="1dp"
+            android:background="#E7E4B5"
+            android:gravity="center"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:text="Tracking #"
+            android:textColor="@android:color/black"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/txt_date"
+            android:layout_width="110dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="1dp"
+
+            android:layout_marginRight="1dp"
+            android:background="#E7E4B5"
+            android:gravity="center"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:text="Date"
+            android:textColor="@android:color/black"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/txt_amount"
+            android:layout_width="110dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="1dp"
+            android:layout_marginRight="1dp"
+            android:background="#E7E4B5"
+            android:gravity="center"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:text="Amount"
+            android:textColor="@android:color/black"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/txt_remarks"
+            android:layout_width="110dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="1dp"
+            android:layout_marginRight="1dp"
+            android:background="#E7E4B5"
+            android:gravity="center"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:text="Remarks"
+            android:textColor="@android:color/black"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/txt_status"
+            android:layout_width="110dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="1dp"
+
+            android:layout_marginRight="1dp"
+            android:background="#E7E4B5"
+            android:gravity="center"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:text="Status "
+            android:textColor="@android:color/black"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/txt_replenish_status"
+            android:layout_width="110dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="1dp"
+
+            android:layout_marginRight="1dp"
+            android:background="#E7E4B5"
+            android:gravity="center"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:text="Replenish Status"
+            android:textColor="@android:color/black"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/txt_encoded_by"
+            android:layout_width="110dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="1dp"
+
+            android:layout_marginRight="1dp"
+            android:background="#E7E4B5"
+            android:gravity="center"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:text="Encoded By"
+            android:textColor="@android:color/black"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/txt_declared_status"
+            android:layout_width="110dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="1dp"
+
+            android:layout_marginRight="1dp"
+            android:background="#E7E4B5"
+            android:gravity="center"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:text="Declared Status"
+            android:textColor="@android:color/black"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/txt_approve"
+            android:layout_width="110dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="1dp"
+
+            android:layout_marginRight="1dp"
+            android:background="#E7E4B5"
+            android:gravity="center"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:textColor="@android:color/black"
+            android:textSize="12sp" />
+
+    </LinearLayout>
+</RelativeLayout>

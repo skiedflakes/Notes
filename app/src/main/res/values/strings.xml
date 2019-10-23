@@ -1,0 +1,69 @@
+<resources>
+    <string name="app_name">Notes</string>
+    <!--main database-->
+    <string name="URL_online">https://notes.wdysolutions.com/v6/notes_mobile/</string>
+
+    <!--local database-->
+    <!--<string name="URL_online">http://192.168.0.110/notes_mobile/</string>-->
+
+    <!--demo database-->
+    <!--<string name="URL_online">https://demo.wdysolutions.com/v8/notes_mobile/</string>-->
+    <!--<string name="URL_online">https://demo.wdysolutions.com/v11/notes_mobile/</string>-->
+
+    <string name="eggNOTES">eggnotes</string>
+    <string name="pigNOTES">pignotes</string>
+    <string name="feedNOTES">feednotes</string>
+    <string name="broNOTES">bronotes</string>
+
+    <string-array name="array_classi">
+        <item>Adult</item>
+        <item>Chick</item>
+        <item>Egg</item>
+    </string-array>
+
+    <string name="volley_error_msg">Connection error, please try again.</string>
+
+    <string name="sort_ascending">Sort Ascending</string>
+    <string name="sort_descending">Sort Descending</string>
+    <string name="clear_sorting">Clear</string>
+    <string name="hiding_row_sample">Hiding 3. Row Sample</string>
+    <string name="showing_row_sample">Showing 3. Row Sample</string>
+    <string name="scroll_to_column_position">Scroll to 15. column position</string>
+    <string name="scroll_to_row_position">Scroll to 5. row position</string>
+    <string name="show_hide_the_column">Showing / Hiding 1. column</string>
+    <string name="table_pagination_details">Page %s, showing items %s - %s.</string>
+
+    <string name="null_resut">No data found.</string>
+    <string name="connection_error_tap">Connection error, tap to reload.</string>
+    <string name="confirm_pregnancy_msg">You are about to confirm sow pregnancy.</string>
+    <string name="schedule_cull_msg">You are about to Schedule this sow. Please confirm.</string>
+
+    <string-array name="gender_array">
+        <item>Select</item>
+        <item>Male</item>
+        <item>Female</item>
+    </string-array>
+
+    <string-array name="action_array">
+        <item>Please select</item>
+        <item>Medication</item>
+        <item>Vaccination</item>
+    </string-array>
+
+    <string-array name="status_array">
+        <item>Select</item>
+        <item>Alive - Normal</item>
+        <item>Alive - Abnormal</item>
+        <item>Alive - Undersize</item>
+        <item>Mummified</item>
+        <item>Stillbirth</item>
+    </string-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="str_microfilming">Microfilming</string>
+    <string name="str_view">View</string>
+
+
+</resources>

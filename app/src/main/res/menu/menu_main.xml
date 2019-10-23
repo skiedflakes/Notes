@@ -1,0 +1,10 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:compat="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/menu_action"
+        android:icon="@drawable/ic_more_vert_24dp"
+        android:title="Action"
+        compat:showAsAction="always" />
+
+</menu>
