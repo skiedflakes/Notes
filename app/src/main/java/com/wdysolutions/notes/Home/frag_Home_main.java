@@ -31,7 +31,7 @@ public class frag_Home_main extends Fragment {
     String selectedNOTES="";
     SharedPref sharedPref;
 
-    //test jr
+    //commit online
 
 
     private void initMenu(View view){
