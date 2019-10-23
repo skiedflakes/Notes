@@ -84,9 +84,7 @@ public class Purchase_Order extends Fragment implements DatePickerSelectionInter
     String selected_dialog_id;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.purchase_order, container, false);
         //user
         sharedPref = new SharedPref(getActivity());
@@ -415,17 +413,13 @@ public class Purchase_Order extends Fragment implements DatePickerSelectionInter
         return list_filter;
     }
 
-
     List<String> list_rr_status;
     private List<String> populateRR(){
         list_rr_status = new ArrayList<>();
-
-
         list_rr_status.add("All");
         list_rr_status.add("Pending");
         list_rr_status.add("Fully Served");
         list_rr_status.add("Closed");
-
         return list_rr_status;
     }
 
@@ -440,7 +434,7 @@ public class Purchase_Order extends Fragment implements DatePickerSelectionInter
             //
             openDialog_approve("",false,position);
         }else if(chosen.equals("micro_filming")){
-            // test
+
             ((MainActivity)getActivity()).openMicro(selected_po_number);
         }
     }

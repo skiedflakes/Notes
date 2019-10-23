@@ -25,6 +25,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.wdysolutions.notes.AppController;
 import com.wdysolutions.notes.Constants;
+import com.wdysolutions.notes.MainActivity;
 import com.wdysolutions.notes.R;
 import com.wdysolutions.notes.SharedPref;
 
@@ -117,7 +118,7 @@ public class Microfilming_main extends DialogFragment implements clickRecycler {
                 try {
                     layout_main.setVisibility(View.VISIBLE);
                     loading_.setVisibility(View.GONE);
-                    //((MainActivity)getActivity()).openDialog(response);
+                    ((MainActivity)getActivity()).openDialog(response);
 
                     title_models = new ArrayList<>();
                     image_models = new ArrayList<>();
