@@ -13,6 +13,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.wdysolutions.notes.Globals.Micro_Filming.Microfilming_main;
+import com.wdysolutions.notes.Globals.Purchase_Order.Purchase_Order;
+import com.wdysolutions.notes.Globals.Purchase_Order.purchase_order_dialog.Purchase_Order_dialog_main;
 import com.wdysolutions.notes.Home.frag_Home_main;
 import com.wdysolutions.notes.Login.frag_Login_main;
 
@@ -45,13 +47,17 @@ public class MainActivity extends AppCompatActivity {
     public void openMicro(String tracking_num){
         Bundle bundle = new Bundle();
         bundle.putString("tracking_num", tracking_num);
-        DialogFragment dialogFragment = new Microfilming_main();
+
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        Fragment prev = getSupportFragmentManager().findFragmentByTag("dialog");
-        if (prev != null) {ft.remove(prev);}
+        Fragment prev = getSupportFragmentManager().findFragmentByTag("micro");
+        if (prev != null) {
+            ft.remove(prev);
+        }
         ft.addToBackStack(null);
-        dialogFragment.setArguments(bundle);
-        dialogFragment.show(ft, "dialog");
+        Microfilming_main fragment = new Microfilming_main();
+        fragment.setArguments(bundle);
+        fragment.show(getSupportFragmentManager(), "micro");
+        fragment.setCancelable(true);
     }
 
     public ProgressDialog showLoading(ProgressDialog loading, String msg){
