@@ -21,17 +21,21 @@ import com.wdysolutions.notes.MainActivity;
 import com.wdysolutions.notes.R;
 
 import java.util.ArrayList;
+import java.util.EventListener;
 
 public class PettyCash_replenish_adapter extends RecyclerView.Adapter<PettyCash_replenish_adapter.MyHolder> {
 
     ArrayList<PettyCash_replenish_model> mdata;
     private Context context;
     private LayoutInflater inflater;
+    EventListener listener;
 
-    public PettyCash_replenish_adapter(Context context, ArrayList<PettyCash_replenish_model> data){
+
+    public PettyCash_replenish_adapter(Context context, ArrayList<PettyCash_replenish_model> data,EventListener listener){
         this.context = context;
         this.mdata = data;
         inflater = LayoutInflater.from(context);
+        this.listener = listener;
     }
 
     @NonNull
@@ -93,49 +97,21 @@ public class PettyCash_replenish_adapter extends RecyclerView.Adapter<PettyCash_
             myHolder.txt_status.setTextColor(context.getResources().getColor(R.color.color_black));
         }
 
-        myHolder.actions.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialogPicker(getId, getRplnsh_num, getDate, getBr_id);
-            }
-        });
-    }
-
-    private String selected;
-    private void dialogPicker(final String getId, final String getRplnsh_num, final String getDate, final String getBr_id){
-        final String[] name = {context.getResources().getString(R.string.str_view),
-                context.getResources().getString(R.string.str_microfilming)};
-        AlertDialog.Builder builder = new AlertDialog.Builder(context);
-        builder.setItems(name, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int item) {
-                selected = name[item];
-
-                if (selected.equals(context.getResources().getString(R.string.str_view))){
-                    openView(getId, getRplnsh_num, getDate, getBr_id);
-                } else {
-                    Toast.makeText(context, "microfilming", Toast.LENGTH_SHORT).show();
+        if(!getApproved_by.equals("")){
+            myHolder.actions.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    listener.view_modal(position,getRplnsh_num,getId,getDate,getBr_id,1,1,1,0);
                 }
-
-                dialog.dismiss();
-            }
-        });
-        builder.show();
-    }
-
-    private void openView(String getId, String getRplnsh_num, String getDate, String getBr_id){
-        Bundle bundle = new Bundle();
-        bundle.putString("getId", getId);
-        bundle.putString("getRplnsh_num", getRplnsh_num);
-        bundle.putString("getUserID", getDate);
-        bundle.putString("getBr_id", getBr_id);
-        DialogFragment dialogFragment = new PettyCash_replenish_modal_main();
-        FragmentTransaction ft = ((MainActivity) context).getSupportFragmentManager().beginTransaction();
-        Fragment prev = ((MainActivity) context).getSupportFragmentManager().findFragmentByTag("dialog");
-        if (prev != null) {ft.remove(prev);}
-        ft.addToBackStack(null);
-        dialogFragment.setArguments(bundle);
-        dialogFragment.show(ft, "dialog");
+            });
+        }else{
+            myHolder.actions.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    listener.view_modal(position,getRplnsh_num,getId,getDate,getBr_id,1,1,0,1);
+                }
+            });
+        }
     }
 
     @Override
@@ -161,5 +137,10 @@ public class PettyCash_replenish_adapter extends RecyclerView.Adapter<PettyCash_
             txt_declared_status = itemView.findViewById(R.id.txt_declared_status);
             txt_approve = itemView.findViewById(R.id.txt_approve);
         }
+    }
+
+    public interface  EventListener{
+        void view_modal(final int position,String tracking_num,String id,String date,String br_id,int view_details,int micro_filming,int approve,int disapprove);
+
     }
 }

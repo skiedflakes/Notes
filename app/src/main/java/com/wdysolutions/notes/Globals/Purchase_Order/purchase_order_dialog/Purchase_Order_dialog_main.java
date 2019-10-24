@@ -40,11 +40,11 @@ import java.util.Map;
 public class Purchase_Order_dialog_main extends DialogFragment implements Purchase_Order_dialog_adapter.EventListener {
     //user
     SharedPref sharedPref;
-    String user_id, company_id,company_code,category_id,selected_branch_id;
+    String user_id, company_id,company_code,category_id,selected_branch_id,date;
 
     //module
     String id,supplier_id;
-    TextView tv_status,tv_po,tv_rs,tv_supplier,ty_payment_types,tv_terms,tv_encoded_by,tv_remarks;
+    TextView tv_status,tv_po,tv_rs,tv_supplier,ty_payment_types,tv_terms,tv_encoded_by,tv_remarks,tv_date;
     String status,po,rs,supplier,payment_type,terms,encoded_by,remarks,status_color,dec;
     CheckBox cb_undeclared;
     Button btn_close;
@@ -93,6 +93,7 @@ public class Purchase_Order_dialog_main extends DialogFragment implements Purcha
         tv_remarks=view.findViewById(R.id.tv_remarks);
         cb_undeclared=view.findViewById(R.id.cb_undeclared);
         tv_total = view.findViewById(R.id.tv_total);
+        tv_date = view.findViewById(R.id.tv_date);
 
         //layout
         rl_progress_details = view.findViewById(R.id.rl_progress_details);
@@ -130,7 +131,6 @@ public class Purchase_Order_dialog_main extends DialogFragment implements Purcha
 
     public void get_po_dialog_details(){
 
-
         String URL = getString(R.string.URL_online)+"purchase_order/get_po_dialog_details.php";
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
             @Override
@@ -156,9 +156,10 @@ public class Purchase_Order_dialog_main extends DialogFragment implements Purcha
                     remarks =Obj.getString("remarks");
                     dec=Obj.getString("dec_stat");
                     supplier_id = Obj.getString("supplier_id");
+                    date= Obj.getString("date");
 
                     //set text
-
+                    tv_date.setText(date);
                     tv_status.setText(status);
                     tv_po.setText(po);
                     tv_rs.setText(rs);
@@ -170,6 +171,7 @@ public class Purchase_Order_dialog_main extends DialogFragment implements Purcha
                     if(dec.equals("checked")){
                         cb_undeclared.setChecked(true);
                     }
+
 
 
                     //set color

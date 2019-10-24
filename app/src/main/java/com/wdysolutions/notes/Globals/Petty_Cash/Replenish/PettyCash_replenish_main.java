@@ -1,7 +1,12 @@
 package com.wdysolutions.notes.Globals.Petty_Cash.Replenish;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -21,6 +26,9 @@ import com.wdysolutions.notes.AppController;
 import com.wdysolutions.notes.Constants;
 import com.wdysolutions.notes.DatePicker.DatePickerCustom;
 import com.wdysolutions.notes.DatePicker.DatePickerSelectionInterfaceCustom;
+import com.wdysolutions.notes.Dialog_Action;
+import com.wdysolutions.notes.Globals.Petty_Cash.Replenish.modal_view.PettyCash_replenish_modal_main;
+import com.wdysolutions.notes.MainActivity;
 import com.wdysolutions.notes.R;
 import com.wdysolutions.notes.SharedPref;
 
@@ -33,7 +41,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-public class PettyCash_replenish_main extends Fragment implements DatePickerSelectionInterfaceCustom {
+public class PettyCash_replenish_main extends Fragment implements DatePickerSelectionInterfaceCustom, PettyCash_replenish_adapter.EventListener,Dialog_Action.uploadDialogInterface {
+
 
     String company_id, company_code, category_id, user_id, selected_branch_id;
     TextView btn_start_date, btn_end_date;
@@ -41,8 +50,11 @@ public class PettyCash_replenish_main extends Fragment implements DatePickerSele
     ProgressBar progressBar2;
     RecyclerView rec_cv;
     boolean isStartDateClick = false;
-    String selectedStartDate = "", selectedEndDate = "", req_stat = "";
 
+
+    //strings
+    String selected_id,selected_replenish_num,user_name,selected_date,selected_br_id;
+    String selectedStartDate = "", selectedEndDate = "", req_stat = "";
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.pettycash_replenish_main, container, false);
@@ -52,6 +64,7 @@ public class PettyCash_replenish_main extends Fragment implements DatePickerSele
         category_id = sharedPref.getUserInfo().get(sharedPref.KEY_CATEGORYID);
         user_id = sharedPref.getUserInfo().get(sharedPref.KEY_USERID);
         selected_branch_id = Constants.branch_id;
+        user_name = sharedPref.getUserInfo().get(sharedPref.KEY_NAME);
 
         btn_generate_report = view.findViewById(R.id.btn_generate_report);
         btn_end_date = view.findViewById(R.id.btn_end_date);
@@ -137,7 +150,7 @@ public class PettyCash_replenish_main extends Fragment implements DatePickerSele
                                 jsonObject1.getString("approved_by")));
                     }
 
-                    PettyCash_replenish_adapter pettycashreplenish_adapter = new PettyCash_replenish_adapter(getActivity(), pettyCashreplenish_models);
+                    PettyCash_replenish_adapter pettycashreplenish_adapter = new PettyCash_replenish_adapter(getActivity(), pettyCashreplenish_models,PettyCash_replenish_main.this);
                     rec_cv.setLayoutManager(new LinearLayoutManager(getActivity()));
                     rec_cv.setAdapter(pettycashreplenish_adapter);
                     rec_cv.setNestedScrollingEnabled(false);
@@ -211,6 +224,119 @@ public class PettyCash_replenish_main extends Fragment implements DatePickerSele
         }
     }
 
+
+
+
+    @Override
+    public void view_modal(int position, String tracking_num, String id, String date, String br_id, int view_details, int micro_filming, int approve, int disapprove) {
+
+        selected_id = id;
+        selected_replenish_num = tracking_num;
+        selected_br_id = br_id;
+        selected_date = date;
+
+        Bundle bundle = new Bundle();
+        bundle.putInt("view_details", view_details);
+        bundle.putInt("micro_filming", micro_filming);
+        bundle.putInt("approve", approve);
+        bundle.putInt("disapprove", disapprove);
+        bundle.putInt("position", position);
+
+        FragmentTransaction ft = getFragmentManager().beginTransaction();
+        Fragment prev = getFragmentManager().findFragmentByTag("dialog");
+        if (prev != null) {
+            ft.remove(prev);
+        }
+
+        ft.addToBackStack(null);
+        Dialog_Action fragment = new Dialog_Action();
+        fragment.setTargetFragment(PettyCash_replenish_main.this, 100);
+        FragmentManager manager = getFragmentManager();
+        fragment.setArguments(bundle);
+        fragment.show(ft, "UploadDialogFragment");
+        fragment.setCancelable(true);
+    }
+
+    @Override
+    public void senddata(String chosen, int position) {
+        if(chosen.equals("view_details")){
+            openView();
+        }else if(chosen.equals("approve")){
+            openDialog_approve(user_id,true,position);
+        }else if(chosen.equals("disapprove")){
+
+           openDialog_approve("",false,position);
+        }else if(chosen.equals("micro_filming")){
+
+        }
+    }
+
+    private void openView(){
+        Bundle bundle = new Bundle();
+        bundle.putString("getId", selected_id);
+        bundle.putString("getRplnsh_num", selected_replenish_num);
+        bundle.putString("getUserID", selected_date);
+        bundle.putString("getBr_id", selected_br_id);
+
+//        DialogFragment dialogFragment = new PettyCash_replenish_modal_main();
+//        FragmentTransaction ft =  getFragmentManager().beginTransaction();
+//        Fragment prev =  getFragmentManager().findFragmentByTag("pr_dialog");
+//        if (prev != null) {ft.remove(prev);}
+//        ft.addToBackStack(null);
+//        dialogFragment.setArguments(bundle);
+//        dialogFragment.show(ft, "pr_dialog");
+
+        FragmentTransaction ft = getFragmentManager().beginTransaction();
+        Fragment prev = getFragmentManager().findFragmentByTag("details");
+        if (prev != null) {
+            ft.remove(prev);
+        }
+        ft.addToBackStack(null);
+        PettyCash_replenish_modal_main fragment = new PettyCash_replenish_modal_main();
+        fragment.setTargetFragment(PettyCash_replenish_main.this, 0);
+        FragmentManager manager = getFragmentManager();
+        fragment.setArguments(bundle);
+        fragment.show(getFragmentManager(), "details");
+        fragment.setCancelable(true);
+    }
+
+
+    public void openDialog_approve(final String user_id,final boolean type,final int position){
+        if(type){
+            AlertDialog.Builder alertDialog = new AlertDialog.Builder(getContext());
+            alertDialog.setTitle("Are you sure you want to approve?");
+            alertDialog.setPositiveButton("Cancel",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.cancel();
+                        }
+                    });
+            alertDialog.setNegativeButton("OK",  new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int which) {
+                   // approve_disapprove(user_id,position);
+                }
+            });
+            alertDialog.setCancelable(false);
+            alertDialog.show();
+        }else{
+            AlertDialog.Builder alertDialog = new AlertDialog.Builder(getContext());
+            alertDialog.setTitle("Are you sure you want to disapprove?");
+            alertDialog.setPositiveButton("Cancel",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog,int which) {
+                            dialog.cancel();
+                        }
+                    });
+            alertDialog.setNegativeButton("OK",  new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int which) {
+                  //  approve_disapprove(user_id,position);
+                }
+            });
+            alertDialog.setCancelable(false);
+            alertDialog.show();
+        }
+
+    }
 
 }
 
