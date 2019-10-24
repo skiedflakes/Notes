@@ -23,6 +23,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.google.gson.Gson;
 import com.wdysolutions.notes.AppController;
 import com.wdysolutions.notes.Constants;
 import com.wdysolutions.notes.MainActivity;
@@ -42,9 +43,9 @@ public class Microfilming_main extends DialogFragment implements clickRecycler {
 
     RecyclerView recycler_title, recycler_img;
     TextView txt_selected, txt_back, txt_no_img, txt_title, txt_close;
-    String tracking_num, company_id, company_code, selected_branch_id;
+    String tracking_num, company_id, company_code, selected_branch_id, end_date, start_date;
     ProgressBar loading_;
-    LinearLayout layout_main;
+    LinearLayout layout_main, layout_selected;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -54,7 +55,10 @@ public class Microfilming_main extends DialogFragment implements clickRecycler {
         company_code = sharedPref.getUserInfo().get(sharedPref.KEY_COMPANYCODE);
         selected_branch_id = Constants.branch_id;
         tracking_num = getArguments().getString("tracking_num");
+        start_date = getArguments().getString("start_date");
+        end_date = getArguments().getString("end_date");
 
+        layout_selected = view.findViewById(R.id.layout_selected);
         layout_main = view.findViewById(R.id.layout_main);
         loading_ = view.findViewById(R.id.loading_);
         recycler_title = view.findViewById(R.id.recycler_title);
@@ -178,6 +182,8 @@ public class Microfilming_main extends DialogFragment implements clickRecycler {
                 hashMap.put("company_id", company_id);
                 hashMap.put("branch_id", selected_branch_id);
                 hashMap.put("company_code", company_code);
+                hashMap.put("start_date", start_date);
+                hashMap.put("end_date", end_date);
                 return hashMap;
             }
         };

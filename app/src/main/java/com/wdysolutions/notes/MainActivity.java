@@ -44,10 +44,11 @@ public class MainActivity extends AppCompatActivity {
         //openDialogDebug();
     }
 
-    public void openMicro(String tracking_num){
+    public void openMicro(String tracking_num, String start_date, String end_date){
         Bundle bundle = new Bundle();
         bundle.putString("tracking_num", tracking_num);
-
+        bundle.putString("start_date", start_date);
+        bundle.putString("end_date", end_date);
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         Fragment prev = getSupportFragmentManager().findFragmentByTag("micro");
         if (prev != null) {

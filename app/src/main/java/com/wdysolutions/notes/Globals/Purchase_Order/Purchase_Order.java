@@ -435,7 +435,7 @@ public class Purchase_Order extends Fragment implements DatePickerSelectionInter
             openDialog_approve("",false,position);
         }else if(chosen.equals("micro_filming")){
 
-            ((MainActivity)getActivity()).openMicro(selected_po_number);
+            ((MainActivity)getActivity()).openMicro(selected_po_number, "", "");
         }
     }
 
