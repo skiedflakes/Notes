@@ -21,17 +21,20 @@ import com.wdysolutions.notes.MainActivity;
 import com.wdysolutions.notes.R;
 
 import java.util.ArrayList;
+import java.util.EventListener;
 
 public class Revolving_replenish_adapter extends RecyclerView.Adapter<Revolving_replenish_adapter.MyHolder> {
 
     ArrayList<Revolving_replenish_model> mdata;
     private Context context;
     private LayoutInflater inflater;
+    EventListener listener;
 
-    public Revolving_replenish_adapter(Context context, ArrayList<Revolving_replenish_model> data){
+    public Revolving_replenish_adapter(Context context, ArrayList<Revolving_replenish_model> data,EventListener listener){
         this.context = context;
         this.mdata = data;
         inflater = LayoutInflater.from(context);
+        this.listener=listener;
     }
 
     @NonNull
@@ -62,7 +65,7 @@ public class Revolving_replenish_adapter extends RecyclerView.Adapter<Revolving_
 
         myHolder.txt_count.setText(String.valueOf(position+1));
         myHolder.txt_amount.setText(getAmount);
-        //myHolder.txt_approve.setText(getApproved_by);
+        myHolder.txt_approve.setText(getApproved_by);
         myHolder.txt_encoded_by.setText(getEncodedBY);
         myHolder.txt_remarks.setText(getRemarks);
         myHolder.txt_date.setText(getDate);
@@ -93,12 +96,21 @@ public class Revolving_replenish_adapter extends RecyclerView.Adapter<Revolving_
             myHolder.txt_status.setTextColor(context.getResources().getColor(R.color.color_black));
         }
 
-        myHolder.actions.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialogPicker(getId, getRplnsh_num, getDate, getBr_id);
-            }
-        });
+        if(!getApproved_by.equals("")){
+            myHolder.actions.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    listener.view_modal(position,getRplnsh_num,getId,getDate,getBr_id,1,1,0,1);
+                }
+            });
+        }else{
+            myHolder.actions.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    listener.view_modal(position,getRplnsh_num,getId,getDate,getBr_id,1,1,1,0);
+                }
+            });
+        }
     }
 
     private String selected;
@@ -161,5 +173,10 @@ public class Revolving_replenish_adapter extends RecyclerView.Adapter<Revolving_
             txt_declared_status = itemView.findViewById(R.id.txt_declared_status);
             txt_approve = itemView.findViewById(R.id.txt_approve);
         }
+    }
+
+    public interface  EventListener{
+        void view_modal(final int position,String tracking_num,String id,String date,String br_id,int view_details,int micro_filming,int approve,int disapprove);
+
     }
 }

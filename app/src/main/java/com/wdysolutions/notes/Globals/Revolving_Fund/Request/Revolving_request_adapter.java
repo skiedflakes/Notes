@@ -24,11 +24,13 @@ public class Revolving_request_adapter extends RecyclerView.Adapter<Revolving_re
     ArrayList<Revolving_request_model> mdata;
     private Context context;
     private LayoutInflater inflater;
+    EventListener listener;
 
-    public Revolving_request_adapter(Context context, ArrayList<Revolving_request_model> data){
+    public Revolving_request_adapter(Context context, ArrayList<Revolving_request_model> data,EventListener listener){
         this.context = context;
         this.mdata = data;
         inflater = LayoutInflater.from(context);
+        this.listener = listener;
     }
 
     @NonNull
@@ -111,26 +113,21 @@ public class Revolving_request_adapter extends RecyclerView.Adapter<Revolving_re
         } else { // orange
             myHolder.txt_status.setTextColor(context.getResources().getColor(R.color.color_orange));
         }
-
-        myHolder.actions.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Bundle bundle = new Bundle();
-                bundle.putString("getId", getId);
-                bundle.putString("getDate_requested", getDate_requested);
-                bundle.putString("getUserID", getUserID);
-                bundle.putString("getBr_id", getBr_id);
-                bundle.putString("getPcv", getPcv);
-                bundle.putString("getRemarks", getRemarks);
-                DialogFragment dialogFragment = new Revolving_request_modal_view();
-                FragmentTransaction ft = ((MainActivity) context).getSupportFragmentManager().beginTransaction();
-                Fragment prev = ((MainActivity) context).getSupportFragmentManager().findFragmentByTag("dialog");
-                if (prev != null) {ft.remove(prev);}
-                ft.addToBackStack(null);
-                dialogFragment.setArguments(bundle);
-                dialogFragment.show(ft, "dialog");
-            }
-        });
+        if(!getApproved_by.equals("")){
+            myHolder.actions.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    listener.view_modal(position,getId,getDate_requested,getUserID,getBr_id,getPcv,getRemarks,1,1,0,1);
+                }
+            });
+        }else{
+            myHolder.actions.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    listener.view_modal(position,getId,getDate_requested,getUserID,getBr_id,getPcv,getRemarks,1,1,1,0);
+                }
+            });
+        }
     }
 
     @Override
@@ -161,4 +158,13 @@ public class Revolving_request_adapter extends RecyclerView.Adapter<Revolving_re
             txt_approved = itemView.findViewById(R.id.txt_approved);
         }
     }
+
+
+    public interface  EventListener{
+        void view_modal(final int position,String getId,String getDate_requested,String getUserID,
+                        String getBr_id,String getPcv,String getRemarks,int view_details,int micro_filming,int approve,int disapprove);
+
+    }
+
+
 }
