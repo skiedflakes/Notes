@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:padding="10dp">
+        android:padding="5dp">
 
         <ScrollView
             android:layout_width="match_parent"
@@ -25,112 +25,114 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/tv_togle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Cash Voucher"
-            android:textColor="#286090"
-            android:textSize="20dp"
-            android:drawableStart="@drawable/note"
-            android:drawablePadding="5dp"
-            />
-        <LinearLayout
-            android:id="@+id/l_details"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-        <LinearLayout
-            android:id="@+id/l_start_date"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:background="@drawable/bg_border"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:padding="@dimen/dialogFragment_layout_spinner"
-            android:visibility="visible"
-            android:layout_marginTop="5dp">
+                <TextView
+                    android:id="@+id/tv_togle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:drawableStart="@drawable/note"
+                    android:drawablePadding="5dp"
+                    android:text="Cash Voucher"
+                    android:textColor="#286090"
+                    android:textSize="20dp" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:text="Start Date: "
-                android:textStyle="bold" />
+                <LinearLayout
+                    android:id="@+id/l_details"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/btn_start_date"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="" />
+                    <LinearLayout
+                        android:id="@+id/l_start_date"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/bg_border"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:padding="@dimen/dialogFragment_layout_spinner"
+                        android:visibility="visible">
 
-        </LinearLayout>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:text="Start Date: "
+                            android:textStyle="bold" />
 
-        <LinearLayout
-            android:id="@+id/l_end_date"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:background="@drawable/bg_border"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:padding="@dimen/dialogFragment_layout_spinner"
-            android:visibility="visible"
-            android:layout_marginTop="5dp">
+                        <TextView
+                            android:id="@+id/btn_start_date"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:text="End Date: "
-                android:textStyle="bold" />
+                    </LinearLayout>
 
-            <TextView
-                android:id="@+id/btn_end_date"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="" />
+                    <LinearLayout
+                        android:id="@+id/l_end_date"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/bg_border"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:padding="@dimen/dialogFragment_layout_spinner"
+                        android:visibility="visible">
 
-        </LinearLayout>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:text="End Date: "
+                            android:textStyle="bold" />
 
-        <LinearLayout
-            android:id="@+id/btn_generate_report"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:background="@drawable/bg_border"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:padding="@dimen/dialogFragment_layout_spinner"
-            android:visibility="visible"
-            android:layout_marginTop="5dp">
+                        <TextView
+                            android:id="@+id/btn_end_date"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:text="Generate Report"
-                android:textStyle="bold" />
+                    </LinearLayout>
 
-        </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/btn_generate_report"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@color/color_btn_green"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:padding="@dimen/dialogFragment_layout_spinner"
+                        android:visibility="visible">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:text="Generate Report"
+                            android:textColor="@color/white"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
 
 
+                </LinearLayout>
 
-        </LinearLayout>
+                <!--<LinearLayout-->
+                <!--android:id="@+id/l_total"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="40dp"-->
+                <!--android:background="#98F791"-->
+                <!--android:gravity="center"-->
+                <!--android:orientation="horizontal"-->
+                <!--android:padding="@dimen/dialogFragment_layout_spinner"-->
+                <!--android:visibility="visible"-->
+                <!--android:layout_marginTop="5dp"-->
+                <!--&gt;-->
 
-        <!--<LinearLayout-->
-            <!--android:id="@+id/l_total"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="40dp"-->
-            <!--android:background="#98F791"-->
-            <!--android:gravity="center"-->
-            <!--android:orientation="horizontal"-->
-            <!--android:padding="@dimen/dialogFragment_layout_spinner"-->
-            <!--android:visibility="visible"-->
-            <!--android:layout_marginTop="5dp"-->
-            <!--&gt;-->
-
-            <!--<TextView-->
+                <!--<TextView-->
                 <!--android:id="@+id/tv_total"-->
                 <!--android:layout_width="wrap_content"-->
                 <!--android:layout_height="wrap_content"-->
@@ -138,311 +140,314 @@
                 <!--android:text="Total"-->
                 <!--android:textStyle="bold" />-->
 
-        <!--</LinearLayout>-->
+                <!--</LinearLayout>-->
 
 
+                <ScrollView
+                    android:id="@+id/sv_swine_sales"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="5dp">
 
-        <ScrollView
-            android:id="@+id/sv_swine_sales"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="5dp">
-
-            <HorizontalScrollView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="left"
-                        android:orientation="horizontal"
-
-                        >
-
-
-
-
-                        <TextView
-                            android:id="@+id/tv_num"
-                            android:layout_width="40dp"
-                            android:layout_height="match_parent"
-                            android:layout_marginLeft="1dp"
-                            android:layout_marginRight="1dp"
-                            android:background="#CECDCD"
-                            android:gravity="center"
-                            android:paddingTop="5dp"
-                            android:paddingBottom="5dp"
-                            android:text="#"
-                            android:textColor="@android:color/black"
-                            android:textSize="14sp" />
-
-
-                        <TextView
-                            android:id="@+id/tv_1"
-                            android:layout_width="40dp"
-                            android:layout_height="match_parent"
-                            android:layout_marginLeft="1dp"
-                            android:layout_marginRight="1dp"
-                            android:background="#CECDCD"
-                            android:gravity="center"
-                            android:paddingTop="5dp"
-                            android:paddingBottom="5dp"
-                            android:textColor="@android:color/black"
-                            android:textSize="14sp" />
-
-                        <TextView
-                            android:id="@+id/tv_2"
-                            android:layout_width="135dp"
-                            android:layout_height="match_parent"
-                            android:layout_marginLeft="1dp"
-                            android:layout_marginRight="1dp"
-
-                            android:background="#CECDCD"
-                            android:gravity="center"
-                            android:paddingTop="5dp"
-                            android:paddingBottom="5dp"
-                            android:text="CV #"
-                            android:textColor="@android:color/black"
-                            android:textSize="14sp" />
-
-                        <TextView
-                            android:id="@+id/tv_3"
-                            android:layout_width="160dp"
-                            android:layout_height="match_parent"
-                            android:layout_marginLeft="1dp"
-                            android:layout_marginRight="1dp"
-
-                            android:background="#CECDCD"
-                            android:gravity="center"
-                            android:paddingTop="5dp"
-                            android:paddingBottom="5dp"
-                            android:text="ACCOUNT"
-                            android:textColor="@android:color/black"
-                            android:textSize="14sp" />
-
-                        <TextView
-                            android:id="@+id/tv_check_date"
-                            android:layout_width="110dp"
-                            android:layout_height="match_parent"
-                            android:layout_marginLeft="1dp"
-                            android:layout_marginRight="1dp"
-
-                            android:background="#CECDCD"
-                            android:gravity="center"
-                            android:paddingTop="5dp"
-                            android:paddingBottom="5dp"
-                            android:text="DATE"
-                            android:textColor="@android:color/black"
-                            android:textSize="14sp" />
-                        <TextView
-                            android:id="@+id/tv_amount"
-                            android:layout_width="110dp"
-                            android:layout_height="match_parent"
-                            android:layout_marginLeft="1dp"
-                            android:layout_marginRight="1dp"
-
-                            android:background="#CECDCD"
-                            android:gravity="center"
-                            android:paddingTop="5dp"
-                            android:paddingBottom="5dp"
-                            android:text="AMOUNT"
-                            android:textColor="@android:color/black"
-                            android:textSize="14sp" />
-                        <TextView
-                            android:id="@+id/tv_encoded_by"
-                            android:layout_width="110dp"
-                            android:layout_height="match_parent"
-                            android:layout_marginLeft="1dp"
-                            android:layout_marginRight="1dp"
-
-                            android:background="#CECDCD"
-                            android:gravity="center"
-                            android:paddingTop="5dp"
-                            android:paddingBottom="5dp"
-                            android:text="ENCODED BY"
-                            android:textColor="@android:color/black"
-                            android:textSize="14sp" />
-                        <TextView
-                            android:id="@+id/tv_status"
-                            android:layout_width="110dp"
-                            android:layout_height="match_parent"
-                            android:layout_marginLeft="1dp"
-                            android:layout_marginRight="1dp"
-
-                            android:background="#CECDCD"
-                            android:gravity="center"
-                            android:paddingTop="5dp"
-                            android:paddingBottom="5dp"
-                            android:text="STATUS"
-                            android:textColor="@android:color/black"
-                            android:textSize="14sp" />
-
-                        <TextView
-                            android:id="@+id/tv_approveby"
-                            android:layout_width="110dp"
-                            android:layout_height="match_parent"
-                            android:layout_marginLeft="1dp"
-                            android:layout_marginRight="1dp"
-
-                            android:background="#CECDCD"
-                            android:gravity="center"
-                            android:paddingTop="5dp"
-                            android:paddingBottom="5dp"
-                            android:text="APPROVED BY"
-                            android:textColor="@android:color/black"
-                            android:textSize="14sp" />
-                    </LinearLayout>
-
-                    <RelativeLayout
+                    <HorizontalScrollView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
 
-                        <android.support.v7.widget.RecyclerView
-                            android:id="@+id/rec_cv"
+                        <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:scrollbarStyle="outsideInset"
-                            android:scrollbars="vertical">
+                            android:orientation="vertical">
 
-                        </android.support.v7.widget.RecyclerView>
-                    </RelativeLayout>
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="left"
-                        android:orientation="horizontal"
-                        android:background="#B9F6CA"
-                        >
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="left"
+                                android:orientation="horizontal"
+
+                                >
 
 
-                        <TextView
+                                <TextView
+                                    android:id="@+id/tv_num"
+                                    android:layout_width="40dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginLeft="1dp"
+                                    android:layout_marginRight="1dp"
+                                    android:background="#CECDCD"
+                                    android:gravity="center"
+                                    android:paddingTop="5dp"
+                                    android:paddingBottom="5dp"
+                                    android:text="#"
+                                    android:textColor="@android:color/black"
+                                    android:textSize="14sp" />
 
-                            android:layout_width="42dp"
-                            android:layout_height="match_parent"
 
-                            android:background="#B9F6CA"
-                            android:gravity="center"
-                            android:paddingTop="5dp"
-                            android:paddingBottom="5dp"
+                                <TextView
+                                    android:id="@+id/tv_1"
+                                    android:layout_width="40dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginLeft="1dp"
+                                    android:layout_marginRight="1dp"
+                                    android:background="#CECDCD"
+                                    android:gravity="center"
+                                    android:paddingTop="5dp"
+                                    android:paddingBottom="5dp"
+                                    android:textColor="@android:color/black"
+                                    android:textSize="14sp" />
 
-                            android:textColor="@android:color/black"
-                            android:textSize="14sp" />
+                                <TextView
+                                    android:id="@+id/tv_2"
+                                    android:layout_width="135dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginLeft="1dp"
+                                    android:layout_marginRight="1dp"
+
+                                    android:background="#CECDCD"
+                                    android:gravity="center"
+                                    android:paddingTop="5dp"
+                                    android:paddingBottom="5dp"
+                                    android:text="CV #"
+                                    android:textColor="@android:color/black"
+                                    android:textSize="14sp" />
+
+                                <TextView
+                                    android:id="@+id/tv_3"
+                                    android:layout_width="160dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginLeft="1dp"
+                                    android:layout_marginRight="1dp"
+
+                                    android:background="#CECDCD"
+                                    android:gravity="center"
+                                    android:paddingTop="5dp"
+                                    android:paddingBottom="5dp"
+                                    android:text="ACCOUNT"
+                                    android:textColor="@android:color/black"
+                                    android:textSize="14sp" />
+
+                                <TextView
+                                    android:id="@+id/tv_check_date"
+                                    android:layout_width="110dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginLeft="1dp"
+                                    android:layout_marginRight="1dp"
+
+                                    android:background="#CECDCD"
+                                    android:gravity="center"
+                                    android:paddingTop="5dp"
+                                    android:paddingBottom="5dp"
+                                    android:text="DATE"
+                                    android:textColor="@android:color/black"
+                                    android:textSize="14sp" />
+
+                                <TextView
+                                    android:id="@+id/tv_amount"
+                                    android:layout_width="110dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginLeft="1dp"
+                                    android:layout_marginRight="1dp"
+
+                                    android:background="#CECDCD"
+                                    android:gravity="center"
+                                    android:paddingTop="5dp"
+                                    android:paddingBottom="5dp"
+                                    android:text="AMOUNT"
+                                    android:textColor="@android:color/black"
+                                    android:textSize="14sp" />
+
+                                <TextView
+                                    android:id="@+id/tv_encoded_by"
+                                    android:layout_width="110dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginLeft="1dp"
+                                    android:layout_marginRight="1dp"
+
+                                    android:background="#CECDCD"
+                                    android:gravity="center"
+                                    android:paddingTop="5dp"
+                                    android:paddingBottom="5dp"
+                                    android:text="ENCODED BY"
+                                    android:textColor="@android:color/black"
+                                    android:textSize="14sp" />
+
+                                <TextView
+                                    android:id="@+id/tv_status"
+                                    android:layout_width="110dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginLeft="1dp"
+                                    android:layout_marginRight="1dp"
+
+                                    android:background="#CECDCD"
+                                    android:gravity="center"
+                                    android:paddingTop="5dp"
+                                    android:paddingBottom="5dp"
+                                    android:text="STATUS"
+                                    android:textColor="@android:color/black"
+                                    android:textSize="14sp" />
+
+                                <TextView
+                                    android:id="@+id/tv_approveby"
+                                    android:layout_width="110dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginLeft="1dp"
+                                    android:layout_marginRight="1dp"
+
+                                    android:background="#CECDCD"
+                                    android:gravity="center"
+                                    android:paddingTop="5dp"
+                                    android:paddingBottom="5dp"
+                                    android:text="APPROVED BY"
+                                    android:textColor="@android:color/black"
+                                    android:textSize="14sp" />
+                            </LinearLayout>
+
+                            <RelativeLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+
+                                <android.support.v7.widget.RecyclerView
+                                    android:id="@+id/rec_cv"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:scrollbarStyle="outsideInset"
+                                    android:scrollbars="vertical">
+
+                                </android.support.v7.widget.RecyclerView>
+                            </RelativeLayout>
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="#B9F6CA"
+                                android:gravity="left"
+                                android:orientation="horizontal">
 
 
-                        <TextView
+                                <TextView
 
-                            android:layout_width="42dp"
-                            android:layout_height="match_parent"
+                                    android:layout_width="42dp"
+                                    android:layout_height="match_parent"
 
-                            android:background="#B9F6CA"
-                            android:gravity="center"
-                            android:paddingTop="5dp"
-                            android:paddingBottom="5dp"
-                            android:textColor="@android:color/black"
-                            android:textSize="14sp" />
+                                    android:background="#B9F6CA"
+                                    android:gravity="center"
+                                    android:paddingTop="5dp"
+                                    android:paddingBottom="5dp"
 
-                        <TextView
+                                    android:textColor="@android:color/black"
+                                    android:textSize="14sp" />
 
-                            android:layout_width="137dp"
-                            android:layout_height="match_parent"
-                            android:background="#B9F6CA"
 
-                            android:gravity="center"
-                            android:paddingTop="5dp"
-                            android:paddingBottom="5dp"
+                                <TextView
 
-                            android:textColor="@android:color/black"
-                            android:textSize="14sp" />
+                                    android:layout_width="42dp"
+                                    android:layout_height="match_parent"
 
-                        <TextView
+                                    android:background="#B9F6CA"
+                                    android:gravity="center"
+                                    android:paddingTop="5dp"
+                                    android:paddingBottom="5dp"
+                                    android:textColor="@android:color/black"
+                                    android:textSize="14sp" />
 
-                            android:layout_width="162dp"
-                            android:layout_height="match_parent"
+                                <TextView
 
-                            android:background="#B9F6CA"
+                                    android:layout_width="137dp"
+                                    android:layout_height="match_parent"
+                                    android:background="#B9F6CA"
 
-                            android:gravity="center"
-                            android:paddingTop="5dp"
-                            android:paddingBottom="5dp"
+                                    android:gravity="center"
+                                    android:paddingTop="5dp"
+                                    android:paddingBottom="5dp"
 
-                            android:textColor="@android:color/black"
-                            android:textSize="14sp" />
+                                    android:textColor="@android:color/black"
+                                    android:textSize="14sp" />
 
-                        <TextView
+                                <TextView
 
-                            android:layout_width="110dp"
-                            android:layout_height="match_parent"
-                            android:layout_marginLeft="1dp"
-                            android:layout_marginRight="1dp"
-                            android:background="#B9F6CA"
+                                    android:layout_width="162dp"
+                                    android:layout_height="match_parent"
 
-                            android:gravity="end"
-                            android:paddingTop="5dp"
-                            android:paddingBottom="5dp"
-                            android:text="Total"
-                            android:textColor="@android:color/black"
-                            android:textSize="14sp" />
-                        <TextView
-                            android:id="@+id/tv_total"
-                            android:layout_width="110dp"
-                            android:layout_height="match_parent"
-                            android:layout_marginLeft="1dp"
-                            android:layout_marginRight="1dp"
-                            android:paddingLeft="5dp"
-                            android:gravity="start"
-                            android:paddingTop="5dp"
-                            android:paddingBottom="5dp"
-                            android:text="test"
-                            android:background="#B9F6CA"
-                            android:textColor="@android:color/black"
-                            android:textSize="14sp" />
-                        <TextView
+                                    android:background="#B9F6CA"
 
-                            android:layout_width="112dp"
-                            android:layout_height="match_parent"
-                            android:background="#B9F6CA"
+                                    android:gravity="center"
+                                    android:paddingTop="5dp"
+                                    android:paddingBottom="5dp"
 
-                            android:gravity="center"
-                            android:paddingTop="5dp"
-                            android:paddingBottom="5dp"
+                                    android:textColor="@android:color/black"
+                                    android:textSize="14sp" />
 
-                            android:textColor="@android:color/black"
-                            android:textSize="14sp" />
-                        <TextView
+                                <TextView
 
-                            android:layout_width="112dp"
-                            android:layout_height="match_parent"
-                            android:background="#B9F6CA"
+                                    android:layout_width="110dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginLeft="1dp"
+                                    android:layout_marginRight="1dp"
+                                    android:background="#B9F6CA"
 
-                            android:gravity="center"
-                            android:paddingTop="5dp"
-                            android:paddingBottom="5dp"
+                                    android:gravity="end"
+                                    android:paddingTop="5dp"
+                                    android:paddingBottom="5dp"
+                                    android:text="Total: "
+                                    android:textColor="@android:color/black"
+                                    android:textSize="14sp" />
 
-                            android:textColor="@android:color/black"
-                            android:textSize="14sp" />
+                                <TextView
+                                    android:id="@+id/tv_total"
+                                    android:layout_width="110dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginLeft="1dp"
+                                    android:layout_marginRight="1dp"
+                                    android:background="#B9F6CA"
+                                    android:gravity="start"
+                                    android:paddingLeft="5dp"
+                                    android:paddingTop="5dp"
+                                    android:paddingBottom="5dp"
+                                    android:text="test"
+                                    android:textColor="@android:color/black"
+                                    android:textSize="14sp" />
 
-                        <TextView
+                                <TextView
 
-                            android:layout_width="112dp"
-                            android:layout_height="match_parent"
-                            android:background="#B9F6CA"
+                                    android:layout_width="112dp"
+                                    android:layout_height="match_parent"
+                                    android:background="#B9F6CA"
 
-                            android:gravity="center"
-                            android:paddingTop="5dp"
+                                    android:gravity="center"
+                                    android:paddingTop="5dp"
+                                    android:paddingBottom="5dp"
 
-                            android:textColor="@android:color/black"
-                            android:textSize="14sp" />
-                    </LinearLayout>
-                </LinearLayout>
-            </HorizontalScrollView>
+                                    android:textColor="@android:color/black"
+                                    android:textSize="14sp" />
+
+                                <TextView
+
+                                    android:layout_width="112dp"
+                                    android:layout_height="match_parent"
+                                    android:background="#B9F6CA"
+
+                                    android:gravity="center"
+                                    android:paddingTop="5dp"
+                                    android:paddingBottom="5dp"
+
+                                    android:textColor="@android:color/black"
+                                    android:textSize="14sp" />
+
+                                <TextView
+
+                                    android:layout_width="112dp"
+                                    android:layout_height="match_parent"
+                                    android:background="#B9F6CA"
+
+                                    android:gravity="center"
+                                    android:paddingTop="5dp"
+
+                                    android:textColor="@android:color/black"
+                                    android:textSize="14sp" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </HorizontalScrollView>
+                </ScrollView>
+            </LinearLayout>
         </ScrollView>
-        </LinearLayout>
-      </ScrollView>
     </LinearLayout>
 </FrameLayout>

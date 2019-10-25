@@ -77,9 +77,7 @@ public class Cash_Voucher_request_main extends Fragment implements DatePickerSel
 //    TextView tv_togle;
 //    Boolean is_hide_details;
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view =inflater.inflate(R.layout.cash_voucher_request_main, container, false);
 
         //user

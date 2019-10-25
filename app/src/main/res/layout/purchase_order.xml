@@ -14,7 +14,8 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
 
-        android:padding="10dp">
+        android:padding="5dp">
+
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -24,25 +25,27 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:drawableStart="@drawable/note"
+                    android:drawablePadding="5dp"
                     android:text="Purchase Order"
                     android:textColor="#286090"
-                    android:textSize="20dp"
-                    android:drawableStart="@drawable/note"
-                    android:drawablePadding="5dp"/>
+                    android:textSize="20dp" />
 
                 <LinearLayout
                     android:id="@+id/l_start_date"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
+                    android:layout_marginTop="5dp"
                     android:background="@drawable/bg_border"
                     android:gravity="center"
                     android:orientation="horizontal"
                     android:padding="@dimen/dialogFragment_layout_spinner"
-                    android:visibility="visible"
-                    android:layout_marginTop="5dp">
+                    android:visibility="visible">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -64,12 +67,12 @@
                     android:id="@+id/l_end_date"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
+                    android:layout_marginTop="5dp"
                     android:background="@drawable/bg_border"
                     android:gravity="center"
                     android:orientation="horizontal"
                     android:padding="@dimen/dialogFragment_layout_spinner"
-                    android:visibility="visible"
-                    android:layout_marginTop="5dp">
+                    android:visibility="visible">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -86,81 +89,87 @@
                         android:text="" />
 
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
                     android:weightSum="2">
-                <LinearLayout
-                    android:id="@+id/l_reciept"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:background="@drawable/bg_border"
-                    android:gravity="center"
-                    android:orientation="horizontal"
-                    android:padding="@dimen/dialogFragment_layout_spinner"
-                    android:visibility="visible"
-                    android:layout_marginTop="5dp"
-                    android:layout_weight="1">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
-                        android:text="Filter by: "
-                        android:textStyle="bold" />
-
-                    <Spinner
-                        android:id="@+id/spinner_filter"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                    <LinearLayout
+                        android:id="@+id/l_reciept"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginRight="2dp"
                         android:layout_weight="1"
-                        android:text="" />
+                        android:background="@drawable/bg_border"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:padding="@dimen/dialogFragment_layout_spinner"
+                        android:visibility="visible">
 
-                </LinearLayout>
-                <LinearLayout
-                    android:id="@+id/l_rr_status"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:background="@drawable/bg_border"
-                    android:gravity="center"
-                    android:orientation="horizontal"
-                    android:padding="@dimen/dialogFragment_layout_spinner"
-                    android:visibility="visible"
-                    android:layout_marginTop="5dp"
-                    android:layout_weight="1">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:text="Filter by: "
+                            android:textStyle="bold" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
-                        android:text="RR Status: "
-                        android:textStyle="bold" />
+                        <Spinner
+                            android:id="@+id/spinner_filter"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="" />
 
-                    <Spinner
-                        android:id="@+id/spinner_rr_status"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/l_rr_status"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="2dp"
                         android:layout_weight="1"
-                        android:text="" />
+                        android:background="@drawable/bg_border"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:padding="@dimen/dialogFragment_layout_spinner"
+                        android:visibility="visible">
 
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:text="RR Status: "
+                            android:textStyle="bold" />
+
+                        <Spinner
+                            android:id="@+id/spinner_rr_status"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="" />
+
+                    </LinearLayout>
                 </LinearLayout>
-                </LinearLayout>
+
                 <LinearLayout
                     android:id="@+id/btn_generate_report"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:background="@drawable/bg_border"
+                    android:layout_marginTop="5dp"
+                    android:background="@color/color_btn_green"
                     android:gravity="center"
                     android:orientation="horizontal"
                     android:padding="@dimen/dialogFragment_layout_spinner"
-                    android:visibility="visible"
-                    android:layout_marginTop="5dp">
+                    android:visibility="visible">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
                         android:text="Generate Report"
+                        android:textColor="@color/white"
                         android:textStyle="bold" />
 
                 </LinearLayout>
@@ -185,8 +194,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:gravity="left"
-                                android:orientation="horizontal"
-                                >
+                                android:orientation="horizontal">
 
 
                                 <TextView
@@ -288,6 +296,7 @@
                                     android:text="CATEGORY"
                                     android:textColor="@android:color/black"
                                     android:textSize="14sp" />
+
                                 <TextView
                                     android:id="@+id/tv_po_status"
                                     android:layout_width="110dp"
@@ -302,6 +311,7 @@
                                     android:text="PO STATUS"
                                     android:textColor="@android:color/black"
                                     android:textSize="14sp" />
+
                                 <TextView
                                     android:id="@+id/tv_pr_status"
                                     android:layout_width="110dp"
@@ -316,6 +326,7 @@
                                     android:text="RR STATUS"
                                     android:textColor="@android:color/black"
                                     android:textSize="14sp" />
+
                                 <TextView
                                     android:id="@+id/tv_unreceived_total"
                                     android:layout_width="110dp"
@@ -330,6 +341,7 @@
                                     android:text="UNRECEIVED TOTAL"
                                     android:textColor="@android:color/black"
                                     android:textSize="14sp" />
+
                                 <TextView
                                     android:id="@+id/tv_encoded_by"
                                     android:layout_width="110dp"
@@ -359,6 +371,7 @@
                                     android:text="DECLARED STATUS"
                                     android:textColor="@android:color/black"
                                     android:textSize="14sp" />
+
                                 <TextView
                                     android:id="@+id/tv_checked_by"
                                     android:layout_width="110dp"
@@ -372,6 +385,7 @@
                                     android:text="CHECKED BY"
                                     android:textColor="@android:color/black"
                                     android:textSize="14sp" />
+
                                 <TextView
                                     android:id="@+id/tv_approved_by"
                                     android:layout_width="110dp"
@@ -401,6 +415,7 @@
 
                                 </android.support.v7.widget.RecyclerView>
                             </RelativeLayout>
+
                             <LinearLayout
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -416,9 +431,9 @@
                                     android:layout_height="match_parent"
 
                                     android:background="#B9F6CA"
-                                    android:textColor="@android:color/black"
                                     android:paddingTop="5dp"
                                     android:paddingBottom="5dp"
+                                    android:textColor="@android:color/black"
 
 
                                     android:textSize="14sp" />
@@ -507,6 +522,7 @@
 
                                     android:textColor="@android:color/black"
                                     android:textSize="14sp" />
+
                                 <TextView
 
                                     android:layout_width="112dp"
@@ -520,34 +536,50 @@
 
                                     android:textColor="@android:color/black"
                                     android:textSize="14sp" />
+
                                 <TextView
 
                                     android:layout_width="112dp"
                                     android:layout_height="match_parent"
 
+                                    android:layout_marginRight="1dp"
                                     android:background="#B9F6CA"
                                     android:gravity="end"
                                     android:paddingTop="5dp"
-                                    android:paddingBottom="5dp"
-                                    android:layout_marginRight="1dp"
-                                    android:textColor="@android:color/black"
-                                    android:textSize="14sp"
                                     android:paddingRight="5dp"
-                                    android:text="TOTAL: "/>
+                                    android:paddingBottom="5dp"
+                                    android:text="TOTAL: "
+                                    android:textColor="@android:color/black"
+                                    android:textSize="14sp" />
+
                                 <TextView
                                     android:id="@+id/total_amount"
                                     android:layout_width="111dp"
                                     android:layout_height="match_parent"
                                     android:layout_marginLeft="1dp"
-                                    android:paddingLeft="5dp"
                                     android:background="#B9F6CA"
                                     android:gravity="start"
+                                    android:paddingLeft="5dp"
                                     android:paddingTop="5dp"
                                     android:paddingBottom="5dp"
                                     android:text="Calculating..."
 
                                     android:textColor="@android:color/black"
                                     android:textSize="14sp" />
+
+                                <TextView
+
+                                    android:layout_width="112dp"
+                                    android:layout_height="match_parent"
+
+                                    android:background="#B9F6CA"
+                                    android:gravity="center"
+                                    android:paddingTop="5dp"
+                                    android:paddingBottom="5dp"
+
+                                    android:textColor="@android:color/black"
+                                    android:textSize="14sp" />
+
                                 <TextView
 
                                     android:layout_width="112dp"
@@ -573,18 +605,7 @@
 
                                     android:textColor="@android:color/black"
                                     android:textSize="14sp" />
-                                <TextView
 
-                                    android:layout_width="112dp"
-                                    android:layout_height="match_parent"
-
-                                    android:background="#B9F6CA"
-                                    android:gravity="center"
-                                    android:paddingTop="5dp"
-                                    android:paddingBottom="5dp"
-
-                                    android:textColor="@android:color/black"
-                                    android:textSize="14sp" />
                                 <TextView
 
                                     android:layout_width="112dp"

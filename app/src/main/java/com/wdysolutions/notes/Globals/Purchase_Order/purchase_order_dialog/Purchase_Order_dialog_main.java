@@ -115,8 +115,6 @@ public class Purchase_Order_dialog_main extends DialogFragment implements Purcha
         });
 
 
-
-
         getBundle();
         get_po_dialog_details();
         return view;

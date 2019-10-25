@@ -24,14 +24,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:drawableStart="@drawable/note"
+            android:drawablePadding="5dp"
             android:text="Check Voucher"
             android:textColor="#286090"
-            android:textSize="20dp"
-            android:drawableStart="@drawable/note"
-            android:drawablePadding="5dp"/>
+            android:textSize="20dp" />
 
         <LinearLayout
             android:id="@+id/l_start_date"
@@ -92,18 +94,19 @@
             android:id="@+id/btn_generate_report"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:background="@drawable/bg_border"
+            android:layout_marginTop="5dp"
+            android:background="@color/color_btn_green"
             android:gravity="center"
             android:orientation="horizontal"
             android:padding="@dimen/dialogFragment_layout_spinner"
-            android:visibility="visible"
-            android:layout_marginTop="5dp">
+            android:visibility="visible">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:text="Generate Report"
+                android:textColor="@color/white"
                 android:textStyle="bold" />
 
         </LinearLayout>
