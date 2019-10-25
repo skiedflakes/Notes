@@ -26,11 +26,13 @@ public class Revolving_liquidation_adapter extends RecyclerView.Adapter<Revolvin
     ArrayList<Revolving_liquidation_model> mdata;
     private Context context;
     private LayoutInflater inflater;
+    EventListener listener;
 
-    public Revolving_liquidation_adapter(Context context, ArrayList<Revolving_liquidation_model> data){
+    public Revolving_liquidation_adapter(Context context, ArrayList<Revolving_liquidation_model> data,EventListener listener){
         this.context = context;
         this.mdata = data;
         inflater = LayoutInflater.from(context);
+        this.listener = listener;
     }
 
     @NonNull
@@ -64,7 +66,7 @@ public class Revolving_liquidation_adapter extends RecyclerView.Adapter<Revolvin
         myHolder.txt_amount.setText(getAmount);
         myHolder.txt_date_liquidate.setText(getDate_liquidated);
         myHolder.txt_liquidated_by.setText(getLiquidate_by);
-        //myHolder.txt_approved_by.setText(getApproved_by);
+        myHolder.txt_approved_by.setText(getApproved_by);
 
         myHolder.txt_liquidation_status.setText(getStats);
         if (getStats_color.equals("green")){
@@ -86,6 +88,23 @@ public class Revolving_liquidation_adapter extends RecyclerView.Adapter<Revolvin
         } else { // orange
             myHolder.txt_status.setTextColor(context.getResources().getColor(R.color.color_orange));
         }
+
+        if(!getApproved_by.equals("")){
+            myHolder.btn_edit.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    listener.view_modal(position,getTracking_num,0,1,0,1);
+                }
+            });
+        }else{
+            myHolder.btn_edit.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    listener.view_modal(position,getTracking_num,0,1,1,0);
+                }
+            });
+        }
+
     }
 
     @Override
@@ -94,7 +113,7 @@ public class Revolving_liquidation_adapter extends RecyclerView.Adapter<Revolvin
     }
 
     public class MyHolder extends RecyclerView.ViewHolder{
-        TextView txt_count, txt_tracking_num,txt_date_covered,txt_amount,txt_date_liquidate,txt_liquidation_status,txt_liquidated_by,
+        TextView btn_edit,txt_count, txt_tracking_num,txt_date_covered,txt_amount,txt_date_liquidate,txt_liquidation_status,txt_liquidated_by,
         txt_replenish,txt_status,txt_approved_by;
         public MyHolder(View itemView) {
             super(itemView);
@@ -108,6 +127,12 @@ public class Revolving_liquidation_adapter extends RecyclerView.Adapter<Revolvin
             txt_replenish = itemView.findViewById(R.id.txt_replenish);
             txt_status = itemView.findViewById(R.id.txt_status);
             txt_approved_by = itemView.findViewById(R.id.txt_approved_by);
+            btn_edit= itemView.findViewById(R.id.btn_edit);
         }
+    }
+
+    public interface  EventListener{
+        void view_modal(final int position,String Tracking_num,int view_details,int micro_filming,int approve,int disapprove);
+
     }
 }

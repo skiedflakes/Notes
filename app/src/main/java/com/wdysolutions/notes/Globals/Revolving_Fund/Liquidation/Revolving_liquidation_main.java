@@ -1,9 +1,14 @@
 package com.wdysolutions.notes.Globals.Revolving_Fund.Liquidation;
 
+import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -23,6 +28,7 @@ import com.wdysolutions.notes.AppController;
 import com.wdysolutions.notes.Constants;
 import com.wdysolutions.notes.DatePicker.DatePickerCustom;
 import com.wdysolutions.notes.DatePicker.DatePickerSelectionInterfaceCustom;
+import com.wdysolutions.notes.Dialog_Action;
 import com.wdysolutions.notes.Globals.Revolving_Fund.Request.Revolving_request_adapter;
 import com.wdysolutions.notes.Globals.Revolving_Fund.Request.Revolving_request_model;
 import com.wdysolutions.notes.MainActivity;
@@ -38,16 +44,18 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-public class Revolving_liquidation_main extends Fragment implements DatePickerSelectionInterfaceCustom {
+public class Revolving_liquidation_main extends Fragment implements DatePickerSelectionInterfaceCustom, Revolving_liquidation_adapter.EventListener,Dialog_Action.uploadDialogInterface {
 
     TextView btn_start_date, btn_end_date;
     LinearLayout btn_generate_report, details_;
     ProgressBar progressBar2;
     RecyclerView rec_cv;
-    String company_id, company_code, category_id, selected_branch_id;
+    String company_id, company_code, category_id, selected_branch_id,user_id,user_name;
     String selectedStartDate = "", selectedEndDate = "", receipt_stat = "";
     boolean isStartDateClick = false;
-
+    ProgressDialog loadingScan;
+    String selected_tracking_num;
+    Revolving_liquidation_adapter revolving_request_adapter;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.revolving_liquidation_main, container, false);
@@ -56,6 +64,11 @@ public class Revolving_liquidation_main extends Fragment implements DatePickerSe
         company_code = sharedPref.getUserInfo().get(sharedPref.KEY_COMPANYCODE);
         category_id = sharedPref.getUserInfo().get(sharedPref.KEY_CATEGORYID);
         selected_branch_id = Constants.branch_id;
+        user_id = sharedPref.getUserInfo().get(sharedPref.KEY_USERID);
+        user_name= sharedPref.getUserInfo().get(sharedPref.KEY_NAME);
+
+        //others
+        loadingScan = new ProgressDialog(getActivity(), R.style.MyAlertDialogStyle);
 
         btn_start_date = view.findViewById(R.id.btn_start_date);
         btn_end_date = view.findViewById(R.id.btn_end_date);
@@ -135,7 +148,7 @@ public class Revolving_liquidation_main extends Fragment implements DatePickerSe
                                 jsonObject1.getString("approved_by")));
                     }
 
-                    Revolving_liquidation_adapter revolving_request_adapter = new Revolving_liquidation_adapter(getActivity(), revolving_liquidation_models);
+                    revolving_request_adapter= new Revolving_liquidation_adapter(getActivity(), revolving_liquidation_models,Revolving_liquidation_main.this);
                     rec_cv.setLayoutManager(new LinearLayoutManager(getActivity()));
                     rec_cv.setAdapter(revolving_request_adapter);
                     rec_cv.setNestedScrollingEnabled(false);
@@ -207,4 +220,170 @@ public class Revolving_liquidation_main extends Fragment implements DatePickerSe
         }
     }
 
+    @Override
+    public void view_modal(int position,String Tracking_num, int view_details, int micro_filming, int approve, int disapprove) {
+        selected_tracking_num = Tracking_num;
+
+        Bundle bundle = new Bundle();
+        bundle.putInt("view_details", view_details);
+        bundle.putInt("micro_filming", micro_filming);
+        bundle.putInt("approve", approve);
+        bundle.putInt("disapprove", disapprove);
+        bundle.putInt("position", position);
+
+        FragmentTransaction ft = getFragmentManager().beginTransaction();
+        Fragment prev = getFragmentManager().findFragmentByTag("dialog");
+        if (prev != null) {
+            ft.remove(prev);
+        }
+
+        ft.addToBackStack(null);
+        Dialog_Action fragment = new Dialog_Action();
+        fragment.setTargetFragment(Revolving_liquidation_main.this, 100);
+        FragmentManager manager = getFragmentManager();
+        fragment.setArguments(bundle);
+        fragment.show(ft, "UploadDialogFragment");
+        fragment.setCancelable(true);
+    }
+
+    @Override
+    public void senddata(String chosen, int position) {
+        if(chosen.equals("view_details")){
+            //  view_details();
+        }else if(chosen.equals("approve")){
+            openDialog_approve(user_id,true,position);
+        }else if(chosen.equals("disapprove")){
+            //
+            openDialog_approve("",false,position);
+        }else if(chosen.equals("micro_filming")){
+            //
+
+        }
+    }
+
+
+
+    public void openDialog_approve(final String user_id,final boolean type,final int position){
+        if(type){
+            AlertDialog.Builder alertDialog = new AlertDialog.Builder(getContext());
+            alertDialog.setTitle("Are you sure you want to approve?");
+            alertDialog.setPositiveButton("Cancel",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.cancel();
+                        }
+                    });
+            alertDialog.setNegativeButton("OK",  new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int which) {
+                    approve_disapprove(user_id,position);
+                }
+            });
+            alertDialog.setCancelable(false);
+            alertDialog.show();
+        }else{
+            AlertDialog.Builder alertDialog = new AlertDialog.Builder(getContext());
+            alertDialog.setTitle("Are you sure you want to disapprove?");
+            alertDialog.setPositiveButton("Cancel",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog,int which) {
+                            dialog.cancel();
+                        }
+                    });
+            alertDialog.setNegativeButton("OK",  new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int which) {
+                    approve_disapprove(user_id,position);
+                }
+            });
+            alertDialog.setCancelable(false);
+            alertDialog.show();
+        }
+
+    }
+
+    private ProgressDialog showLoading(ProgressDialog loading, String msg){
+        loading.setMessage(msg);
+        loading.setCancelable(false);
+        return loading;
+    }
+
+  public void approve_disapprove(final String user_id,final int position){
+        showLoading(loadingScan, "Loading...").show();
+        String URL = getString(R.string.URL_online)+"revolving_fund/approve_liquidation.php";
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try{
+                    showLoading(loadingScan, null).dismiss();
+                    if(response.equals("1")){
+
+                        Revolving_liquidation_model main_list = revolving_liquidation_models.get(position);
+
+                        String id = main_list.getId();
+                        String br_id  = main_list.getBr_id();
+                        String tracking_num = main_list.getTracking_num();
+                        String date_covered  = main_list.getDate_covered();
+                        String amount = main_list.getAmount();
+                        String date_liquidated = main_list.getDate_liquidated();
+                        String stats = main_list.getStats();
+                        String stats_color = main_list.getStats_color();
+                        String rfr_stat = main_list.getRfr_stat();
+                        String rfr_stat_color = main_list.getRfr_stat_color();
+                        String status = main_list.getStatus();
+                        String status_color = main_list.getStatus_color();
+                        String liquidate_by  = main_list.getLiquidate_by();
+                        String approved_by  = main_list.getApproved_by();
+
+
+                        Revolving_liquidation_model newval;
+                        if(user_id.equals("")){
+                            newval = new Revolving_liquidation_model(id,br_id,tracking_num,date_covered,amount,
+                                    date_liquidated,stats,stats_color,rfr_stat,rfr_stat_color,status,status_color,
+                                    liquidate_by,"");
+
+                            Toast.makeText(getContext(), "Disapprove success!", Toast.LENGTH_SHORT).show();
+                        }else{
+                            newval = new Revolving_liquidation_model(id,br_id,tracking_num,date_covered,amount,
+                                    date_liquidated,stats,stats_color,rfr_stat,rfr_stat_color,status,status_color,
+                                    liquidate_by,user_name);
+
+
+                            Toast.makeText(getContext(), "Approve success!", Toast.LENGTH_SHORT).show();
+                        }
+
+                        revolving_liquidation_models.set(position,newval);
+                        revolving_request_adapter.notifyItemChanged(position);
+
+                    }
+                }catch (Exception e){
+
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                showLoading(loadingScan, null).dismiss();
+                Toast.makeText(getActivity(), "Error Connection", Toast.LENGTH_SHORT).show();
+
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                HashMap<String,String> hashMap = new HashMap<>();
+                //user
+                hashMap.put("company_id", company_id);
+                hashMap.put("category_id", category_id);
+                hashMap.put("user_id", user_id);
+                hashMap.put("company_code", company_code);
+                hashMap.put("branch_id", selected_branch_id);
+
+                //module
+                hashMap.put("tracking_num", selected_tracking_num);
+
+                return hashMap;
+            }
+        };
+        AppController.getInstance().setVolleyDuration(stringRequest);
+        AppController.getInstance().addToRequestQueue(stringRequest);
+    }
 }

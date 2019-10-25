@@ -25,6 +25,18 @@
             android:text="#"
             android:textColor="@android:color/black"
             android:textSize="13sp" />
+        <TextView
+            android:id="@+id/btn_edit"
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="1dp"
+            android:layout_marginRight="1dp"
+            android:background="#E7E4B5"
+            android:drawableStart="@drawable/ic_settings"
+            android:gravity="center_vertical"
+            android:padding="5dp"
+            android:textColor="@color/color_text_light_black"
+            android:textSize="14sp" />
 
 
         <TextView

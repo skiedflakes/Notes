@@ -275,7 +275,6 @@ public class PettyCash_request_main extends Fragment implements DatePickerSelect
         fragment.show(ft, "UploadDialogFragment");
         fragment.setCancelable(true);
     }
-
     @Override
     public void senddata(String chosen, int position) {
         if(chosen.equals("view_details")){
@@ -349,6 +348,7 @@ public class PettyCash_request_main extends Fragment implements DatePickerSelect
         }
 
     }
+
     private ProgressDialog showLoading(ProgressDialog loading, String msg){
         loading.setMessage(msg);
         loading.setCancelable(false);
