@@ -170,10 +170,12 @@ public class Revolving_liquidation_main extends Fragment implements DatePickerSe
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                progressBar2.setVisibility(View.GONE);
-                details_.setVisibility(View.VISIBLE);
-                btn_generate_report.setEnabled(true);
-                Toast.makeText(getActivity(), getResources().getString(R.string.volley_error_msg), Toast.LENGTH_SHORT).show();
+                try {
+                    progressBar2.setVisibility(View.GONE);
+                    details_.setVisibility(View.VISIBLE);
+                    btn_generate_report.setEnabled(true);
+                    Toast.makeText(getActivity(), getResources().getString(R.string.volley_error_msg), Toast.LENGTH_SHORT).show();
+                } catch (Exception e){}
             }
         }) {
             @Override
@@ -257,7 +259,7 @@ public class Revolving_liquidation_main extends Fragment implements DatePickerSe
             openDialog_approve("",false,position);
         }else if(chosen.equals("micro_filming")){
             //
-
+            ((MainActivity)getActivity()).openMicro(selected_tracking_num, "", "");
         }
     }
 

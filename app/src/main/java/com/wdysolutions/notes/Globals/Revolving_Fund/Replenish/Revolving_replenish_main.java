@@ -273,7 +273,7 @@ public class Revolving_replenish_main extends Fragment implements DatePickerSele
 
             openDialog_approve("",false,position);
         }else if(chosen.equals("micro_filming")){
-
+            ((MainActivity)getActivity()).openMicro(selected_replenish_num, "", "");
         }
     }
 

@@ -28,6 +28,7 @@ import com.wdysolutions.notes.DatePicker.DatePickerCustom;
 import com.wdysolutions.notes.DatePicker.DatePickerSelectionInterfaceCustom;
 import com.wdysolutions.notes.Dialog_Action;
 import com.wdysolutions.notes.Globals.Revolving_Fund.Request.modal_view.Revolving_request_modal_view;
+import com.wdysolutions.notes.MainActivity;
 import com.wdysolutions.notes.R;
 import com.wdysolutions.notes.SharedPref;
 
@@ -270,7 +271,7 @@ public class Revolving_request_main extends Fragment implements DatePickerSelect
         }else if(chosen.equals("disapprove")){
             openDialog_approve("",false,position);
         }else if(chosen.equals("micro_filming")){
-
+            ((MainActivity)getActivity()).openMicro(s_getRcv, "", "");
         }
     }
 
