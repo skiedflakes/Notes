@@ -1,7 +1,12 @@
 package com.wdysolutions.notes.Globals.Petty_Cash.Request;
 
+import android.app.AlertDialog;
+import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -22,6 +27,8 @@ import com.wdysolutions.notes.AppController;
 import com.wdysolutions.notes.Constants;
 import com.wdysolutions.notes.DatePicker.DatePickerCustom;
 import com.wdysolutions.notes.DatePicker.DatePickerSelectionInterfaceCustom;
+import com.wdysolutions.notes.Dialog_Action;
+import com.wdysolutions.notes.Globals.Petty_Cash.Request.modal_view.PettyCash_modal_view;
 import com.wdysolutions.notes.R;
 import com.wdysolutions.notes.SharedPref;
 
@@ -34,7 +41,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-public class PettyCash_request_main extends Fragment implements DatePickerSelectionInterfaceCustom {
+public class PettyCash_request_main extends Fragment implements DatePickerSelectionInterfaceCustom,Dialog_Action.uploadDialogInterface, PettyCash_request_adapter.EventListener {
 
     TextView btn_start_date, btn_end_date;
     LinearLayout btn_generate_report;
@@ -47,6 +54,11 @@ public class PettyCash_request_main extends Fragment implements DatePickerSelect
     LinearLayout details_;
     ProgressBar progressBar2;
 
+    //selected string
+
+    String s_getId,s_getDate_requested,s_getUserID,s_getBr_id,s_getPcv,s_getRemarks,user_name,user_id;
+    ProgressDialog loadingScan;
+    PettyCash_request_adapter pettycash_adapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -56,6 +68,10 @@ public class PettyCash_request_main extends Fragment implements DatePickerSelect
         company_code = sharedPref.getUserInfo().get(sharedPref.KEY_COMPANYCODE);
         category_id = sharedPref.getUserInfo().get(sharedPref.KEY_CATEGORYID);
         selected_branch_id = Constants.branch_id;
+        user_id = sharedPref.getUserInfo().get(sharedPref.KEY_USERID);
+        user_name= sharedPref.getUserInfo().get(sharedPref.KEY_NAME);
+        //loading
+        loadingScan = new ProgressDialog(getActivity(), R.style.MyAlertDialogStyle);
 
         progressBar2 = view.findViewById(R.id.progressBar2);
         details_ = view.findViewById(R.id.details_);
@@ -152,9 +168,9 @@ public class PettyCash_request_main extends Fragment implements DatePickerSelect
                                 jsonObject1.getString("approved_by")));
                     }
 
-                    PettyCash_request_adapter adapter = new PettyCash_request_adapter(getActivity(), petty_cash_request_models);
+                    pettycash_adapter = new PettyCash_request_adapter(getActivity(), petty_cash_request_models,PettyCash_request_main.this);
                     rec_cv.setLayoutManager(new LinearLayoutManager(getActivity()));
-                    rec_cv.setAdapter(adapter);
+                    rec_cv.setAdapter(pettycash_adapter);
                     rec_cv.setNestedScrollingEnabled(false);
 
 
@@ -224,5 +240,213 @@ public class PettyCash_request_main extends Fragment implements DatePickerSelect
             selectedEndDate = date;
             btn_end_date.setText(selectedEndDate);
         }
+    }
+
+    @Override
+    public void view_modal(final int position,String getId,String getDate_requested,String getUserID,
+                           String getBr_id,String getPcv,String getRemarks,int view_details,int micro_filming,int approve,int disapprove) {
+
+        s_getId = getId;
+        s_getDate_requested = getDate_requested;
+        s_getUserID = getUserID;
+        s_getBr_id = getBr_id;
+        s_getPcv = getPcv;
+        s_getRemarks = getRemarks;
+
+        Bundle bundle = new Bundle();
+        bundle.putInt("view_details", view_details);
+        bundle.putInt("micro_filming", micro_filming);
+        bundle.putInt("approve", approve);
+        bundle.putInt("disapprove", disapprove);
+        bundle.putInt("position", position);
+
+        FragmentTransaction ft = getFragmentManager().beginTransaction();
+        Fragment prev = getFragmentManager().findFragmentByTag("dialog");
+        if (prev != null) {
+            ft.remove(prev);
+        }
+
+        ft.addToBackStack(null);
+        Dialog_Action fragment = new Dialog_Action();
+        fragment.setTargetFragment(PettyCash_request_main.this, 100);
+        FragmentManager manager = getFragmentManager();
+        fragment.setArguments(bundle);
+        fragment.show(ft, "UploadDialogFragment");
+        fragment.setCancelable(true);
+    }
+
+    @Override
+    public void senddata(String chosen, int position) {
+        if(chosen.equals("view_details")){
+           openView();
+
+        }else if(chosen.equals("approve")){
+            openDialog_approve(user_id,true,position);
+        }else if(chosen.equals("disapprove")){
+            openDialog_approve("",false,position);
+        }else if(chosen.equals("micro_filming")){
+
+        }
+    }
+
+    private void openView(){
+        Bundle bundle = new Bundle();
+        bundle.putString("getId", s_getId);
+        bundle.putString("getDate_requested", s_getDate_requested);
+        bundle.putString("getUserID", s_getUserID);
+        bundle.putString("getBr_id", s_getBr_id);
+        bundle.putString("getPcv", s_getPcv);
+        bundle.putString("getRemarks", s_getRemarks);
+
+        FragmentTransaction ft = getFragmentManager().beginTransaction();
+        Fragment prev = getFragmentManager().findFragmentByTag("details");
+        if (prev != null) {
+            ft.remove(prev);
+        }
+        ft.addToBackStack(null);
+        PettyCash_modal_view fragment = new PettyCash_modal_view();
+        fragment.setTargetFragment(PettyCash_request_main.this, 0);
+        FragmentManager manager = getFragmentManager();
+        fragment.setArguments(bundle);
+        fragment.show(getFragmentManager(), "details");
+        fragment.setCancelable(true);
+    }
+
+    public void openDialog_approve(final String user_id,final boolean type,final int position){
+        if(type){
+            AlertDialog.Builder alertDialog = new AlertDialog.Builder(getContext());
+            alertDialog.setTitle("Are you sure you want to approve?");
+            alertDialog.setPositiveButton("Cancel",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.cancel();
+                        }
+                    });
+            alertDialog.setNegativeButton("OK",  new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int which) {
+                    approve_disapprove(user_id,position);
+                }
+            });
+            alertDialog.setCancelable(false);
+            alertDialog.show();
+        }else{
+            AlertDialog.Builder alertDialog = new AlertDialog.Builder(getContext());
+            alertDialog.setTitle("Are you sure you want to disapprove?");
+            alertDialog.setPositiveButton("Cancel",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog,int which) {
+                            dialog.cancel();
+                        }
+                    });
+            alertDialog.setNegativeButton("OK",  new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int which) {
+                    approve_disapprove(user_id,position);
+                }
+            });
+            alertDialog.setCancelable(false);
+            alertDialog.show();
+        }
+
+    }
+    private ProgressDialog showLoading(ProgressDialog loading, String msg){
+        loading.setMessage(msg);
+        loading.setCancelable(false);
+        return loading;
+    }
+
+    public void approve_disapprove(final String user_id,final int position){
+        showLoading(loadingScan, "Loading...").show();
+        String URL = getString(R.string.URL_online)+"petty_cash/approve_request.php";
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try{
+
+                    showLoading(loadingScan, null).dismiss();
+                    if(response.equals("1")){
+
+                        PettyCash_request_model main_list = petty_cash_request_models.get(position);
+
+                        String id = main_list.getId();
+                        String credit_method_test  = main_list.getCredit_method_test();
+                        String count = main_list.getCount();
+                        String pcv = main_list.getPcv();
+                        String date_requested = main_list.getDate_requested();
+                        String amount = main_list.getAmount();
+                        String remarks = main_list.getRemarks();
+                        String date_encoded = main_list.getDate_encoded();
+                        String created_by  = main_list.getCreated_by();
+                        String br_id  = main_list.getBr_id();
+                        String receipt_status = main_list.getReceipt_status();
+                        String receipt_status_color = main_list.getReceipt_status_color();
+                        String userID = main_list.getUserID();
+                        String stats = main_list.getStats();
+                        String stats_color = main_list.getStats_color();
+                        String hid = main_list.getHid();
+                        String liquidate_stats = main_list.getLiquidate_stats();
+                        String liquidate_color = main_list.getLiquidate_color();
+                        String declared_status = main_list.getDeclared_status();
+                        String declared_status_color = main_list.getDeclared_status_color();
+                        String rfr_status = main_list.getRfr_status();
+                        String rfr_status_color = main_list.getRfr_status_color();
+                        String dnr_stat = main_list.getDnr_stat();
+                        String liquidation_stat = main_list.getLiquidation_stat();
+                        String rep_stats = main_list.getRep_stats();
+                        String rep_stat = main_list.getRep_stat();
+                        String approved_by = main_list.getApproved_by();
+
+
+                        PettyCash_request_model newval;
+                        if(user_id.equals("")){
+                            newval = new PettyCash_request_model(id,credit_method_test,count,pcv,date_requested,amount,remarks,
+                                    date_encoded,created_by,br_id,receipt_status,receipt_status_color,userID,stats,stats_color,hid,
+                                    liquidate_stats,liquidate_color,declared_status,declared_status_color,rfr_status,rfr_status_color
+                                    ,dnr_stat,liquidation_stat,rep_stats,rep_stat,"");
+
+                            Toast.makeText(getContext(), "Disapprove success!", Toast.LENGTH_SHORT).show();
+                        }else{
+                            newval = new PettyCash_request_model(id,credit_method_test,count,pcv,date_requested,amount,remarks,
+                                    date_encoded,created_by,br_id,receipt_status,receipt_status_color,userID,stats,stats_color,hid,
+                                    liquidate_stats,liquidate_color,declared_status,declared_status_color,rfr_status,rfr_status_color
+                                    ,dnr_stat,liquidation_stat,rep_stats,rep_stat,user_name);
+
+                            Toast.makeText(getContext(), "Approve success!", Toast.LENGTH_SHORT).show();
+                        }
+
+                        petty_cash_request_models.set(position,newval);
+                        pettycash_adapter.notifyItemChanged(position);
+
+                    }
+                }catch (Exception e){
+
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                showLoading(loadingScan, null).dismiss();
+                Toast.makeText(getActivity(), "Error Connection", Toast.LENGTH_SHORT).show();
+
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                HashMap<String,String> hashMap = new HashMap<>();
+                //user
+                hashMap.put("company_id", company_id);
+                hashMap.put("category_id", category_id);
+                hashMap.put("user_id", user_id);
+                hashMap.put("company_code", company_code);
+                hashMap.put("branch_id", selected_branch_id);
+
+                //module
+                hashMap.put("pettycash_num", s_getPcv);
+
+                return hashMap;
+            }
+        };
+        AppController.getInstance().setVolleyDuration(stringRequest);
+        AppController.getInstance().addToRequestQueue(stringRequest);
     }
 }

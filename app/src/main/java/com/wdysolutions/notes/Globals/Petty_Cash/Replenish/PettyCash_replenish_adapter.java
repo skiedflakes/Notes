@@ -66,7 +66,7 @@ public class PettyCash_replenish_adapter extends RecyclerView.Adapter<PettyCash_
 
         myHolder.txt_count.setText(String.valueOf(position+1));
         myHolder.txt_amount.setText(getAmount);
-        //myHolder.txt_approve.setText(getApproved_by);
+        myHolder.txt_approve.setText(getApproved_by);
         myHolder.txt_encoded_by.setText(getEncodedBY);
         myHolder.txt_remarks.setText(getRemarks);
         myHolder.txt_date.setText(getDate);
@@ -101,14 +101,14 @@ public class PettyCash_replenish_adapter extends RecyclerView.Adapter<PettyCash_
             myHolder.actions.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    listener.view_modal(position,getRplnsh_num,getId,getDate,getBr_id,1,1,1,0);
+                    listener.view_modal(position,getRplnsh_num,getId,getDate,getBr_id,1,1,0,1);
                 }
             });
         }else{
             myHolder.actions.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    listener.view_modal(position,getRplnsh_num,getId,getDate,getBr_id,1,1,0,1);
+                    listener.view_modal(position,getRplnsh_num,getId,getDate,getBr_id,1,1,1,0);
                 }
             });
         }

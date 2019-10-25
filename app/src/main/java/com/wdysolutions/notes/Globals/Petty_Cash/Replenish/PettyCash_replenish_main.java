@@ -1,6 +1,7 @@
 package com.wdysolutions.notes.Globals.Petty_Cash.Replenish;
 
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
@@ -50,8 +51,9 @@ public class PettyCash_replenish_main extends Fragment implements DatePickerSele
     ProgressBar progressBar2;
     RecyclerView rec_cv;
     boolean isStartDateClick = false;
+    PettyCash_replenish_adapter pettycashreplenish_adapter;
 
-
+    ProgressDialog loadingScan;
     //strings
     String selected_id,selected_replenish_num,user_name,selected_date,selected_br_id;
     String selectedStartDate = "", selectedEndDate = "", req_stat = "";
@@ -65,6 +67,10 @@ public class PettyCash_replenish_main extends Fragment implements DatePickerSele
         user_id = sharedPref.getUserInfo().get(sharedPref.KEY_USERID);
         selected_branch_id = Constants.branch_id;
         user_name = sharedPref.getUserInfo().get(sharedPref.KEY_NAME);
+
+        //loading
+        loadingScan = new ProgressDialog(getActivity(), R.style.MyAlertDialogStyle);
+
 
         btn_generate_report = view.findViewById(R.id.btn_generate_report);
         btn_end_date = view.findViewById(R.id.btn_end_date);
@@ -150,7 +156,7 @@ public class PettyCash_replenish_main extends Fragment implements DatePickerSele
                                 jsonObject1.getString("approved_by")));
                     }
 
-                    PettyCash_replenish_adapter pettycashreplenish_adapter = new PettyCash_replenish_adapter(getActivity(), pettyCashreplenish_models,PettyCash_replenish_main.this);
+                    pettycashreplenish_adapter  = new PettyCash_replenish_adapter(getActivity(), pettyCashreplenish_models,PettyCash_replenish_main.this);
                     rec_cv.setLayoutManager(new LinearLayoutManager(getActivity()));
                     rec_cv.setAdapter(pettycashreplenish_adapter);
                     rec_cv.setNestedScrollingEnabled(false);
@@ -224,9 +230,6 @@ public class PettyCash_replenish_main extends Fragment implements DatePickerSele
         }
     }
 
-
-
-
     @Override
     public void view_modal(int position, String tracking_num, String id, String date, String br_id, int view_details, int micro_filming, int approve, int disapprove) {
 
@@ -278,14 +281,6 @@ public class PettyCash_replenish_main extends Fragment implements DatePickerSele
         bundle.putString("getUserID", selected_date);
         bundle.putString("getBr_id", selected_br_id);
 
-//        DialogFragment dialogFragment = new PettyCash_replenish_modal_main();
-//        FragmentTransaction ft =  getFragmentManager().beginTransaction();
-//        Fragment prev =  getFragmentManager().findFragmentByTag("pr_dialog");
-//        if (prev != null) {ft.remove(prev);}
-//        ft.addToBackStack(null);
-//        dialogFragment.setArguments(bundle);
-//        dialogFragment.show(ft, "pr_dialog");
-
         FragmentTransaction ft = getFragmentManager().beginTransaction();
         Fragment prev = getFragmentManager().findFragmentByTag("details");
         if (prev != null) {
@@ -300,7 +295,6 @@ public class PettyCash_replenish_main extends Fragment implements DatePickerSele
         fragment.setCancelable(true);
     }
 
-
     public void openDialog_approve(final String user_id,final boolean type,final int position){
         if(type){
             AlertDialog.Builder alertDialog = new AlertDialog.Builder(getContext());
@@ -313,7 +307,7 @@ public class PettyCash_replenish_main extends Fragment implements DatePickerSele
                     });
             alertDialog.setNegativeButton("OK",  new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int which) {
-                   // approve_disapprove(user_id,position);
+                    approve_disapprove(user_id,position);
                 }
             });
             alertDialog.setCancelable(false);
@@ -329,7 +323,7 @@ public class PettyCash_replenish_main extends Fragment implements DatePickerSele
                     });
             alertDialog.setNegativeButton("OK",  new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int which) {
-                  //  approve_disapprove(user_id,position);
+                    approve_disapprove(user_id,position);
                 }
             });
             alertDialog.setCancelable(false);
@@ -338,6 +332,92 @@ public class PettyCash_replenish_main extends Fragment implements DatePickerSele
 
     }
 
+    private ProgressDialog showLoading(ProgressDialog loading, String msg){
+        loading.setMessage(msg);
+        loading.setCancelable(false);
+        return loading;
+    }
+
+    public void approve_disapprove(final String user_id,final int position){
+        showLoading(loadingScan, "Loading...").show();
+        String URL = getString(R.string.URL_online)+"petty_cash/approve_replenish.php";
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try{
+                    showLoading(loadingScan, null).dismiss();
+                    if(response.equals("1")){
+
+                        PettyCash_replenish_model main_list = pettyCashreplenish_models.get(position);
+
+                        String id = main_list.getId();
+                        String br_id  = main_list.getBr_id();
+                        String rplnsh_num = main_list.getRplnsh_num();
+                        String date = main_list.getDate();
+                        String amount = main_list.getAmount();
+                        String remarks = main_list.getRemarks();
+                        String status = main_list.getStatus();
+                        String status_color = main_list.getStatus_color();
+                        String rfr_stats  = main_list.getRfr_stats();
+                        String rfr_stat  = main_list.getRfr_stat();
+                        String rfr_stat_color = main_list.getRfr_stat_color();
+                        String dec_stat = main_list.getDec_stat();
+                        String dec_stat_color = main_list.getDec_stat_color();
+                        String encodedBY = main_list.getEncodedBY();
+                        String approved_by = main_list.getApproved_by();
+
+
+                        PettyCash_replenish_model newval;
+                        if(user_id.equals("")){
+                            newval = new PettyCash_replenish_model(id,br_id,rplnsh_num,
+                                    date,amount,remarks,status,status_color,rfr_stats,
+                                    rfr_stat,rfr_stat_color,dec_stat,dec_stat_color,encodedBY,"");
+
+                            Toast.makeText(getContext(), "Disapprove success!", Toast.LENGTH_SHORT).show();
+                        }else{
+                            newval = new PettyCash_replenish_model(id,br_id,rplnsh_num,
+                                    date,amount,remarks,status,status_color,rfr_stats,
+                                    rfr_stat,rfr_stat_color,dec_stat,dec_stat_color,encodedBY,user_name);
+
+                            Toast.makeText(getContext(), "Approve success!", Toast.LENGTH_SHORT).show();
+                        }
+
+                        pettyCashreplenish_models.set(position,newval);
+                        pettycashreplenish_adapter.notifyItemChanged(position);
+
+                    }
+                }catch (Exception e){
+
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                showLoading(loadingScan, null).dismiss();
+                Toast.makeText(getActivity(), "Error Connection", Toast.LENGTH_SHORT).show();
+
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                HashMap<String,String> hashMap = new HashMap<>();
+                //user
+                hashMap.put("company_id", company_id);
+                hashMap.put("category_id", category_id);
+                hashMap.put("user_id", user_id);
+                hashMap.put("company_code", company_code);
+                hashMap.put("branch_id", selected_branch_id);
+
+                //module
+                hashMap.put("rplnsh_num", selected_replenish_num);
+
+                return hashMap;
+            }
+        };
+        AppController.getInstance().setVolleyDuration(stringRequest);
+        AppController.getInstance().addToRequestQueue(stringRequest);
+    }
 }
 
 
