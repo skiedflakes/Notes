@@ -30,6 +30,7 @@ import com.wdysolutions.notes.Dialog_Action;
 import com.wdysolutions.notes.Globals.Cash_Voucher.Cash_Voucher_dialog.Cash_Voucher_request_dialog;
 import com.wdysolutions.notes.Globals.Cash_Voucher.Cash_Voucher_request_main;
 import com.wdysolutions.notes.Globals.Purchase_Order.Purchase_Order;
+import com.wdysolutions.notes.MainActivity;
 import com.wdysolutions.notes.R;
 import com.wdysolutions.notes.SharedPref;
 
@@ -311,7 +312,7 @@ public class Check_Voucher_request_main extends Fragment implements DatePickerSe
           openDialog_approve("",false,position);
         }else if(chosen.equals("micro_filming")){
             //
-
+            ((MainActivity)getActivity()).openMicro(selected_cv_num, "", "");
         }
     }
 
