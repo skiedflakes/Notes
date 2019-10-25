@@ -16,11 +16,12 @@
             android:id="@+id/txt_count"
             android:layout_width="40dp"
             android:layout_height="match_parent"
-            android:layout_marginLeft="1dp"
             android:layout_marginRight="1dp"
             android:background="#E7E4B5"
             android:gravity="center"
+            android:paddingLeft="2dp"
             android:paddingTop="5dp"
+            android:paddingRight="2dp"
             android:paddingBottom="5dp"
             android:text="#"
             android:textColor="@android:color/black"
@@ -48,8 +49,7 @@
             android:layout_marginRight="1dp"
             android:background="#E7E4B5"
             android:gravity="center"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp"
+            android:padding="5dp"
             android:text="Tracking #"
             android:textColor="@android:color/black"
             android:textSize="13sp" />
@@ -63,8 +63,7 @@
             android:layout_marginRight="1dp"
             android:background="#E7E4B5"
             android:gravity="center"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp"
+            android:padding="5dp"
             android:text="Date Covered"
             android:textColor="@android:color/black"
             android:textSize="13sp" />
@@ -77,8 +76,7 @@
             android:layout_marginRight="1dp"
             android:background="#E7E4B5"
             android:gravity="center"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp"
+            android:padding="5dp"
             android:text="Branch"
             android:textColor="@android:color/black"
             android:textSize="13sp" />
@@ -91,8 +89,7 @@
             android:layout_marginRight="1dp"
             android:background="#E7E4B5"
             android:gravity="center"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp"
+            android:padding="5dp"
             android:text="Amount"
             android:textColor="@android:color/black"
             android:textSize="13sp" />
@@ -106,8 +103,7 @@
             android:layout_marginRight="1dp"
             android:background="#E7E4B5"
             android:gravity="center"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp"
+            android:padding="5dp"
             android:text="Date Liquidated"
             android:textColor="@android:color/black"
             android:textSize="13sp" />
@@ -121,8 +117,7 @@
             android:layout_marginRight="1dp"
             android:background="#E7E4B5"
             android:gravity="center"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp"
+            android:padding="5dp"
             android:text="Liquidation Status"
             android:textColor="@android:color/black"
             android:textSize="13sp" />
@@ -136,8 +131,7 @@
             android:layout_marginRight="1dp"
             android:background="#E7E4B5"
             android:gravity="center"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp"
+            android:padding="5dp"
             android:text="Liquidated By"
             android:textColor="@android:color/black"
             android:textSize="13sp" />
@@ -151,8 +145,7 @@
             android:layout_marginRight="1dp"
             android:background="#E7E4B5"
             android:gravity="center"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp"
+            android:padding="5dp"
             android:text="Replenish Status"
             android:textColor="@android:color/black"
             android:textSize="13sp" />
@@ -166,8 +159,7 @@
             android:layout_marginRight="1dp"
             android:background="#E7E4B5"
             android:gravity="center"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp"
+            android:padding="5dp"
             android:text="Status "
             android:textColor="@android:color/black"
             android:textSize="13sp" />
@@ -181,8 +173,7 @@
             android:layout_marginRight="1dp"
             android:background="#E7E4B5"
             android:gravity="center"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp"
+            android:padding="5dp"
             android:textColor="@android:color/black"
             android:textSize="13sp" />
 
