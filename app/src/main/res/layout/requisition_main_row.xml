@@ -13,18 +13,19 @@
         android:layout_marginBottom="1dp"
         android:gravity="left"
         android:orientation="horizontal">
+
         <CheckBox
             android:id="@+id/cb_selected"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_marginRight="1dp"
             android:background="#F0F0F0"
-            android:buttonTint="#4CAF50"/>
+            android:buttonTint="#4CAF50" />
 
         <TextView
             android:id="@+id/tv_counter"
             android:layout_width="40dp"
             android:layout_height="match_parent"
-            android:layout_marginLeft="1dp"
             android:layout_marginRight="1dp"
             android:background="#E7E4B5"
             android:gravity="center"
@@ -38,7 +39,6 @@
             android:id="@+id/btn_edit"
             android:layout_width="40dp"
             android:layout_height="match_parent"
-            android:layout_marginLeft="1dp"
             android:layout_marginRight="1dp"
             android:background="#E7E4B5"
             android:drawableStart="@drawable/ic_settings"
@@ -51,7 +51,6 @@
             android:id="@+id/tv_rs_slip"
             android:layout_width="135dp"
             android:layout_height="match_parent"
-            android:layout_marginLeft="1dp"
             android:layout_marginRight="1dp"
             android:background="#E7E4B5"
             android:gravity="left"
@@ -65,7 +64,6 @@
             android:id="@+id/tv_date"
             android:layout_width="110dp"
             android:layout_height="match_parent"
-            android:layout_marginLeft="1dp"
             android:layout_marginRight="1dp"
             android:background="#E7E4B5"
             android:gravity="left"
@@ -79,7 +77,6 @@
             android:id="@+id/tv_remarks"
             android:layout_width="110dp"
             android:layout_height="match_parent"
-            android:layout_marginLeft="1dp"
             android:layout_marginRight="1dp"
             android:background="#E7E4B5"
             android:gravity="left"
@@ -92,7 +89,6 @@
             android:id="@+id/tv_requested_by"
             android:layout_width="110dp"
             android:layout_height="match_parent"
-            android:layout_marginLeft="1dp"
             android:layout_marginRight="1dp"
             android:background="#E7E4B5"
             android:gravity="left"
@@ -105,7 +101,6 @@
             android:id="@+id/tv_status"
             android:layout_width="110dp"
             android:layout_height="match_parent"
-            android:layout_marginLeft="1dp"
             android:layout_marginRight="1dp"
             android:background="#E7E4B5"
             android:gravity="left"

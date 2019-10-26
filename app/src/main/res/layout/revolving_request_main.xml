@@ -94,6 +94,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:text="Generate Report"
+                android:textAllCaps="true"
                 android:textColor="@color/white"
                 android:textStyle="bold" />
 

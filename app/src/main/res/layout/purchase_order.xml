@@ -169,6 +169,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
                         android:text="Generate Report"
+                        android:textAllCaps="true"
                         android:textColor="@color/white"
                         android:textStyle="bold" />
 
@@ -201,7 +202,6 @@
                                     android:id="@+id/tv_num"
                                     android:layout_width="40dp"
                                     android:layout_height="match_parent"
-                                    android:layout_marginLeft="1dp"
                                     android:layout_marginRight="1dp"
                                     android:background="#CECDCD"
                                     android:gravity="center"
@@ -216,7 +216,6 @@
                                     android:id="@+id/tv_1"
                                     android:layout_width="40dp"
                                     android:layout_height="match_parent"
-                                    android:layout_marginLeft="1dp"
                                     android:layout_marginRight="1dp"
                                     android:background="#CECDCD"
                                     android:gravity="center"
@@ -229,7 +228,6 @@
                                     android:id="@+id/tv_purchase"
                                     android:layout_width="135dp"
                                     android:layout_height="match_parent"
-                                    android:layout_marginLeft="1dp"
                                     android:layout_marginRight="1dp"
 
                                     android:background="#CECDCD"
@@ -244,7 +242,6 @@
                                     android:id="@+id/tv_date"
                                     android:layout_width="110dp"
                                     android:layout_height="match_parent"
-                                    android:layout_marginLeft="1dp"
                                     android:layout_marginRight="1dp"
                                     android:background="#CECDCD"
                                     android:gravity="center"
@@ -258,7 +255,6 @@
                                     android:id="@+id/tv_supplier"
                                     android:layout_width="110dp"
                                     android:layout_height="match_parent"
-                                    android:layout_marginLeft="1dp"
                                     android:layout_marginRight="1dp"
                                     android:background="#CECDCD"
                                     android:gravity="center"
@@ -272,7 +268,6 @@
                                     android:id="@+id/tv_remarks"
                                     android:layout_width="110dp"
                                     android:layout_height="match_parent"
-                                    android:layout_marginLeft="1dp"
                                     android:layout_marginRight="1dp"
                                     android:background="#CECDCD"
                                     android:gravity="center"
@@ -286,7 +281,6 @@
                                     android:id="@+id/tv_category"
                                     android:layout_width="110dp"
                                     android:layout_height="match_parent"
-                                    android:layout_marginLeft="1dp"
                                     android:layout_marginRight="1dp"
 
                                     android:background="#CECDCD"
@@ -301,7 +295,6 @@
                                     android:id="@+id/tv_po_status"
                                     android:layout_width="110dp"
                                     android:layout_height="match_parent"
-                                    android:layout_marginLeft="1dp"
                                     android:layout_marginRight="1dp"
 
                                     android:background="#CECDCD"
@@ -316,7 +309,6 @@
                                     android:id="@+id/tv_pr_status"
                                     android:layout_width="110dp"
                                     android:layout_height="match_parent"
-                                    android:layout_marginLeft="1dp"
                                     android:layout_marginRight="1dp"
 
                                     android:background="#CECDCD"
@@ -331,7 +323,6 @@
                                     android:id="@+id/tv_unreceived_total"
                                     android:layout_width="110dp"
                                     android:layout_height="match_parent"
-                                    android:layout_marginLeft="1dp"
                                     android:layout_marginRight="1dp"
 
                                     android:background="#CECDCD"
@@ -346,7 +337,6 @@
                                     android:id="@+id/tv_encoded_by"
                                     android:layout_width="110dp"
                                     android:layout_height="match_parent"
-                                    android:layout_marginLeft="1dp"
                                     android:layout_marginRight="1dp"
 
                                     android:background="#CECDCD"
@@ -361,7 +351,6 @@
                                     android:id="@+id/tv_declared_status"
                                     android:layout_width="110dp"
                                     android:layout_height="match_parent"
-                                    android:layout_marginLeft="1dp"
                                     android:layout_marginRight="1dp"
 
                                     android:background="#CECDCD"
@@ -376,7 +365,6 @@
                                     android:id="@+id/tv_checked_by"
                                     android:layout_width="110dp"
                                     android:layout_height="match_parent"
-                                    android:layout_marginLeft="1dp"
                                     android:layout_marginRight="1dp"
                                     android:background="#CECDCD"
                                     android:gravity="center"
@@ -390,7 +378,6 @@
                                     android:id="@+id/tv_approved_by"
                                     android:layout_width="110dp"
                                     android:layout_height="match_parent"
-                                    android:layout_marginLeft="1dp"
                                     android:layout_marginRight="1dp"
 
                                     android:background="#CECDCD"
@@ -427,7 +414,7 @@
 
                                 <TextView
 
-                                    android:layout_width="42dp"
+                                    android:layout_width="41dp"
                                     android:layout_height="match_parent"
 
                                     android:background="#B9F6CA"
@@ -441,7 +428,7 @@
 
                                 <TextView
 
-                                    android:layout_width="42dp"
+                                    android:layout_width="41dp"
                                     android:layout_height="match_parent"
 
                                     android:background="#B9F6CA"
@@ -453,64 +440,7 @@
 
                                 <TextView
 
-                                    android:layout_width="137dp"
-                                    android:layout_height="match_parent"
-
-
-                                    android:background="#B9F6CA"
-
-                                    android:gravity="center"
-                                    android:paddingTop="5dp"
-                                    android:paddingBottom="5dp"
-
-                                    android:textColor="@android:color/black"
-                                    android:textSize="14sp" />
-
-                                <TextView
-
-                                    android:layout_width="112dp"
-                                    android:layout_height="match_parent"
-
-                                    android:background="#B9F6CA"
-
-                                    android:gravity="center"
-                                    android:paddingTop="5dp"
-                                    android:paddingBottom="5dp"
-
-                                    android:textColor="@android:color/black"
-                                    android:textSize="14sp" />
-
-                                <TextView
-
-                                    android:layout_width="112dp"
-                                    android:layout_height="match_parent"
-
-                                    android:background="#B9F6CA"
-
-                                    android:gravity="center"
-                                    android:paddingTop="5dp"
-                                    android:paddingBottom="5dp"
-
-                                    android:textColor="@android:color/black"
-                                    android:textSize="14sp" />
-
-                                <TextView
-
-                                    android:layout_width="112dp"
-                                    android:layout_height="match_parent"
-
-                                    android:background="#B9F6CA"
-
-                                    android:gravity="center"
-                                    android:paddingTop="5dp"
-                                    android:paddingBottom="5dp"
-
-                                    android:textColor="@android:color/black"
-                                    android:textSize="14sp" />
-
-                                <TextView
-
-                                    android:layout_width="112dp"
+                                    android:layout_width="136dp"
                                     android:layout_height="match_parent"
 
 
@@ -525,7 +455,64 @@
 
                                 <TextView
 
-                                    android:layout_width="112dp"
+                                    android:layout_width="111dp"
+                                    android:layout_height="match_parent"
+
+                                    android:background="#B9F6CA"
+
+                                    android:gravity="center"
+                                    android:paddingTop="5dp"
+                                    android:paddingBottom="5dp"
+
+                                    android:textColor="@android:color/black"
+                                    android:textSize="14sp" />
+
+                                <TextView
+
+                                    android:layout_width="111dp"
+                                    android:layout_height="match_parent"
+
+                                    android:background="#B9F6CA"
+
+                                    android:gravity="center"
+                                    android:paddingTop="5dp"
+                                    android:paddingBottom="5dp"
+
+                                    android:textColor="@android:color/black"
+                                    android:textSize="14sp" />
+
+                                <TextView
+
+                                    android:layout_width="111dp"
+                                    android:layout_height="match_parent"
+
+                                    android:background="#B9F6CA"
+
+                                    android:gravity="center"
+                                    android:paddingTop="5dp"
+                                    android:paddingBottom="5dp"
+
+                                    android:textColor="@android:color/black"
+                                    android:textSize="14sp" />
+
+                                <TextView
+
+                                    android:layout_width="111dp"
+                                    android:layout_height="match_parent"
+
+
+                                    android:background="#B9F6CA"
+
+                                    android:gravity="center"
+                                    android:paddingTop="5dp"
+                                    android:paddingBottom="5dp"
+
+                                    android:textColor="@android:color/black"
+                                    android:textSize="14sp" />
+
+                                <TextView
+
+                                    android:layout_width="110dp"
                                     android:layout_height="match_parent"
 
 
@@ -539,7 +526,7 @@
 
                                 <TextView
 
-                                    android:layout_width="112dp"
+                                    android:layout_width="111dp"
                                     android:layout_height="match_parent"
 
                                     android:layout_marginRight="1dp"
@@ -556,7 +543,6 @@
                                     android:id="@+id/total_amount"
                                     android:layout_width="111dp"
                                     android:layout_height="match_parent"
-                                    android:layout_marginLeft="1dp"
                                     android:background="#B9F6CA"
                                     android:gravity="start"
                                     android:paddingLeft="5dp"
@@ -569,7 +555,7 @@
 
                                 <TextView
 
-                                    android:layout_width="112dp"
+                                    android:layout_width="111dp"
                                     android:layout_height="match_parent"
 
                                     android:background="#B9F6CA"
@@ -582,7 +568,7 @@
 
                                 <TextView
 
-                                    android:layout_width="112dp"
+                                    android:layout_width="111dp"
                                     android:layout_height="match_parent"
 
                                     android:background="#B9F6CA"
@@ -595,7 +581,7 @@
 
                                 <TextView
 
-                                    android:layout_width="112dp"
+                                    android:layout_width="111dp"
                                     android:layout_height="match_parent"
 
                                     android:background="#B9F6CA"
@@ -608,7 +594,7 @@
 
                                 <TextView
 
-                                    android:layout_width="112dp"
+                                    android:layout_width="111dp"
                                     android:layout_height="match_parent"
 
 
