@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginBottom="1dp"
     android:orientation="vertical">
 
     <LinearLayout
@@ -16,6 +17,7 @@
         <LinearLayout
             android:layout_width="80dp"
             android:layout_height="match_parent"
+            android:layout_marginRight="1dp"
             android:background="#E7E4B5"
             android:gravity="center"
             android:orientation="vertical">
@@ -31,11 +33,12 @@
             android:id="@+id/txt_count"
             android:layout_width="40dp"
             android:layout_height="match_parent"
-            android:layout_marginLeft="1dp"
             android:layout_marginRight="1dp"
             android:background="#E7E4B5"
             android:gravity="center"
+            android:paddingLeft="2dp"
             android:paddingTop="5dp"
+            android:paddingRight="2dp"
             android:paddingBottom="5dp"
             android:text="#"
             android:textSize="13sp" />
@@ -45,13 +48,11 @@
             android:id="@+id/txt_code"
             android:layout_width="135dp"
             android:layout_height="match_parent"
-            android:layout_marginLeft="1dp"
 
             android:layout_marginRight="1dp"
             android:background="#E7E4B5"
             android:gravity="center"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp"
+            android:padding="5dp"
             android:text="Code "
             android:textSize="13sp" />
 
@@ -59,13 +60,11 @@
             android:id="@+id/txt_created_by"
             android:layout_width="110dp"
             android:layout_height="match_parent"
-            android:layout_marginLeft="1dp"
 
             android:layout_marginRight="1dp"
             android:background="#E7E4B5"
             android:gravity="center"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp"
+            android:padding="5dp"
             android:text="Created By"
             android:textSize="13sp" />
 
@@ -73,12 +72,10 @@
             android:id="@+id/txt_requested_by"
             android:layout_width="110dp"
             android:layout_height="match_parent"
-            android:layout_marginLeft="1dp"
             android:layout_marginRight="1dp"
             android:background="#E7E4B5"
             android:gravity="center"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp"
+            android:padding="5dp"
             android:text="Requested By"
             android:textSize="13sp" />
 
@@ -86,12 +83,10 @@
             android:id="@+id/txt_cr_method"
             android:layout_width="110dp"
             android:layout_height="match_parent"
-            android:layout_marginLeft="1dp"
             android:layout_marginRight="1dp"
             android:background="#E7E4B5"
             android:gravity="center"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp"
+            android:padding="5dp"
             android:text="CR Method"
             android:textSize="13sp" />
 
@@ -99,13 +94,11 @@
             android:id="@+id/txt_purpose"
             android:layout_width="110dp"
             android:layout_height="match_parent"
-            android:layout_marginLeft="1dp"
 
             android:layout_marginRight="1dp"
             android:background="#E7E4B5"
             android:gravity="center"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp"
+            android:padding="5dp"
             android:text="Purpose"
             android:textSize="13sp" />
 
@@ -113,13 +106,11 @@
             android:id="@+id/txt_amount"
             android:layout_width="110dp"
             android:layout_height="match_parent"
-            android:layout_marginLeft="1dp"
 
             android:layout_marginRight="1dp"
             android:background="#E7E4B5"
             android:gravity="center"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp"
+            android:padding="5dp"
             android:text="Amount"
             android:textSize="13sp" />
 
@@ -127,13 +118,11 @@
             android:id="@+id/txt_date_requested"
             android:layout_width="110dp"
             android:layout_height="match_parent"
-            android:layout_marginLeft="1dp"
 
             android:layout_marginRight="1dp"
             android:background="#E7E4B5"
             android:gravity="center"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp"
+            android:padding="5dp"
             android:text="Date Requested"
             android:textSize="13sp" />
 
@@ -141,13 +130,11 @@
             android:id="@+id/txt_branch"
             android:layout_width="110dp"
             android:layout_height="match_parent"
-            android:layout_marginLeft="1dp"
 
             android:layout_marginRight="1dp"
             android:background="#E7E4B5"
             android:gravity="center"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp"
+            android:padding="5dp"
             android:text="Branch"
             android:textSize="13sp" />
 
@@ -155,13 +142,11 @@
             android:id="@+id/txt_approval"
             android:layout_width="110dp"
             android:layout_height="match_parent"
-            android:layout_marginLeft="1dp"
 
             android:layout_marginRight="1dp"
             android:background="#E7E4B5"
             android:gravity="center"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp"
+            android:padding="5dp"
             android:text="Approval"
             android:textSize="13sp" />
 
@@ -169,13 +154,11 @@
             android:id="@+id/txt_liquidation"
             android:layout_width="110dp"
             android:layout_height="match_parent"
-            android:layout_marginLeft="1dp"
 
             android:layout_marginRight="1dp"
             android:background="#E7E4B5"
             android:gravity="center"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp"
+            android:padding="5dp"
             android:text="Liquidation"
             android:textSize="13sp" />
 
@@ -183,13 +166,11 @@
             android:id="@+id/txt_replenish"
             android:layout_width="110dp"
             android:layout_height="match_parent"
-            android:layout_marginLeft="1dp"
 
             android:layout_marginRight="1dp"
             android:background="#E7E4B5"
             android:gravity="center"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp"
+            android:padding="5dp"
             android:text="Replenish Status"
             android:textSize="13sp" />
 
@@ -197,13 +178,11 @@
             android:id="@+id/txt_status"
             android:layout_width="110dp"
             android:layout_height="match_parent"
-            android:layout_marginLeft="1dp"
 
             android:layout_marginRight="1dp"
             android:background="#E7E4B5"
             android:gravity="center"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp"
+            android:padding="5dp"
             android:text="Status "
             android:textSize="13sp" />
 
@@ -212,12 +191,10 @@
             android:layout_width="110dp"
             android:layout_height="match_parent"
 
-            android:layout_marginLeft="1dp"
             android:layout_marginRight="1dp"
             android:background="#E7E4B5"
             android:gravity="center"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp"
+            android:padding="5dp"
             android:text="Approved By"
             android:textSize="13sp" />
     </LinearLayout>

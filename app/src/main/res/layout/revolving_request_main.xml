@@ -12,12 +12,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:padding="10dp">
+        android:padding="5dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="10dp"
             android:drawableStart="@drawable/note"
             android:drawablePadding="5dp"
             android:text="Revolving Fund Expense"
@@ -28,12 +28,12 @@
             android:id="@+id/l_start_date"
             android:layout_width="match_parent"
             android:layout_height="40dp"
+            android:layout_marginTop="5dp"
             android:background="@drawable/bg_border"
             android:gravity="center"
             android:orientation="horizontal"
             android:padding="@dimen/dialogFragment_layout_spinner"
-            android:visibility="visible"
-            android:layout_marginTop="5dp">
+            android:visibility="visible">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -55,12 +55,12 @@
             android:id="@+id/l_end_date"
             android:layout_width="match_parent"
             android:layout_height="40dp"
+            android:layout_marginTop="5dp"
             android:background="@drawable/bg_border"
             android:gravity="center"
             android:orientation="horizontal"
             android:padding="@dimen/dialogFragment_layout_spinner"
-            android:visibility="visible"
-            android:layout_marginTop="5dp">
+            android:visibility="visible">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -141,7 +141,6 @@
                             <TextView
                                 android:layout_width="80dp"
                                 android:layout_height="match_parent"
-                                android:layout_marginLeft="1dp"
                                 android:layout_marginRight="1dp"
                                 android:background="#CECDCD"
                                 android:gravity="center"
@@ -153,7 +152,6 @@
                             <TextView
                                 android:layout_width="40dp"
                                 android:layout_height="match_parent"
-                                android:layout_marginLeft="1dp"
                                 android:layout_marginRight="1dp"
                                 android:background="#CECDCD"
                                 android:gravity="center"
@@ -167,7 +165,6 @@
                             <TextView
                                 android:layout_width="135dp"
                                 android:layout_height="match_parent"
-                                android:layout_marginLeft="1dp"
                                 android:layout_marginRight="1dp"
 
                                 android:background="#CECDCD"
@@ -181,7 +178,6 @@
                             <TextView
                                 android:layout_width="110dp"
                                 android:layout_height="match_parent"
-                                android:layout_marginLeft="1dp"
                                 android:layout_marginRight="1dp"
 
                                 android:background="#CECDCD"
@@ -195,7 +191,6 @@
                             <TextView
                                 android:layout_width="110dp"
                                 android:layout_height="match_parent"
-                                android:layout_marginLeft="1dp"
                                 android:layout_marginRight="1dp"
                                 android:background="#CECDCD"
                                 android:gravity="center"
@@ -208,7 +203,6 @@
                             <TextView
                                 android:layout_width="110dp"
                                 android:layout_height="match_parent"
-                                android:layout_marginLeft="1dp"
                                 android:layout_marginRight="1dp"
                                 android:background="#CECDCD"
                                 android:gravity="center"
@@ -221,7 +215,6 @@
                             <TextView
                                 android:layout_width="110dp"
                                 android:layout_height="match_parent"
-                                android:layout_marginLeft="1dp"
                                 android:layout_marginRight="1dp"
 
                                 android:background="#CECDCD"
@@ -235,7 +228,6 @@
                             <TextView
                                 android:layout_width="110dp"
                                 android:layout_height="match_parent"
-                                android:layout_marginLeft="1dp"
                                 android:layout_marginRight="1dp"
 
                                 android:background="#CECDCD"
@@ -249,7 +241,6 @@
                             <TextView
                                 android:layout_width="110dp"
                                 android:layout_height="match_parent"
-                                android:layout_marginLeft="1dp"
                                 android:layout_marginRight="1dp"
 
                                 android:background="#CECDCD"
@@ -263,7 +254,6 @@
                             <TextView
                                 android:layout_width="110dp"
                                 android:layout_height="match_parent"
-                                android:layout_marginLeft="1dp"
                                 android:layout_marginRight="1dp"
 
                                 android:background="#CECDCD"
@@ -277,7 +267,6 @@
                             <TextView
                                 android:layout_width="110dp"
                                 android:layout_height="match_parent"
-                                android:layout_marginLeft="1dp"
                                 android:layout_marginRight="1dp"
 
                                 android:background="#CECDCD"
@@ -291,7 +280,6 @@
                             <TextView
                                 android:layout_width="110dp"
                                 android:layout_height="match_parent"
-                                android:layout_marginLeft="1dp"
                                 android:layout_marginRight="1dp"
 
                                 android:layout_weight="1"
@@ -306,7 +294,6 @@
                             <TextView
                                 android:layout_width="110dp"
                                 android:layout_height="match_parent"
-                                android:layout_marginLeft="1dp"
                                 android:layout_marginRight="1dp"
 
                                 android:layout_weight="1"
@@ -321,7 +308,6 @@
                             <TextView
                                 android:layout_width="110dp"
                                 android:layout_height="match_parent"
-                                android:layout_marginLeft="1dp"
                                 android:layout_marginRight="1dp"
 
                                 android:layout_weight="1"
@@ -336,7 +322,6 @@
                             <TextView
                                 android:layout_width="110dp"
                                 android:layout_height="match_parent"
-                                android:layout_marginLeft="1dp"
 
                                 android:layout_marginRight="1dp"
                                 android:layout_weight="1"

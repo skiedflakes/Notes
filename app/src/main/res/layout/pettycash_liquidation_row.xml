@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="1dp">
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -26,25 +27,24 @@
             android:text="#"
             android:textColor="@android:color/black"
             android:textSize="13sp" />
+
         <TextView
             android:id="@+id/btn_edit"
             android:layout_width="40dp"
             android:layout_height="match_parent"
-            android:layout_marginLeft="1dp"
             android:layout_marginRight="1dp"
             android:background="#E7E4B5"
             android:drawableStart="@drawable/ic_settings"
             android:gravity="center_vertical"
             android:padding="5dp"
             android:textColor="@color/color_text_light_black"
-            android:textSize="14sp" />
+            android:textSize="13sp" />
 
 
         <TextView
             android:id="@+id/txt_tracking_num"
             android:layout_width="135dp"
             android:layout_height="match_parent"
-            android:layout_marginLeft="1dp"
 
             android:layout_marginRight="1dp"
             android:background="#E7E4B5"
@@ -58,7 +58,6 @@
             android:id="@+id/txt_date_covered"
             android:layout_width="110dp"
             android:layout_height="match_parent"
-            android:layout_marginLeft="1dp"
 
             android:layout_marginRight="1dp"
             android:background="#E7E4B5"
@@ -72,7 +71,6 @@
             android:id="@+id/txt_branch"
             android:layout_width="110dp"
             android:layout_height="match_parent"
-            android:layout_marginLeft="1dp"
             android:layout_marginRight="1dp"
             android:background="#E7E4B5"
             android:gravity="center"
@@ -85,7 +83,6 @@
             android:id="@+id/txt_amount"
             android:layout_width="110dp"
             android:layout_height="match_parent"
-            android:layout_marginLeft="1dp"
             android:layout_marginRight="1dp"
             android:background="#E7E4B5"
             android:gravity="center"
@@ -98,7 +95,6 @@
             android:id="@+id/txt_date_liquidation"
             android:layout_width="110dp"
             android:layout_height="match_parent"
-            android:layout_marginLeft="1dp"
 
             android:layout_marginRight="1dp"
             android:background="#E7E4B5"
@@ -112,7 +108,6 @@
             android:id="@+id/txt_liquidation_status"
             android:layout_width="110dp"
             android:layout_height="match_parent"
-            android:layout_marginLeft="1dp"
 
             android:layout_marginRight="1dp"
             android:background="#E7E4B5"
@@ -126,7 +121,6 @@
             android:id="@+id/txt_liquidation_by"
             android:layout_width="110dp"
             android:layout_height="match_parent"
-            android:layout_marginLeft="1dp"
 
             android:layout_marginRight="1dp"
             android:background="#E7E4B5"
@@ -140,7 +134,6 @@
             android:id="@+id/txt_replenish_status"
             android:layout_width="110dp"
             android:layout_height="match_parent"
-            android:layout_marginLeft="1dp"
 
             android:layout_marginRight="1dp"
             android:background="#E7E4B5"
@@ -154,7 +147,6 @@
             android:id="@+id/txt_status"
             android:layout_width="110dp"
             android:layout_height="match_parent"
-            android:layout_marginLeft="1dp"
 
             android:layout_marginRight="1dp"
             android:background="#E7E4B5"
@@ -168,7 +160,6 @@
             android:id="@+id/txt_approved"
             android:layout_width="110dp"
             android:layout_height="match_parent"
-            android:layout_marginLeft="1dp"
 
             android:layout_marginRight="1dp"
             android:background="#E7E4B5"
