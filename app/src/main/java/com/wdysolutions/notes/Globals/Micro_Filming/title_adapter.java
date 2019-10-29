@@ -39,12 +39,13 @@ public class title_adapter extends RecyclerView.Adapter<title_adapter.MyHolder> 
     public void onBindViewHolder(@NonNull final MyHolder myHolder, final int position) {
         final String getRef_num = mdata.get(position).getRef_num();
         final String getType = mdata.get(position).getType();
+        final String getAmount = mdata.get(position).getAmount();
 
         myHolder.txt_title.setText(getRef_num);
         myHolder.btn_.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                clickRecycler.clickInterface(getRef_num);
+                clickRecycler.clickInterface(getRef_num, getAmount);
             }
         });
     }

@@ -71,6 +71,16 @@
                             android:text="txt_selected"
                             android:textSize="14sp"
                             android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/txt_amount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:layout_weight="1"
+                            android:text="TextView"
+                            android:textColor="@color/color_btn_red2"
+                            android:visibility="gone" />
                     </LinearLayout>
 
                     <RelativeLayout
