@@ -42,6 +42,7 @@ public class title_adapter extends RecyclerView.Adapter<title_adapter.MyHolder> 
         final String getAmount = mdata.get(position).getAmount();
 
         myHolder.txt_title.setText(getRef_num);
+        myHolder.txt_amount.setText(" ₱ "+getAmount);
         myHolder.btn_.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -56,11 +57,12 @@ public class title_adapter extends RecyclerView.Adapter<title_adapter.MyHolder> 
     }
 
     public class MyHolder extends RecyclerView.ViewHolder{
-        TextView txt_title;
+        TextView txt_title, txt_amount;
         LinearLayout btn_;
         public MyHolder(View itemView) {
             super(itemView);
             btn_ = itemView.findViewById(R.id.btn_);
+            txt_amount = itemView.findViewById(R.id.txt_amount);
             txt_title = itemView.findViewById(R.id.txt_title);
         }
     }
