@@ -73,7 +73,7 @@ public class PettyCash_request_adapter extends RecyclerView.Adapter<PettyCash_re
 
         myHolder.txt_count.setText(String.valueOf(position+1));
         myHolder.txt_amount.setText(getAmount);
-        myHolder.txt_approved.setText(getApproved_by);
+
         myHolder.txt_code.setText(getPcv);
         myHolder.txt_created_by.setText(getCreated_by);
         myHolder.txt_date_requested.setText(getDate_requested);
@@ -122,6 +122,7 @@ public class PettyCash_request_adapter extends RecyclerView.Adapter<PettyCash_re
         }
 
         if(!getApproved_by.equals("")){
+            myHolder.txt_approved.setText(getApproved_by);
             myHolder.actions.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -129,6 +130,7 @@ public class PettyCash_request_adapter extends RecyclerView.Adapter<PettyCash_re
                 }
             });
         }else{
+            myHolder.txt_approved.setText("Pending");
             myHolder.actions.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

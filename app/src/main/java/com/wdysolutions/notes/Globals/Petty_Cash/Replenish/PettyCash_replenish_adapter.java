@@ -66,11 +66,16 @@ public class PettyCash_replenish_adapter extends RecyclerView.Adapter<PettyCash_
 
         myHolder.txt_count.setText(String.valueOf(position+1));
         myHolder.txt_amount.setText(getAmount);
-        myHolder.txt_approve.setText(getApproved_by);
         myHolder.txt_encoded_by.setText(getEncodedBY);
         myHolder.txt_remarks.setText(getRemarks);
         myHolder.txt_date.setText(getDate);
         myHolder.txt_tracking_num.setText(getRplnsh_num);
+
+        if(getApproved_by.equals("")){
+            myHolder.txt_approve.setText("Pending");
+        }else{
+            myHolder.txt_approve.setText(getApproved_by);
+        }
 
         myHolder.txt_declared_status.setText(getDec_stat);
         if (getDec_stat_color.equals("green")){

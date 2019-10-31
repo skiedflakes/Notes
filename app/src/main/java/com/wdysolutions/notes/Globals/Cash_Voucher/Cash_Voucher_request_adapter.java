@@ -66,8 +66,11 @@ public class Cash_Voucher_request_adapter extends RecyclerView.Adapter<Cash_Vouc
         }else{
             myHolder.tv_status.setTextColor(context.getResources().getColor(R.color.color_text_light_black));
         }
-        myHolder.tv_approved_by.setText(approved_by);
-
+        if(approved_by.equals("")){
+            myHolder.tv_approved_by.setText("Pending");
+        }else{
+            myHolder.tv_approved_by.setText(approved_by);
+        }
 
         if(!approved_by.equals("")){
             myHolder.btn_edit.setOnClickListener(new View.OnClickListener() {

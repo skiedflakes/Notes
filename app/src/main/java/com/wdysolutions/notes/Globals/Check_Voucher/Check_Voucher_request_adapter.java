@@ -66,9 +66,20 @@ public class Check_Voucher_request_adapter extends RecyclerView.Adapter<Check_Vo
         myHolder.tv_check_date.setText(check_date);
 
         myHolder.tv_amount.setText(amount);
-        myHolder.tv_encoded_by.setText(encoded_by);
+
         myHolder.tv_status.setText(status);
-        myHolder.tv_approved_by.setText(approved_by);
+
+        if(!encoded_by.equals("null")){
+            myHolder.tv_encoded_by.setText(encoded_by);
+        }else{
+            myHolder.tv_encoded_by.setText("");
+        }
+
+        if(approved_by.equals("")){
+            myHolder.tv_approved_by.setText("Pending");
+        }else{
+            myHolder.tv_approved_by.setText(approved_by);
+        }
 
         if(status.equals("Approved")){
             myHolder.tv_status.setTextColor(context.getResources().getColor(R.color.color_btn_green));

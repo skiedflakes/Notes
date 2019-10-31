@@ -55,7 +55,13 @@ public class PettyCash_liquidation_adapter extends RecyclerView.Adapter<PettyCas
 
         myHolder.txt_count.setText(String.valueOf(position+1));
         myHolder.txt_amount.setText(getAmount);
-        myHolder.txt_approved.setText(getApproved_by);
+
+        if(getApproved_by.equals("")){
+            myHolder.txt_approved.setText("Pending");
+        }else{
+            myHolder.txt_approved.setText(getApproved_by);
+        }
+
         myHolder.txt_branch.setText(getBranch);
         myHolder.txt_date_covered.setText(getDate_covered);
         myHolder.txt_date_liquidation.setText(getDate_liquidated);
