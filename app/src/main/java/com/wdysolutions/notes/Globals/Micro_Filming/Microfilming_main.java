@@ -42,7 +42,7 @@ import java.util.Map;
 public class Microfilming_main extends DialogFragment implements clickRecycler {
 
     RecyclerView recycler_title, recycler_img;
-    TextView txt_selected, txt_back, txt_no_img, txt_title, txt_close;
+    TextView txt_selected, txt_back, txt_no_img, txt_title, txt_close, txt_amount;
     String tracking_num, company_id, company_code, selected_branch_id, end_date, start_date;
     ProgressBar loading_;
     LinearLayout layout_main, layout_selected;
@@ -68,6 +68,7 @@ public class Microfilming_main extends DialogFragment implements clickRecycler {
         txt_no_img = view.findViewById(R.id.txt_no_img);
         txt_title = view.findViewById(R.id.txt_title);
         txt_close = view.findViewById(R.id.txt_close);
+        txt_amount = view.findViewById(R.id.txt_amount);
 
         txt_back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -108,6 +109,7 @@ public class Microfilming_main extends DialogFragment implements clickRecycler {
         recycler_title.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
     }
 
+    String amount, main_track_num;
     ArrayList<String> selected_array;
     ArrayList<title_model> title_models;
     ArrayList<image_model> image_models;
@@ -130,18 +132,35 @@ public class Microfilming_main extends DialogFragment implements clickRecycler {
 
                     // tracking num
                     JSONArray jsonArray_title = jsonObject.getJSONArray("response_title");
+
+                    // get main ref num and amount
+                    JSONObject getTrackSelected = (JSONObject)jsonArray_title.get(0);
+                    main_track_num = getTrackSelected.getString("ref_num");
+                    amount = getTrackSelected.getString("amount");
+
+                    // add default
+                    selected_array = new ArrayList<>();
+                    selected_array.add(main_track_num);
+
+                    // display default selected
+                    txt_selected.setText(main_track_num);
+                    txt_amount.setText(amount);
+                    txt_selected.setPaintFlags(txt_selected.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+
+                    // add to list ref num ---------------------------------------------
                     for (int i=0; i<jsonArray_title.length(); i++){
                         JSONObject jsonObject1 = (JSONObject)jsonArray_title.get(i);
 
                         title_models.add(new title_model(jsonObject1.getString("type"),
                                 jsonObject1.getString("ref_num"),
-                                jsonObject1.getString("top_ref_num")));
+                                jsonObject1.getString("top_ref_num"),
+                                jsonObject1.getString("amount")));
                     }
 
-                    initRecyclerview(tracking_num);
+                    initRecyclerview(main_track_num);
 
 
-                    // image
+                    // add to list image ------------------------------------------------
                     JSONArray jsonArray_img = jsonObject.getJSONArray("response_img");
                     for (int i=0; i<jsonArray_img.length(); i++){
                         JSONObject jsonObject1 = (JSONObject)jsonArray_img.get(i);
@@ -152,17 +171,11 @@ public class Microfilming_main extends DialogFragment implements clickRecycler {
                                 url_img(jsonObject1.getString("url_img"))));
                     }
 
-                    initRecyclerviewImage(tracking_num);
+                    initRecyclerviewImage(main_track_num);
 
-                    // ------------------------------------------------------------------------
-                    selected_array = new ArrayList<>();
-                    selected_array.add(tracking_num);
-
+                    // count image and display title
                     String count_img = String.valueOf(image_models.size());
                     txt_title.setText(count_img+" Attachments of "+tracking_num);
-
-                    txt_selected.setText(tracking_num);
-                    txt_selected.setPaintFlags(txt_selected.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
 
                 }
                 catch (JSONException e){}
@@ -208,7 +221,7 @@ public class Microfilming_main extends DialogFragment implements clickRecycler {
             title_model model = title_models.get(i);
 
             if (model.getTop_ref_num().equals(top_ref_num)){
-                title_select_models.add(new title_model(model.getType(), model.getRef_num(), model.getTop_ref_num()));
+                title_select_models.add(new title_model(model.getType(), model.getRef_num(), model.getTop_ref_num(), model.getAmount()));
             }
         }
         recycler_title.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -242,9 +255,10 @@ public class Microfilming_main extends DialogFragment implements clickRecycler {
     }
 
     @Override
-    public void clickInterface(String num) {
+    public void clickInterface(String num, String amount) {
         selected_array.add(num);
         txt_selected.setText(num);
+        txt_amount.setText(amount);
         initRecyclerview(num);
         initRecyclerviewImage(num);
 
