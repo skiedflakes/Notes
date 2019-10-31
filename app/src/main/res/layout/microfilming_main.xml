@@ -80,7 +80,8 @@
                             android:layout_weight="1"
                             android:text="TextView"
                             android:textColor="@color/color_btn_red2"
-                            android:visibility="gone" />
+                            android:textSize="12sp"
+                            android:visibility="visible" />
                     </LinearLayout>
 
                     <RelativeLayout

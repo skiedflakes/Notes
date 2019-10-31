@@ -124,7 +124,7 @@ public class Microfilming_main extends DialogFragment implements clickRecycler {
                 try {
                     layout_main.setVisibility(View.VISIBLE);
                     loading_.setVisibility(View.GONE);
-                    ((MainActivity)getActivity()).openDialog(response);
+                    //((MainActivity)getActivity()).openDialog(response);
 
                     title_models = new ArrayList<>();
                     image_models = new ArrayList<>();
@@ -144,7 +144,7 @@ public class Microfilming_main extends DialogFragment implements clickRecycler {
 
                     // display default selected
                     txt_selected.setText(main_track_num);
-                    txt_amount.setText(amount);
+                    txt_amount.setText(" ₱ "+amount);
                     txt_selected.setPaintFlags(txt_selected.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
 
                     // add to list ref num ---------------------------------------------
@@ -258,7 +258,7 @@ public class Microfilming_main extends DialogFragment implements clickRecycler {
     public void clickInterface(String num, String amount) {
         selected_array.add(num);
         txt_selected.setText(num);
-        txt_amount.setText(amount);
+        txt_amount.setText(" ₱ "+amount);
         initRecyclerview(num);
         initRecyclerviewImage(num);
 
