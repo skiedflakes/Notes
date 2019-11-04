@@ -127,6 +127,25 @@ public class frag_Nav_main extends Fragment {
         }
     }
 
+    String[] parent;
+    String[] transactionsSecondLevel;
+    String[] reportsSecondLevel;
+    LinkedHashMap<String, String[]> thirdLevelTransactions = new LinkedHashMap<>();
+    LinkedHashMap<String, String[]> thirdLevelReports = new LinkedHashMap<>();
+    List<String[]> secondLevel = new ArrayList<>();
+    //pignotes reports
+    String[] reportsThirdLevel_SP;
+    String[] reportsThirdLevel_IS;
+    String[] reportsThirdLevel_SD;
+    String[] reportsThirdLevel_FS;
+    String[] reportsThirdLevel_PR;
+
+
+    String[] expense_CV;
+    String[] expense_PC;
+    String[] expense_RF;
+    String[] expense_CAV;
+
 
     private void initExpandableListview(View view){
 
@@ -161,18 +180,20 @@ public class frag_Nav_main extends Fragment {
 
 
         if(selected_notes.equals(getResources().getString(R.string.pigNOTES))){
-            String[] reportsSecondLevel = new String[]{"Income Statement"
+            String[] reportsSecondLevel = new String[]{"Parity Report","Income Statement"
                     ,"Farm Statistics", "Swine Population", "Swine Delivery Report","Price Watch"};
             secondLevel.add(reportsSecondLevel);
             reportsThirdLevel_SP = new String[]{"By Age", "By Classification","Line Graph"};
             reportsThirdLevel_FS = new String[]{"By Month", "By Week", "By Region"};
             reportsThirdLevel_SD = new String[]{"Daily Swine Delivery"};
             reportsThirdLevel_IS = new String[]{"Periodic","Perpetual"};
-            thirdLevelReports.put(reportsSecondLevel[0], reportsThirdLevel_IS);
-            thirdLevelReports.put(reportsSecondLevel[1], reportsThirdLevel_FS);
-            thirdLevelReports.put(reportsSecondLevel[2], reportsThirdLevel_SP);
-            thirdLevelReports.put(reportsSecondLevel[3], reportsThirdLevel_SD);
-            thirdLevelReports.put(reportsSecondLevel[4], null);
+
+            thirdLevelReports.put(reportsSecondLevel[0], null);
+            thirdLevelReports.put(reportsSecondLevel[1], reportsThirdLevel_IS);
+            thirdLevelReports.put(reportsSecondLevel[2], reportsThirdLevel_FS);
+            thirdLevelReports.put(reportsSecondLevel[3], reportsThirdLevel_SP);
+            thirdLevelReports.put(reportsSecondLevel[4], reportsThirdLevel_SD);
+            thirdLevelReports.put(reportsSecondLevel[5], null);
 
         }else if(selected_notes.equals(getResources().getString(R.string.feedNOTES))){
             String[] reportsSecondLevel = new String[]{"Income Statement","Price Watch"};
@@ -217,22 +238,7 @@ public class frag_Nav_main extends Fragment {
         });
     }
 
-    String[] parent;
-    String[] transactionsSecondLevel;
-    String[] reportsSecondLevel;
-    LinkedHashMap<String, String[]> thirdLevelTransactions = new LinkedHashMap<>();
-    LinkedHashMap<String, String[]> thirdLevelReports = new LinkedHashMap<>();
-    List<String[]> secondLevel = new ArrayList<>();
-    String[] reportsThirdLevel_SP;
-    String[] reportsThirdLevel_IS;
-    String[] reportsThirdLevel_SD;
-    String[] reportsThirdLevel_FS;
-    String[] reportsThirdLevel_PW;
 
-    String[] expense_CV;
-    String[] expense_PC;
-    String[] expense_RF;
-    String[] expense_CAV;
 
     private void limited_initExpandableListview(View view) {
         try {
@@ -411,6 +417,11 @@ public class frag_Nav_main extends Fragment {
 
                                     reportsSecondLevel[report_counter] = f_name;
                                     thirdLevelReports.put(reportsSecondLevel[report_counter], reportsThirdLevel_SP);
+                                    report_counter++;
+                                }else if (f_name.equals("Parity Report")) {
+
+                                    reportsSecondLevel[report_counter] = f_name;
+                                    thirdLevelReports.put(reportsSecondLevel[report_counter], null);
                                     report_counter++;
                                 }
                             }

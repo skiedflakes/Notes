@@ -171,6 +171,8 @@ public class ThreeLevelListAdapter extends BaseExpandableListAdapter {
                         switch_module(new Price_watch_main(), context);
                     }else if(selected.equals("Purchase Order")){
                         switch_module(new Purchase_Order(), context);
+                    }else if(selected.equals("Parity Report")){
+                       // switch_module(new Parity_Report(), context);
                     }
                 }
                 return false;

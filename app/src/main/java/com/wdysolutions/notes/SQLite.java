@@ -198,6 +198,7 @@ public class SQLite extends SQLiteOpenHelper {
                         || cursor.getString(4).equals("Swine Delivery Report")
                         || cursor.getString(4).equals("Farm Statistics")
                         || cursor.getString(4).equals("Swine Population")
+                        || cursor.getString(4).equals("Parity Report")
                         || cursor.getString(4).equals("Income Statement")
                         || cursor.getString(4).equals("Price Watch")) {
                     Menu_model model = new Menu_model(cursor.getString(0), cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4));
@@ -223,7 +224,7 @@ public class SQLite extends SQLiteOpenHelper {
 
         while (cursor.moveToNext()) {
             if(cursor.getString(3).equals(program)||cursor.getString(3).equals("G")) {
-                if (cursor.getString(4).equals("Farm Statistics") || cursor.getString(4).equals("Swine Population")) {
+                if (cursor.getString(4).equals("Farm Statistics") || cursor.getString(4).equals("Swine Population") || cursor.getString(4).equals("Parity Report")) {
                     Menu_model model = new Menu_model(cursor.getString(0), cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4));
                     menuList.add(model);
                 }
