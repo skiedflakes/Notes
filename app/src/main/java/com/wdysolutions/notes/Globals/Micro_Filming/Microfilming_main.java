@@ -10,6 +10,7 @@ import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,7 +43,7 @@ import java.util.Map;
 public class Microfilming_main extends DialogFragment implements clickRecycler {
 
     RecyclerView recycler_title, recycler_img;
-    TextView txt_selected, txt_back, txt_no_img, txt_title, txt_close, txt_amount;
+    TextView txt_selected, txt_back, txt_no_img, txt_title, txt_close;
     String tracking_num, company_id, company_code, selected_branch_id, end_date, start_date;
     ProgressBar loading_;
     LinearLayout layout_main, layout_selected;
@@ -68,7 +69,6 @@ public class Microfilming_main extends DialogFragment implements clickRecycler {
         txt_no_img = view.findViewById(R.id.txt_no_img);
         txt_title = view.findViewById(R.id.txt_title);
         txt_close = view.findViewById(R.id.txt_close);
-        txt_amount = view.findViewById(R.id.txt_amount);
 
         txt_back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -91,7 +91,9 @@ public class Microfilming_main extends DialogFragment implements clickRecycler {
 
     private void back(){
         selected_array.remove(selected_array.size()-1);
-        txt_selected.setText(selected_array.get(selected_array.size()-1));
+        selected_array_amount.remove(selected_array_amount.size()-1);
+        txt_selected.setText(Html.fromHtml(selected_array.get(selected_array.size()-1)+
+                " <font color='red'>₱ "+selected_array_amount.get(selected_array_amount.size()-1)+"</font>"));
         initRecyclerview(selected_array.get(selected_array.size()-1));
         initRecyclerviewImage(selected_array.get(selected_array.size()-1));
 
@@ -110,7 +112,7 @@ public class Microfilming_main extends DialogFragment implements clickRecycler {
     }
 
     String amount, main_track_num;
-    ArrayList<String> selected_array;
+    ArrayList<String> selected_array, selected_array_amount;
     ArrayList<title_model> title_models;
     ArrayList<image_model> image_models;
     public void getImage() {
@@ -140,11 +142,12 @@ public class Microfilming_main extends DialogFragment implements clickRecycler {
 
                     // add default
                     selected_array = new ArrayList<>();
+                    selected_array_amount = new ArrayList<>();
                     selected_array.add(main_track_num);
+                    selected_array_amount.add(amount);
 
                     // display default selected
-                    txt_selected.setText(main_track_num);
-                    txt_amount.setText(" ₱ "+amount);
+                    txt_selected.setText(Html.fromHtml(main_track_num+" <font color='red'>₱ "+amount+"</font>"));
                     txt_selected.setPaintFlags(txt_selected.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
 
                     // add to list ref num ---------------------------------------------
@@ -257,8 +260,8 @@ public class Microfilming_main extends DialogFragment implements clickRecycler {
     @Override
     public void clickInterface(String num, String amount) {
         selected_array.add(num);
-        txt_selected.setText(num);
-        txt_amount.setText(" ₱ "+amount);
+        selected_array_amount.add(amount);
+        txt_selected.setText(Html.fromHtml(num+" <font color='red'>₱ "+amount+"</font>"));
         initRecyclerview(num);
         initRecyclerviewImage(num);
 
