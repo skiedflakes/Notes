@@ -82,28 +82,38 @@ public class frag_Nav_main extends Fragment {
                 Branch_model click = branch_models.get(position);
                 if (!click.getBranch_name().equals("Select Farm Location")){
 
-                    selectedBranch = String.valueOf(click.getBranch_id());
-                    Constants.branch = click.getBranch_name();
-                    Constants.branch_id = selectedBranch;
-                    Constants.branch_current_pos = position;
-                    expandableListView.setVisibility(View.VISIBLE);
-
-                    if(Integer.valueOf(category)>0){
-                        if(access_type.equals("all_access")){
-                            initExpandableListview(view_layout);
-
-                            //if pig notes show transactions and reports
-                            //else show mo lng income statement and transcations
-
-                        }else{
-                            // Toast.makeText(getContext(), String.valueOf(sqLite.get_levelzero("P").size()), Toast.LENGTH_SHORT).show();
-                            limited_initExpandableListview(view_layout);
-                            //limited
-                        }
+                    if(Constants.selected_notes.equals("")){
+                        selectedBranch = String.valueOf(click.getBranch_id());
+                        Constants.branch = click.getBranch_name();
+                        Constants.branch_id = selectedBranch;
+                        Constants.branch_current_pos = position;
+                        expandableListView.setVisibility(View.VISIBLE);
+                        Toast.makeText(getContext(), "Please select a program", Toast.LENGTH_SHORT).show();
                     }else{
-                        //if pig notes show transactions and reports
-                        initExpandableListview(view_layout);
+                        selectedBranch = String.valueOf(click.getBranch_id());
+                        Constants.branch = click.getBranch_name();
+                        Constants.branch_id = selectedBranch;
+                        Constants.branch_current_pos = position;
+                        expandableListView.setVisibility(View.VISIBLE);
+
+                        if(Integer.valueOf(category)>0){
+                            if(access_type.equals("all_access")){
+                                initExpandableListview(view_layout);
+
+                                //if pig notes show transactions and reports
+                                //else show mo lng income statement and transcations
+
+                            }else{
+                                // Toast.makeText(getContext(), String.valueOf(sqLite.get_levelzero("P").size()), Toast.LENGTH_SHORT).show();
+                                limited_initExpandableListview(view_layout);
+                                //limited
+                            }
+                        }else{
+                            //if pig notes show transactions and reports
+                            initExpandableListview(view_layout);
+                        }
                     }
+
 
                 } else {
                     spinner.setSelection(Constants.branch_current_pos);
@@ -152,7 +162,6 @@ public class frag_Nav_main extends Fragment {
         thirdLevelTransactions.put(transactionsSecondLevel[3], CAV_module);
         thirdLevelTransactions.put(transactionsSecondLevel[4], PC_module);
         thirdLevelTransactions.put(transactionsSecondLevel[5], RF_module);
-
         //thirdLevelMovies.put(transactions[1], action);
 
 
@@ -188,6 +197,8 @@ public class frag_Nav_main extends Fragment {
             reportsThirdLevel_IS = new String[]{"Periodic","Perpetual"};
             thirdLevelReports.put(reportsSecondLevel[0], reportsThirdLevel_IS);
             thirdLevelReports.put(reportsSecondLevel[1], null);
+        }else{
+
         }
 
 
