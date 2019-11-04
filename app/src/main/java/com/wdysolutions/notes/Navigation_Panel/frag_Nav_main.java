@@ -83,11 +83,6 @@ public class frag_Nav_main extends Fragment {
                 if (!click.getBranch_name().equals("Select Farm Location")){
 
                     if(Constants.selected_notes.equals("")){
-                        selectedBranch = String.valueOf(click.getBranch_id());
-                        Constants.branch = click.getBranch_name();
-                        Constants.branch_id = selectedBranch;
-                        Constants.branch_current_pos = position;
-                        expandableListView.setVisibility(View.VISIBLE);
                         Toast.makeText(getContext(), "Please select a program", Toast.LENGTH_SHORT).show();
                     }else{
                         selectedBranch = String.valueOf(click.getBranch_id());
@@ -113,6 +108,7 @@ public class frag_Nav_main extends Fragment {
                             initExpandableListview(view_layout);
                         }
                     }
+
 
                 } else {
                     spinner.setSelection(Constants.branch_current_pos);
