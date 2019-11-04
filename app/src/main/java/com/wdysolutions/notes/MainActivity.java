@@ -100,6 +100,13 @@ public class MainActivity extends AppCompatActivity {
                 //shared preference
                 sharedPref.clear();
 
+                //constants delete all
+                Constants.selected_notes = "";
+                Constants.branch="";
+                Constants.branch_id ="";
+                Constants.branch_current_pos = 0;
+                Constants.program_code ="";
+
                 //
                 FragmentManager fragmentManager = getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
