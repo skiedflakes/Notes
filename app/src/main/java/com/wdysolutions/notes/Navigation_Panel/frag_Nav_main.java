@@ -114,7 +114,6 @@ public class frag_Nav_main extends Fragment {
                         }
                     }
 
-
                 } else {
                     spinner.setSelection(Constants.branch_current_pos);
                 }
