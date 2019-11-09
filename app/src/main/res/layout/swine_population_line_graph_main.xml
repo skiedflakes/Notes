@@ -21,6 +21,17 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_marginBottom="10dp"
+            android:padding="5dp"
+            android:text="Swine Population Graph"
+            android:textColor="#286090"
+            android:textSize="@dimen/title_text_size"
+            android:textStyle="bold" />
+
         <LinearLayout
             android:id="@+id/layout_selection"
             android:layout_width="match_parent"
@@ -82,7 +93,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:paddingLeft="5dp"
-                        android:text="date"
+                        android:text="Select date"
                         android:textSize="12sp" />
 
                 </LinearLayout>
