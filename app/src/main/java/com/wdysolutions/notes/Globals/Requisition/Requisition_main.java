@@ -1,11 +1,8 @@
 package com.wdysolutions.notes.Globals.Requisition;
 
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -32,7 +29,6 @@ import com.wdysolutions.notes.Constants;
 import com.wdysolutions.notes.DatePicker.DatePickerCustom;
 import com.wdysolutions.notes.DatePicker.DatePickerSelectionInterfaceCustom;
 import com.wdysolutions.notes.Globals.Requisition.Requisition_Add.Requisition_add_main;
-import com.wdysolutions.notes.Navigation_Panel.frag_Nav_main;
 import com.wdysolutions.notes.R;
 import com.wdysolutions.notes.SharedPref;
 
@@ -89,7 +85,7 @@ public class Requisition_main extends Fragment implements Authenticate_DialogFra
         btn_add = view.findViewById(R.id.btn_add);
         btn_delete = view.findViewById(R.id.btn_delete);
         btn_start_date = view.findViewById(R.id.btn_start_date);
-        btn_end_date = view.findViewById(R.id.btn_end_date);
+        btn_end_date = view.findViewById(R.id.tv_date);
 
         cb_all.setOnClickListener(new View.OnClickListener() {
             @Override

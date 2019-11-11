@@ -92,7 +92,7 @@ public class addMedication_main extends DialogFragment implements DatePickerSele
         layout_add = view.findViewById(R.id.layout_add);
         btn_save = view.findViewById(R.id.btn_save);
         input_dosage = view.findViewById(R.id.input_dosage);
-        btn_date = view.findViewById(R.id.btn_date);
+        btn_date = view.findViewById(R.id.tv_date);
         spinner_diagnosis = view.findViewById(R.id.spinner_diagnosis);
         spinner_medicine = view.findViewById(R.id.spinner_medicine);
 

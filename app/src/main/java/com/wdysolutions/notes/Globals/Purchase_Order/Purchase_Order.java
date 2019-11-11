@@ -3,9 +3,7 @@ package com.wdysolutions.notes.Globals.Purchase_Order;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -26,13 +24,11 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.google.gson.Gson;
 import com.wdysolutions.notes.AppController;
 import com.wdysolutions.notes.Constants;
 import com.wdysolutions.notes.DatePicker.DatePickerCustom;
 import com.wdysolutions.notes.DatePicker.DatePickerSelectionInterfaceCustom;
 import com.wdysolutions.notes.Dialog_Action;
-import com.wdysolutions.notes.Globals.Micro_Filming.Microfilming_main;
 import com.wdysolutions.notes.Globals.Purchase_Order.purchase_order_dialog.Purchase_Order_dialog_main;
 import com.wdysolutions.notes.MainActivity;
 import com.wdysolutions.notes.R;
@@ -47,8 +43,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import static android.app.Activity.RESULT_OK;
 
 public class Purchase_Order extends Fragment implements DatePickerSelectionInterfaceCustom,Purchase_Order_adapter.EventListener, Dialog_Action.uploadDialogInterface{
 
@@ -111,7 +105,7 @@ public class Purchase_Order extends Fragment implements DatePickerSelectionInter
 
         //date
         btn_start_date = view.findViewById(R.id.btn_start_date);
-        btn_end_date = view.findViewById(R.id.btn_end_date);
+        btn_end_date = view.findViewById(R.id.tv_date);
 
         //buttons on click
         btn_end_date.setOnClickListener(new View.OnClickListener() {

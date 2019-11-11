@@ -1,8 +1,6 @@
 package com.wdysolutions.notes.Notes_Pig.Swine_Card.Action.Culling;
 
-import android.app.AlertDialog;
 import android.app.Dialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentManager;
@@ -84,7 +82,7 @@ public class Culling_main extends DialogFragment implements DatePickerSelectionI
         swine_scanned_id = getArguments().getString("swine_scanned_id");
 
         text_delivery = view.findViewById(R.id.text_delivery);
-        btn_date = view.findViewById(R.id.btn_date);
+        btn_date = view.findViewById(R.id.tv_date);
         spinner_customer = view.findViewById(R.id.spinner_customer);
         spinner_payment = view.findViewById(R.id.spinner_payment);
         text_invoice = view.findViewById(R.id.text_invoice);

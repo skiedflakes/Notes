@@ -1,8 +1,6 @@
 package com.wdysolutions.notes.Notes_Pig.Swine_Card.Action.Transfer_All_to_Farrowing;
 
-import android.app.AlertDialog;
 import android.app.Dialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentManager;
@@ -90,7 +88,7 @@ public class Transfer_Farrowing_main extends DialogFragment implements DatePicke
         displayText_pen = view.findViewById(R.id.displayText_pen);
         layout_ = view.findViewById(R.id.layout_);
         progressBar = view.findViewById(R.id.progressBar);
-        btn_date = view.findViewById(R.id.btn_date);
+        btn_date = view.findViewById(R.id.tv_date);
         btn_within = view.findViewById(R.id.btn_within);
         btn_other = view.findViewById(R.id.btn_other);
         location_layout = view.findViewById(R.id.location_layout);

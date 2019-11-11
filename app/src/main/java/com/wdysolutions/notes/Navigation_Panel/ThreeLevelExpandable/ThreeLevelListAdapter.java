@@ -29,6 +29,7 @@ import com.wdysolutions.notes.Globals.Revolving_Fund.Liquidation.Revolving_liqui
 import com.wdysolutions.notes.Globals.Revolving_Fund.Replenish.Revolving_replenish_main;
 import com.wdysolutions.notes.Globals.Revolving_Fund.Request.Revolving_request_main;
 import com.wdysolutions.notes.MainActivity;
+import com.wdysolutions.notes.Notes_Egg.Layer_Reports.Brooding_Report;
 import com.wdysolutions.notes.Notes_Pig.Farm_Statistics.by_Month.bymonth_main;
 import com.wdysolutions.notes.Notes_Pig.Farm_Statistics.by_Region.byregion_main;
 import com.wdysolutions.notes.Notes_Pig.Farm_Statistics.by_Week.byweek_main;
@@ -52,6 +53,9 @@ public class ThreeLevelListAdapter extends BaseExpandableListAdapter {
     String[] reportsThirdLevel_SD;
     String[] reportsThirdLevel_FS;
 
+    //eggnotes exclusive
+    String[] getReportsThirdLevel_LR;
+
 
     String[] CV_module;
     String[] CAV_module;
@@ -67,7 +71,7 @@ public class ThreeLevelListAdapter extends BaseExpandableListAdapter {
 
     public ThreeLevelListAdapter(Context context, String[] parentHeader, List<String[]> secondLevel, List<LinkedHashMap<String,
             String[]>> data, String[] reportsThirdLevel_SP,String[] reportsThirdLevel_IS,String[] reportsThirdLevel_SD,String[] reportsThirdLevel_FS,String[] CV_module,
-                                 String[] CAV_module, String[] PC_module,String[] RF_module) {
+                                 String[] CAV_module, String[] PC_module,String[] RF_module,String[] getReportsThirdLevel_LR) {
         this.context = context;
         this.parentHeaders = parentHeader;
         this.secondLevel = secondLevel;
@@ -80,6 +84,9 @@ public class ThreeLevelListAdapter extends BaseExpandableListAdapter {
         this.CAV_module=CAV_module;
         this.PC_module=PC_module;
         this.RF_module=RF_module;
+
+        //eggnotes exclusive
+        this.getReportsThirdLevel_LR = getReportsThirdLevel_LR;
 
     }
 
@@ -251,6 +258,11 @@ public class ThreeLevelListAdapter extends BaseExpandableListAdapter {
                             }else if (selected_thirdlevel.equals("Replenish")) {
                                 switch_module(new Revolving_replenish_main(), context);
                             }
+                        }else if(selected_secondLevel.equals("Layer Reports")){
+                            String selected_thirdlevel = getReportsThirdLevel_LR[i1];
+                            if (selected_thirdlevel.equals("Brooding Report")) {
+                                switch_module(new Brooding_Report(), context);
+                            }
                         }
                 }
 
@@ -279,8 +291,5 @@ public class ThreeLevelListAdapter extends BaseExpandableListAdapter {
             Constants.nav_close_open = false;
         }
     }
-
-
-
 
 }

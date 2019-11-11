@@ -106,7 +106,7 @@ public class Abort_main extends DialogFragment implements DatePickerSelectionInt
 
         loading_pen = view.findViewById(R.id.loading_pen);
         layout_add = view.findViewById(R.id.layout_add);
-        btn_date = view.findViewById(R.id.btn_date);
+        btn_date = view.findViewById(R.id.tv_date);
         spinner_building = view.findViewById(R.id.spinner_building);
         spinner_pen = view.findViewById(R.id.spinner_pen);
         spinner_cause = view.findViewById(R.id.spinner_cause);

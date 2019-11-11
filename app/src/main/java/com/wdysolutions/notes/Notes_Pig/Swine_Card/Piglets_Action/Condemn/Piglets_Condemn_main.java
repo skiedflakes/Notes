@@ -97,7 +97,7 @@ public class Piglets_Condemn_main  extends DialogFragment implements DatePickerS
 
         layout_ = view.findViewById(R.id.layout_);
         progressBar = view.findViewById(R.id.progressBar);
-        btn_date = view.findViewById(R.id.btn_date);
+        btn_date = view.findViewById(R.id.tv_date);
         spinner_cause = view.findViewById(R.id.spinner_cause);
         edittext_remarks = view.findViewById(R.id.edittext_remarks);
         loading_save = view.findViewById(R.id.loading_save);

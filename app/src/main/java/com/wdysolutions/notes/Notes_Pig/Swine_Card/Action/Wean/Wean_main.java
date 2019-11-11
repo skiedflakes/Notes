@@ -170,7 +170,7 @@ public class Wean_main extends DialogFragment implements DatePickerSelectionInte
         spinner_pen_piglets = view.findViewById(R.id.spinner_pen_piglets);
         spinner_building = view.findViewById(R.id.spinner_building);
         checkbox_piglets = view.findViewById(R.id.checkbox_piglets);
-        btn_date = view.findViewById(R.id.btn_date);
+        btn_date = view.findViewById(R.id.tv_date);
         btn_save = view.findViewById(R.id.btn_save);
         layout_wean_add = view.findViewById(R.id.layout_wean_add);
         layout_ = view.findViewById(R.id.layout_);

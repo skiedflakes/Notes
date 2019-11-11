@@ -140,6 +140,8 @@ public class frag_Nav_main extends Fragment {
     String[] reportsThirdLevel_FS;
     String[] reportsThirdLevel_PR;
 
+    //eggnotes array
+    String [] getReportsThirdLevel_LR;
 
     String[] expense_CV;
     String[] expense_PC;
@@ -202,11 +204,16 @@ public class frag_Nav_main extends Fragment {
             thirdLevelReports.put(reportsSecondLevel[0], reportsThirdLevel_IS);
             thirdLevelReports.put(reportsSecondLevel[1], null);
         }else if(selected_notes.equals(getResources().getString(R.string.eggNOTES))){
-            String[] reportsSecondLevel = new String[]{"Income Statement","Price Watch"};
+            String[] reportsSecondLevel = new String[]{"Income Statement","Price Watch","Layer Reports"};
             secondLevel.add(reportsSecondLevel);
             reportsThirdLevel_IS = new String[]{"Periodic","Perpetual"};
+
+            //exclusive eggnotes
+            getReportsThirdLevel_LR= new String[]{"Brooding Report"};
+
             thirdLevelReports.put(reportsSecondLevel[0], reportsThirdLevel_IS);
             thirdLevelReports.put(reportsSecondLevel[1], null);
+            thirdLevelReports.put(reportsSecondLevel[2], getReportsThirdLevel_LR);
         }else if(selected_notes.equals(getResources().getString(R.string.broNOTES))){
             String[] reportsSecondLevel = new String[]{"Income Statement","Price Watch"};
             secondLevel.add(reportsSecondLevel);
@@ -223,7 +230,7 @@ public class frag_Nav_main extends Fragment {
 
 
         ThreeLevelListAdapter threeLevelListAdapterAdapter = new ThreeLevelListAdapter(getActivity(), parent, secondLevel, data,reportsThirdLevel_SP,
-                reportsThirdLevel_IS,reportsThirdLevel_SD,reportsThirdLevel_FS,CV_module,CAV_module,PC_module,RF_module);
+                reportsThirdLevel_IS,reportsThirdLevel_SD,reportsThirdLevel_FS,CV_module,CAV_module,PC_module,RF_module,getReportsThirdLevel_LR);
         expandableListView.setAdapter(threeLevelListAdapterAdapter);
 
         // OPTIONAL : Show one list at a time
@@ -443,6 +450,7 @@ public class frag_Nav_main extends Fragment {
                             report_counter++;
 
                         } else if (r_name.equals("Income Statement")) {
+
                             reportsThirdLevel_IS = new String[sqLite.get_income_statement(r_menu_id, program_code, selectedBranch).size()];
                             for (int y = 0; y < sqLite.get_income_statement(r_menu_id, program_code, selectedBranch).size(); y++) {
                                 Menu_model d_menu = sqLite.get_income_statement(r_menu_id, program_code, selectedBranch).get(y);
@@ -463,6 +471,23 @@ public class frag_Nav_main extends Fragment {
                             reportsSecondLevel[report_counter] = r_name;
                             thirdLevelReports.put(reportsSecondLevel[report_counter], null);
                             report_counter++;
+                        } else if(r_name.equals("Layer Reports")){
+
+                            getReportsThirdLevel_LR = new String[sqLite.get_layer_reports(r_menu_id, program_code, selectedBranch).size()];
+                            for (int y = 0; y < sqLite.get_layer_reports(r_menu_id, program_code, selectedBranch).size(); y++) {
+                                Menu_model d_menu = sqLite.get_layer_reports(r_menu_id, program_code, selectedBranch).get(y);
+                                String d_menu_id = d_menu.getMenu_id();
+                                String d_level = d_menu.getLevel();
+                                String d_parent = d_menu.getParent();
+                                String d_name = d_menu.getMenu_name();
+
+                                if (d_name.equals("Brooding Report") ) {
+                                    getReportsThirdLevel_LR[y] = d_name;
+                                }
+                            }
+                            reportsSecondLevel[report_counter] = r_name;
+                            thirdLevelReports.put(reportsSecondLevel[report_counter], getReportsThirdLevel_LR);
+                            report_counter++;
                         }
                     }
                     secondLevel.add(reportsSecondLevel);
@@ -474,7 +499,7 @@ public class frag_Nav_main extends Fragment {
             expandableListView = view.findViewById(R.id.expandible_listview);
             ThreeLevelListAdapter threeLevelListAdapterAdapter = new ThreeLevelListAdapter(getActivity(), parent, secondLevel, data, reportsThirdLevel_SP, reportsThirdLevel_IS, reportsThirdLevel_SD
                     , reportsThirdLevel_FS, expense_CV, expense_CAV,
-                    expense_PC, expense_RF);
+                    expense_PC, expense_RF,getReportsThirdLevel_LR);
             expandableListView.setAdapter(threeLevelListAdapterAdapter);
 
             // OPTIONAL : Show one list at a time

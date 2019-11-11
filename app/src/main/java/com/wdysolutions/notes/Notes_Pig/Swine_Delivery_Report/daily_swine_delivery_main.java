@@ -274,16 +274,16 @@ public class daily_swine_delivery_main extends Fragment implements DatePickerSel
     }
 
 
-//    TableViewAdapter mTableViewAdapter;
+//    TableViewAdapter_br mTableViewAdapter;
 //    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
 //    private void initializeTableView() {
-//        mTableViewAdapter = new TableViewAdapter(getContext());
+//        mTableViewAdapter = new TableViewAdapter_br(getContext());
 //        tableview.setAdapter(mTableViewAdapter);
 //        tableview.setRowHeaderWidth(700);
 //    }
 //
-//    List<List<Cell>> cellList;
-//    List<Cell> cell;
+//    List<List<Cell_br>> cellList;
+//    List<Cell_br> cell;
 //    ArrayList<RowHeader_swineDelivery> rowHeader_swineDeliveries;
 //    public void get_details(final String type) {
 //        loading_.setVisibility(View.VISIBLE);
@@ -310,7 +310,7 @@ public class daily_swine_delivery_main extends Fragment implements DatePickerSel
 //                                jsonObject1.getString("customer"),
 //                                jsonObject1.getString("heads")));
 //
-//                        cell.add(new Cell(jsonObject1.getString("reference_num"),
+//                        cell.add(new Cell_br(jsonObject1.getString("reference_num"),
 //                                jsonObject1.getString("total_weight"),
 //                                jsonObject1.getString("total_cost"),
 //                                jsonObject1.getString("ave_cost"),

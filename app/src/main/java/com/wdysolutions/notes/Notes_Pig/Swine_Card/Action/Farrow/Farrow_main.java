@@ -101,7 +101,7 @@ public class Farrow_main extends DialogFragment implements DatePickerSelectionIn
         spinner_genetic_breed = view.findViewById(R.id.spinner_genetic_breed);
         spinner_genetic_line = view.findViewById(R.id.spinner_genetic_line);
         spinner_progeny = view.findViewById(R.id.spinner_progeny);
-        btn_date = view.findViewById(R.id.btn_date);
+        btn_date = view.findViewById(R.id.tv_date);
         recyclerView_add = view.findViewById(R.id.recyclerView_add);
         loading_save = view.findViewById(R.id.loading_save);
         btn_save = view.findViewById(R.id.btn_save);

@@ -84,7 +84,7 @@ public class Transfer_Pen_main extends DialogFragment implements DatePickerSelec
         displayText_pen = view.findViewById(R.id.displayText_pen);
         layout_ = view.findViewById(R.id.layout_);
         progressBar = view.findViewById(R.id.progressBar);
-        btn_date = view.findViewById(R.id.btn_date);
+        btn_date = view.findViewById(R.id.tv_date);
         btn_within = view.findViewById(R.id.btn_within);
         btn_other = view.findViewById(R.id.btn_other);
         location_layout = view.findViewById(R.id.location_layout);

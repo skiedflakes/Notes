@@ -4,7 +4,6 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -73,7 +72,7 @@ public class PettyCash_replenish_main extends Fragment implements DatePickerSele
 
 
         btn_generate_report = view.findViewById(R.id.btn_generate_report);
-        btn_end_date = view.findViewById(R.id.btn_end_date);
+        btn_end_date = view.findViewById(R.id.tv_date);
         btn_start_date = view.findViewById(R.id.btn_start_date);
         progressBar2 = view.findViewById(R.id.progressBar2);
         details_ = view.findViewById(R.id.details_);

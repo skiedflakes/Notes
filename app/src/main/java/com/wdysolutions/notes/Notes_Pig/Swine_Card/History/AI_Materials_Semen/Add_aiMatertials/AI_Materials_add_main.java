@@ -1,8 +1,6 @@
 package com.wdysolutions.notes.Notes_Pig.Swine_Card.History.AI_Materials_Semen.Add_aiMatertials;
 
-import android.app.AlertDialog;
 import android.app.Dialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentManager;
@@ -75,7 +73,7 @@ public class AI_Materials_add_main extends DialogFragment implements DatePickerS
         swine_scanned_id = getArguments().getString("swine_scanned_id");
 
         layout_add = view.findViewById(R.id.layout_add);
-        btn_date = view.findViewById(R.id.btn_date);
+        btn_date = view.findViewById(R.id.tv_date);
         spinner_materials = view.findViewById(R.id.spinner_materials);
         input_qty = view.findViewById(R.id.input_qty);
         btn_save = view.findViewById(R.id.btn_save);

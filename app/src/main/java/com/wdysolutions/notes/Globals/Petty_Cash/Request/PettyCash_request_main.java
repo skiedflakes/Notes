@@ -77,7 +77,7 @@ public class PettyCash_request_main extends Fragment implements DatePickerSelect
         progressBar2 = view.findViewById(R.id.progressBar2);
         details_ = view.findViewById(R.id.details_);
         btn_start_date = view.findViewById(R.id.btn_start_date);
-        btn_end_date = view.findViewById(R.id.btn_end_date);
+        btn_end_date = view.findViewById(R.id.tv_date);
         btn_generate_report = view.findViewById(R.id.btn_generate_report);
         sv_swine_sales = view.findViewById(R.id.sv_swine_sales);
         rec_cv = view.findViewById(R.id.rec_cv);
