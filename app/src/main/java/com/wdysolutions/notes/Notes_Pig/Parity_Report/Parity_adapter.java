@@ -4,16 +4,12 @@ import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.v4.app.DialogFragment;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.components.XAxis;
@@ -21,13 +17,6 @@ import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
-import com.google.gson.Gson;
-import com.wdysolutions.notes.MainActivity;
-import com.wdysolutions.notes.Notes_Pig.Farm_Statistics.Graph.CustomMarkerView;
-import com.wdysolutions.notes.Notes_Pig.Farm_Statistics.Graph.MyValueFormatter;
-import com.wdysolutions.notes.Notes_Pig.Swine_Delivery_Report.Swine_Sales_Report.Swine_delivery_sales_main;
-import com.wdysolutions.notes.Notes_Pig.Swine_Delivery_Report.daily_swine_adapter;
-import com.wdysolutions.notes.Notes_Pig.Swine_Delivery_Report.daily_swine_delivery_model;
 import com.wdysolutions.notes.R;
 
 import org.json.JSONArray;
@@ -130,5 +119,4 @@ public class Parity_adapter extends RecyclerView.Adapter<Parity_adapter.MyHolder
         catch (JSONException e){}
         catch (Exception e){}
     }
-
 }
