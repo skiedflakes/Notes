@@ -360,68 +360,24 @@ public class Brooding_Report extends Fragment implements DatePickerSelectionInte
             Constants.BR_ColumnHeader.add(new BR_ColumnHeader(String.valueOf(i), static_title_row));
         }
 
-//
-//        for (int i=0; i<cell_size; i++){
-//            List<BR_Cell> actual_list = new ArrayList<>();
-//
-//                    for (int ii=0; ii<3; ii++){
-//                        JSONObject jsonObject1 = (JSONObject)jsonArray_data.get(ii+3*i);
-//
-//                        String breed = jsonObject1.getString("breed");
-//                        String running_population = jsonObject1.getString("running_population");
-//                        String initial_population = jsonObject1.getString("initial_population");
-//
-//                       // actual_list.add( new BR_Cell(String.valueOf(ii),breed));
-//                        if(ii==0){
-//                            actual_list.add( new BR_Cell(String.valueOf(ii),breed));
-//                        }else if(ii==1){
-//                            actual_list.add( new BR_Cell(String.valueOf(ii),running_population));
-//                        }else if(ii==2){
-//                            actual_list.add( new BR_Cell(String.valueOf(ii),initial_population));
-//                        }
-//                    }
-//
-//                    rowList.add(actual_list);
-//        }
-
-        //add breed list data
-
-//        for (int i=0; i<jsonArray_data.length(); i++){
-//            List<BR_Cell> breed_list = new ArrayList<>();
-//            JSONObject jsonObject1 = (JSONObject)jsonArray_data.get(i);
-//            String breed = jsonObject1.getString("breed");
-//            breed_list.add( new BR_Cell(String.valueOf(i),breed));
-//            rowList.add(breed_list);
-//        }
-
-
-        //add running_population list data
-//
-//        for (int i=0; i<jsonArray_data.length(); i++){
-//            List<BR_Cell> running_population_list  = new ArrayList<>();
-//            JSONObject jsonObject1 = (JSONObject)jsonArray_data.get(i);
-//            String rp = jsonObject1.getString("running_population");
-//            running_population_list.add( new BR_Cell(String.valueOf(i),rp));
-//            rowList.add(running_population_list);
-//        }
 
 
 
+        for(int i=0; i<jsonArray_data.length(); i++){
+            List<BR_Cell> cell_list = new ArrayList<>();
 
-        for(int i=0; i<2; i++){
-            List<BR_Cell> breed_list = new ArrayList<>();
-            List<BR_Cell> running_population_list  = new ArrayList<>();
 
             JSONObject jsonObject1 = (JSONObject)jsonArray_data.get(i);
             String breed = jsonObject1.getString("breed");
+            String ip = jsonObject1.getString("initial_population");
             String rp = jsonObject1.getString("running_population");
 
+            cell_list.add( new BR_Cell(String.valueOf(i),breed));
+            cell_list.add( new BR_Cell(String.valueOf(i),ip));
+            cell_list.add( new BR_Cell(String.valueOf(i),rp));
 
-            breed_list.add( new BR_Cell(String.valueOf(i),breed));
-            running_population_list.add( new BR_Cell(String.valueOf(i),rp));
-            rowList.add(breed_list);
-            rowList.add(running_population_list);
 
+            rowList.add(cell_list);
 
         }
 
