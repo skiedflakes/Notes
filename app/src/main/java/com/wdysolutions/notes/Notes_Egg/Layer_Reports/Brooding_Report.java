@@ -1,5 +1,6 @@
 package com.wdysolutions.notes.Notes_Egg.Layer_Reports;
 
+import android.annotation.TargetApi;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -21,12 +22,21 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.evrencoskun.tableview.TableView;
 import com.wdysolutions.notes.AppController;
 import com.wdysolutions.notes.Constants;
 import com.wdysolutions.notes.DatePicker.DatePickerCustom;
 import com.wdysolutions.notes.DatePicker.DatePickerSelectionInterfaceCustom;
 import com.wdysolutions.notes.MainActivity;
 
+import com.wdysolutions.notes.Notes_Egg.Layer_Reports.brooding_report_tableview.BR_TableViewAdapter;
+import com.wdysolutions.notes.Notes_Egg.Layer_Reports.brooding_report_tableview.model.BR_Cell;
+import com.wdysolutions.notes.Notes_Egg.Layer_Reports.brooding_report_tableview.model.BR_ColumnHeader;
+import com.wdysolutions.notes.Notes_Egg.Layer_Reports.brooding_report_tableview.model.BR_RowHeader;
+import com.wdysolutions.notes.Notes_Pig.Swine_Population.byAge.tableview.SP_TableViewAdapter;
+import com.wdysolutions.notes.Notes_Pig.Swine_Population.byAge.tableview.model.SP_Cell;
+import com.wdysolutions.notes.Notes_Pig.Swine_Population.byAge.tableview.model.SP_ColumnHeader;
+import com.wdysolutions.notes.Notes_Pig.Swine_Population.byAge.tableview.model.SP_RowHeader;
 import com.wdysolutions.notes.R;
 import com.wdysolutions.notes.SharedPref;
 
@@ -59,8 +69,11 @@ public class Brooding_Report extends Fragment implements DatePickerSelectionInte
     Spinner spinner_batch;
     LinearLayout btn_generate_report;
 
-    //allbatch recyclerview
-    RecyclerView rec_batch_name,rec_details; //batch_name
+    //tableview
+    List<List<BR_Cell>> rowList = new ArrayList<>();
+    ArrayList<BR_RowHeader> br_rowheader;
+    BR_TableViewAdapter mTableViewAdapter;
+    TableView mTableView;
 
 
     @Override
@@ -82,8 +95,9 @@ public class Brooding_Report extends Fragment implements DatePickerSelectionInte
         //module
         btn_generate_report = view.findViewById(R.id.btn_generate_report);
         tv_date = view.findViewById(R.id.tv_date);
-        rec_batch_name = view.findViewById(R.id.rec_batch_name);
-        rec_details = view.findViewById(R.id.rec_details);
+
+        //layout
+        mTableView = view.findViewById(R.id.BR_tableview);
 
         //onclick
         tv_date.setOnClickListener(new View.OnClickListener() {
@@ -204,9 +218,8 @@ public class Brooding_Report extends Fragment implements DatePickerSelectionInte
         selected_date = date;
         tv_date.setText(selected_date);
     }
-    //allbatch
-    ArrayList<all_batch_header_model> all_batch_side_header;
-    ArrayList<all_batch_data_model> all_batch_data;
+
+
     public void get_brooding_overall(){
 
         String URL = getString(R.string.URL_online)+"brooding_report/brooding_overall.php";
@@ -218,37 +231,61 @@ public class Brooding_Report extends Fragment implements DatePickerSelectionInte
                 try {
                     JSONObject jsonObject = new JSONObject(response);
 
+
                     //------- BATCH NAME
-                    all_batch_side_header = new ArrayList<>();
-                    JSONArray jsonArray_data = jsonObject.getJSONArray("data");
-
-                    for (int i=0; i<jsonArray_data.length(); i++){
-                        JSONObject jsonObject1 = (JSONObject)jsonArray_data.get(i);
-
-                        all_batch_side_header.add( new all_batch_header_model(jsonObject1.getString("batch_name")));
-                    }
-                    Brooding_Report_allbatch_sideheader_adapter adapter_header = new Brooding_Report_allbatch_sideheader_adapter(getContext(), all_batch_side_header);
-                    rec_batch_name.setLayoutManager(new LinearLayoutManager(getActivity()));
-                    rec_batch_name.setAdapter(adapter_header);
-                  //  rec_batch_name.setNestedScrollingEnabled(false);
-
+//                    br_rowheader = new ArrayList<>();
+//                    JSONArray jsonArray_data = jsonObject.getJSONArray("data");
+//                    int cell_size = jsonArray_data.length();
+//                    for (int i=0; i<jsonArray_data.length(); i++){
+//                        JSONObject jsonObject1 = (JSONObject)jsonArray_data.get(i);
+//
+//                        br_rowheader.add( new BR_RowHeader(String.valueOf(i),jsonObject1.getString("batch_name")));
+//                    }
 
 //                    //------- DATA
-                    all_batch_data = new ArrayList<>();
 
-                    for (int i=0; i<jsonArray_data.length(); i++){
-                        JSONObject jsonObject1 = (JSONObject)jsonArray_data.get(i);
+//                    List<BR_Cell> actual_list = new ArrayList<>();
+//                    for (int i=0; i<jsonArray_data.length(); i++){
+//                        JSONObject jsonObject1 = (JSONObject)jsonArray_data.get(i);
+//
+//                        String breed = jsonObject1.getString("breed");
+//                        String running_population = jsonObject1.getString("running_population");
+//                        String initial_population = jsonObject1.getString("initial_population");
+//
+//                        actual_list.add( new BR_Cell(String.valueOf(i),breed,running_population,initial_population));
+//                    }
+//
+//                    rowList.add(actual_list);
 
-                        String breed = jsonObject1.getString("breed");
-                        String running_population = jsonObject1.getString("running_population");
-                        String initial_population = jsonObject1.getString("initial_population");
 
-                        all_batch_data.add( new all_batch_data_model(breed,running_population,initial_population));
-                    }
-                    Brooding_Report_allbatch_adapter adapter_data = new Brooding_Report_allbatch_adapter(getContext(), all_batch_data);
-                    rec_details.setLayoutManager(new LinearLayoutManager(getActivity()));
-                    rec_details.setAdapter(adapter_data);
-                   // rec_details.setNestedScrollingEnabled(false);
+//                    for (int i=0; i<3; i++){
+//
+//                        List<BR_Cell> actual_list = new ArrayList<>();
+//
+//                        for (int ii=0; ii<cell_size; ii++){
+//                            JSONObject Obj2 = (JSONObject) jsonArray_data.get(ii+cell_size*i);
+//                            if(i==0){
+//                                String breed = Obj2.getString("breed");
+//                                actual_list.add( new BR_Cell(String.valueOf(i),breed));
+//                            }else if(i==1){
+//                                String running_population = Obj2.getString("running_population");
+//                                actual_list.add( new BR_Cell(String.valueOf(i),running_population));
+//                            }else if (i==2){
+//                                String initial_population = Obj2.getString("initial_population");
+//                                actual_list.add( new BR_Cell(String.valueOf(i),initial_population));
+//                            }
+//
+//
+//                        }
+//                        rowList.add(actual_list);
+//                    }
+
+
+
+                    initializeTableView();
+                    generate_table(jsonObject);
+
+
 
 
                 } catch (JSONException e) {
@@ -282,5 +319,122 @@ public class Brooding_Report extends Fragment implements DatePickerSelectionInte
         AppController.getInstance().setVolleyDuration(stringRequest);
         AppController.getInstance().addToRequestQueue(stringRequest);
     }
+
+
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    private void initializeTableView() {
+        mTableViewAdapter = new BR_TableViewAdapter(getContext(),selected_date);
+        mTableView.setAdapter(mTableViewAdapter);
+        //mTableView.setTableViewListener(new TableViewListener(mTableView));
+        mTableView.setNestedScrollingEnabled(false);
+        mTableView.setRowHeaderWidth(300);
+    }
+
+    int ColumnHeader_size =3;
+    String static_title_row;
+
+    public void generate_table(JSONObject jObject) throws JSONException {
+
+        //------- BATCH NAME
+        br_rowheader = new ArrayList<>();
+        JSONArray jsonArray_data = jObject.getJSONArray("data");
+        int cell_size = jsonArray_data.length();
+
+        for (int i=0; i<jsonArray_data.length(); i++){
+            JSONObject jsonObject1 = (JSONObject)jsonArray_data.get(i);
+
+            br_rowheader.add( new BR_RowHeader(String.valueOf(i),jsonObject1.getString("batch_name")));
+        }
+
+        Constants.BR_ColumnHeader = new ArrayList<>();
+
+        for (int i=0; i<ColumnHeader_size; i++){
+
+            if(i==0){
+                static_title_row="Breed";
+            }else if(i==1){
+                static_title_row="INITIAL POPULATION";
+            }else if(i==2){
+                static_title_row="RUNNING POPULATION";
+            }
+            Constants.BR_ColumnHeader.add(new BR_ColumnHeader(String.valueOf(i), static_title_row));
+        }
+
+//
+//        for (int i=0; i<cell_size; i++){
+//            List<BR_Cell> actual_list = new ArrayList<>();
+//
+//                    for (int ii=0; ii<3; ii++){
+//                        JSONObject jsonObject1 = (JSONObject)jsonArray_data.get(ii+3*i);
+//
+//                        String breed = jsonObject1.getString("breed");
+//                        String running_population = jsonObject1.getString("running_population");
+//                        String initial_population = jsonObject1.getString("initial_population");
+//
+//                       // actual_list.add( new BR_Cell(String.valueOf(ii),breed));
+//                        if(ii==0){
+//                            actual_list.add( new BR_Cell(String.valueOf(ii),breed));
+//                        }else if(ii==1){
+//                            actual_list.add( new BR_Cell(String.valueOf(ii),running_population));
+//                        }else if(ii==2){
+//                            actual_list.add( new BR_Cell(String.valueOf(ii),initial_population));
+//                        }
+//                    }
+//
+//                    rowList.add(actual_list);
+//        }
+
+        //add breed list data
+
+//        for (int i=0; i<jsonArray_data.length(); i++){
+//            List<BR_Cell> breed_list = new ArrayList<>();
+//            JSONObject jsonObject1 = (JSONObject)jsonArray_data.get(i);
+//            String breed = jsonObject1.getString("breed");
+//            breed_list.add( new BR_Cell(String.valueOf(i),breed));
+//            rowList.add(breed_list);
+//        }
+
+
+        //add running_population list data
+//
+//        for (int i=0; i<jsonArray_data.length(); i++){
+//            List<BR_Cell> running_population_list  = new ArrayList<>();
+//            JSONObject jsonObject1 = (JSONObject)jsonArray_data.get(i);
+//            String rp = jsonObject1.getString("running_population");
+//            running_population_list.add( new BR_Cell(String.valueOf(i),rp));
+//            rowList.add(running_population_list);
+//        }
+
+
+
+
+        for(int i=0; i<2; i++){
+            List<BR_Cell> breed_list = new ArrayList<>();
+            List<BR_Cell> running_population_list  = new ArrayList<>();
+
+            JSONObject jsonObject1 = (JSONObject)jsonArray_data.get(i);
+            String breed = jsonObject1.getString("breed");
+            String rp = jsonObject1.getString("running_population");
+
+
+            breed_list.add( new BR_Cell(String.valueOf(i),breed));
+            running_population_list.add( new BR_Cell(String.valueOf(i),rp));
+            rowList.add(breed_list);
+            rowList.add(running_population_list);
+
+
+        }
+
+
+
+
+        mTableViewAdapter.setAllItems(Constants.BR_ColumnHeader,
+                br_rowheader,
+                rowList);
+
+
+    }
+
+
 
 }

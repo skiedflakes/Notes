@@ -1,5 +1,6 @@
 package com.wdysolutions.notes;
 
+import com.wdysolutions.notes.Notes_Egg.Layer_Reports.brooding_report_tableview.model.BR_ColumnHeader;
 import com.wdysolutions.notes.Notes_Pig.Farm_Statistics.by_Month.tableview.model.RowHeader_byMonth;
 import com.wdysolutions.notes.Notes_Pig.Farm_Statistics.by_Week.Spinner_Check.Weeks_model;
 import com.wdysolutions.notes.Notes_Pig.Farm_Statistics.by_Week.tableview.model.RowHeader;
@@ -25,6 +26,7 @@ public class Constants {
    public static List<ColumnHeader_byClassi> byClassi_list; // Swine Population by classification
    public static ArrayList<SP_ColumnHeader> SP_ColumnHeader; // Swine Population by age
    public static ArrayList<String> SP_type; // Swine Population by age
+   public static ArrayList<com.wdysolutions.notes.Notes_Egg.Layer_Reports.brooding_report_tableview.model.BR_ColumnHeader> BR_ColumnHeader; // Swine Population by age
 
 
    //dialog request codes

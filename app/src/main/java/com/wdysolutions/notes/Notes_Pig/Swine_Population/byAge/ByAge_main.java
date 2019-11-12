@@ -267,6 +267,7 @@ public class ByAge_main extends Fragment implements DatePickerSelectionInterface
             }
         }catch (Exception e){}
     }
+
 int cell_size = 18;
 String static_title_row;
     public List<SP_RowHeader> getRowHeaderList() {
