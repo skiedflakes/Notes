@@ -148,7 +148,7 @@ public class frag_Login_main extends Fragment {
             public void onErrorResponse(VolleyError error) {
                 btn_save.setText("Login");
                 btn_save.setClickable(true);
-                Toast.makeText(getActivity(), error.toString(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "Error Internet Connection", Toast.LENGTH_SHORT).show();
             }
         }){
             @Override

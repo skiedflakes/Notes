@@ -53,6 +53,11 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/all_batch_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+        <LinearLayout
             android:id="@+id/l_end_date"
             android:layout_width="match_parent"
             android:layout_height="40dp"
@@ -78,9 +83,6 @@
                 android:text="" />
 
         </LinearLayout>
-
-
-
 
 
         <LinearLayout
@@ -132,5 +134,128 @@
         </RelativeLayout>
 
 
+
+
+        </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/by_batch_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/bg_border"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="@dimen/dialogFragment_layout_spinner"
+            android:visibility="visible">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:text="Type: "
+                android:textStyle="bold" />
+
+            <Spinner
+                android:id="@+id/spinner_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            >
+
+
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/bg_border"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="@dimen/dialogFragment_layout_spinner"
+            android:visibility="visible"
+           android:layout_weight="1">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:text="From: "
+                android:textStyle="bold" />
+
+            <Spinner
+                android:id="@+id/spinner_from"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="" />
+
+        </LinearLayout>
+
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/bg_border"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="@dimen/dialogFragment_layout_spinner"
+            android:visibility="visible"
+            android:layout_weight="1">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:text="To: "
+                android:textStyle="bold" />
+
+            <Spinner
+                android:id="@+id/spinner_to"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="" />
+
+        </LinearLayout>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/btn_by_batch_generate"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="5dp"
+            android:background="@color/color_btn_green"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="@dimen/dialogFragment_layout_spinner"
+            android:visibility="visible">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:text="Generate Report"
+                android:textAllCaps="true"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
+
+        </LinearLayout>
     </LinearLayout>
+    </LinearLayout>
+
 </FrameLayout>

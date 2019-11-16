@@ -18,6 +18,7 @@
 package com.wdysolutions.notes.Notes_Egg.Layer_Reports.brooding_report_tableview.holder;
 
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.evrencoskun.tableview.ITableView;
@@ -32,12 +33,13 @@ public class BR_ColumnHeaderViewHolder extends AbstractSorterViewHolder {
 
     public final TextView column_header_textview;
     public final ITableView tableView;
+    public final LinearLayout column_header_container;
 
     public BR_ColumnHeaderViewHolder(View itemView, ITableView tableView) {
         super(itemView);
         this.tableView = tableView;
         column_header_textview = itemView.findViewById(R.id.column_header_textView);
-
+        column_header_container= itemView.findViewById(R.id.column_header_container);
     }
 
 

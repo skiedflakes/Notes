@@ -48,8 +48,70 @@ public class BR_TableViewAdapter extends AbstractTableAdapter<BR_ColumnHeader, B
     public void onBindCellViewHolder(AbstractViewHolder holder, Object cellItemModel, final int columnPosition, final int rowPosition) {
         BR_Cell cell = (BR_Cell) cellItemModel;
         BR_CellViewHolder cellViewHolder = (BR_CellViewHolder)holder;
-        cellViewHolder.data1.setText(cell.getData1());
 
+        cellViewHolder.data1.setText(cell.getData1());
+        cellViewHolder.data2.setText(cell.getData2());
+        cellViewHolder.data3.setText(cell.getData3());
+        cellViewHolder.data4.setText(cell.getData4());
+        cellViewHolder.data5.setText(cell.getData5());
+        cellViewHolder.data6.setText(cell.getData6());
+
+        //cell visibility
+        if(cell.getMortality()){ // if cell is mortality
+            cellViewHolder.data2.setVisibility(View.VISIBLE);
+            cellViewHolder.data3.setVisibility(View.VISIBLE);
+            cellViewHolder.data4.setVisibility(View.VISIBLE);
+            cellViewHolder.data5.setVisibility(View.VISIBLE);
+            cellViewHolder.data6.setVisibility(View.VISIBLE);
+
+        }else if(cell.getDepopulation()){ // if cell is depopulationBR_ColumnHeaderViewHolder
+            cellViewHolder.data2.setVisibility(View.VISIBLE);
+            cellViewHolder.data3.setVisibility(View.GONE);
+            cellViewHolder.data4.setVisibility(View.GONE);
+            cellViewHolder.data5.setVisibility(View.GONE);
+            cellViewHolder.data6.setVisibility(View.GONE);
+
+        }else if(cell.getFeeds()){ // if cell is feeds
+            cellViewHolder.data2.setVisibility(View.VISIBLE);
+            cellViewHolder.data3.setVisibility(View.VISIBLE);
+            cellViewHolder.data4.setVisibility(View.GONE);
+            cellViewHolder.data5.setVisibility(View.GONE);
+            cellViewHolder.data6.setVisibility(View.GONE);
+
+        }else if(cell.getBody_weight()){ // if cell is body weight
+            cellViewHolder.data2.setVisibility(View.VISIBLE);
+            cellViewHolder.data3.setVisibility(View.VISIBLE);
+            cellViewHolder.data4.setVisibility(View.VISIBLE);
+            cellViewHolder.data5.setVisibility(View.VISIBLE);
+            cellViewHolder.data6.setVisibility(View.GONE);
+
+        }else{
+            cellViewHolder.data2.setVisibility(View.GONE);
+            cellViewHolder.data3.setVisibility(View.GONE);
+            cellViewHolder.data4.setVisibility(View.GONE);
+            cellViewHolder.data5.setVisibility(View.GONE);
+            cellViewHolder.data6.setVisibility(View.GONE);
+
+        }
+
+        //set row color
+        if(rowPosition==0){
+            cellViewHolder.data1.setBackgroundColor(mContext.getResources().getColor(R.color.egg_reports_side_header));
+            cellViewHolder.data2.setBackgroundColor(mContext.getResources().getColor(R.color.egg_reports_side_header));
+            cellViewHolder.data3.setBackgroundColor(mContext.getResources().getColor(R.color.egg_reports_side_header));
+            cellViewHolder.data4.setBackgroundColor(mContext.getResources().getColor(R.color.egg_reports_side_header));
+            cellViewHolder.data5.setBackgroundColor(mContext.getResources().getColor(R.color.egg_reports_side_header));
+            cellViewHolder.data6.setBackgroundColor(mContext.getResources().getColor(R.color.egg_reports_side_header));
+
+        }else{
+            cellViewHolder.data1.setBackgroundColor(mContext.getResources().getColor(R.color.egg_reports_cell));
+            cellViewHolder.data2.setBackgroundColor(mContext.getResources().getColor(R.color.egg_reports_cell));
+            cellViewHolder.data3.setBackgroundColor(mContext.getResources().getColor(R.color.egg_reports_cell));
+            cellViewHolder.data4.setBackgroundColor(mContext.getResources().getColor(R.color.egg_reports_cell));
+            cellViewHolder.data5.setBackgroundColor(mContext.getResources().getColor(R.color.egg_reports_cell));
+            cellViewHolder.data6.setBackgroundColor(mContext.getResources().getColor(R.color.egg_reports_cell));
+
+        }
 
     }
 
@@ -64,7 +126,8 @@ public class BR_TableViewAdapter extends AbstractTableAdapter<BR_ColumnHeader, B
     public void onBindColumnHeaderViewHolder(AbstractViewHolder holder, Object columnHeaderItemModel, int columnPosition) {
         BR_ColumnHeader columnHeader = (BR_ColumnHeader) columnHeaderItemModel;
         BR_ColumnHeaderViewHolder columnHeaderViewHolder = (BR_ColumnHeaderViewHolder)holder;
-         columnHeaderViewHolder.column_header_textview.setText(columnHeader.getData());
+
+        columnHeaderViewHolder.column_header_textview.setText(columnHeader.getData());
 
     }
 

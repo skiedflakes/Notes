@@ -94,4 +94,9 @@
     <color name="btn_color1">#3a9436</color>
     <color name="btn_color2">#54c450</color>
 
+<!--    table egg reports color-->
+    <color name="egg_reports_cell">#E7E4B5</color>
+    <color name="egg_reports_main_header">#9E9E9E</color>
+    <color name="egg_reports_side_header">#CECDCD</color>
+    <color name="egg_reports_text">#CECDCD</color>
 </resources>

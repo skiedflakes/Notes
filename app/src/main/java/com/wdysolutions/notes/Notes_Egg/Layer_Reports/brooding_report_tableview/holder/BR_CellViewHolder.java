@@ -31,7 +31,7 @@ import com.wdysolutions.notes.R;
 
 public class BR_CellViewHolder extends AbstractViewHolder {
 
-    public final TextView data1,data2;
+    public final TextView data1,data2,data3,data4,data5,data6;
    // public final LinearLayout BR_cell_container;
    public final LinearLayout cell_container;
     private BR_Cell cell;
@@ -40,14 +40,16 @@ public class BR_CellViewHolder extends AbstractViewHolder {
         super(itemView);
         data1 = itemView.findViewById(R.id.data1);
         data2 = itemView.findViewById(R.id.data2);
+        data3 = itemView.findViewById(R.id.data3);
+        data4 = itemView.findViewById(R.id.data4);
+        data5 = itemView.findViewById(R.id.data5);
+        data6 = itemView.findViewById(R.id.data6);
+
         cell_container = itemView.findViewById(R.id.cell_container);
     }
 
     public void setCell(BR_Cell cell) {
         this.cell = cell;
-        data1.setText(String.valueOf(cell.getData1()));
-
-
 
         // If your TableView should have auto resize for cells & columns.
         // Then you should consider the below lines. Otherwise, you can ignore them.
@@ -55,5 +57,8 @@ public class BR_CellViewHolder extends AbstractViewHolder {
         // It is necessary to remeasure itself.
         cell_container.getLayoutParams().width = LinearLayout.LayoutParams.WRAP_CONTENT;
         data1.requestLayout();
+
+
+
     }
 }

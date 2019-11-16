@@ -25,18 +25,57 @@ import java.util.List;
 
 public class BR_Cell {
 
-    private String id, data1,data2,data3;
+    private String id,data1,data2,data3,data4,data5,data6;
+    Boolean body_weight,mortality,depopulation,feeds;
 
-
-    public BR_Cell(String id, String data1) {
+    public BR_Cell(Boolean body_weight,Boolean feeds,Boolean depopulation,Boolean mortality,String id, String data1,String data2,String data3,String data4,String data5,String data6) {
+        this.body_weight=body_weight;
+        this.feeds=feeds;
+        this.depopulation=depopulation;
+        this.mortality=mortality;
         this.id = id;
         this.data1 = data1;
+        this.data2=data2;
+        this.data3=data3;
+        this.data4=data4;
+        this.data5=data5;
+        this.data6=data6;
 
+    }
+
+    public Boolean getBody_weight() {
+        return body_weight;
+    }
+
+    public Boolean getFeeds() {
+        return feeds;
+    }
+
+    public Boolean getMortality() {
+        return mortality;
+    }
+
+    public Boolean getDepopulation() {
+        return depopulation;
     }
 
     public String getData1() {
         return data1;
     }
+
+    public String getData2() { return data2; }
+
+    public String getData3() { return data3; }
+
+    public String getData4() { return data4; }
+
+    public String getData5() { return data5; }
+
+    public String getData6() {
+        return data6;
+    }
+
+
 
 
 }
