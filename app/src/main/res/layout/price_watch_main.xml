@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#ffff"
-     >
+        android:visibility="visible">
 
         <TextView
             android:layout_width="match_parent"
@@ -22,7 +22,6 @@
             android:text="No privilege set in price watch." />
     </RelativeLayout>
 
-
         <ProgressBar
             android:id="@+id/loading_main"
             style="?android:attr/progressBarStyle"
@@ -30,24 +29,22 @@
             android:layout_height="wrap_content"
             android:visibility="gone" />
 
-
-
-
     <LinearLayout
         android:id="@+id/layout_main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+
         <TextView
             android:id="@+id/tv_togle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:padding="5dp"
             android:text="Price Watch"
             android:textColor="#286090"
-            android:textSize="20dp"
-            android:drawableStart="@drawable/note"
-            android:drawablePadding="5dp"
-            />
+            android:textSize="@dimen/title_text_size"
+            android:textStyle="bold" />
 
         <LinearLayout
             android:id="@+id/layout_selection"

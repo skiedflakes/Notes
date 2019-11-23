@@ -35,15 +35,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Swine Population By Age"
+                android:layout_marginBottom="10dp"
 
-                android:textColor="#286090"
                 android:padding="5dp"
-                android:textSize="20dp"
-                />
+                android:text="Swine Population By Age"
+                android:textColor="#286090"
+                android:textSize="@dimen/title_text_size"
+                android:textStyle="bold" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -54,7 +56,6 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginBottom="5dp"
                     android:background="@drawable/bg_border"
                     android:orientation="horizontal">
 

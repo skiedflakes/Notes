@@ -47,7 +47,8 @@ public class periodic_main extends Fragment implements DatePickerSelectionInterf
             recyclerView_purchases_return;
     TextView tv_revenue_total, tv_total_gross, tv_total_goods, tv_net_operating_income, tv_total_operating_expe,
             tv_total_other_income, tv_net_other_income, tv_total_income_return, tv_net_income_return, txt_error,
-            txt_start_date, txt_end_date, error_main;
+            txt_start_date, txt_end_date, error_main, tv_inventory_adjust, purchase_subtotal, purchase_return_subtotal,
+            ending_balance_subtotal, beginning_balance_subtotal;
     Spinner spinner_filter, spinner_branch;
     ScrollView scrollview_;
     ProgressBar progressBar, loading_main;
@@ -67,6 +68,11 @@ public class periodic_main extends Fragment implements DatePickerSelectionInterf
         user_id = sharedPref.getUserInfo().get(sharedPref.KEY_USERID);
         selected_branch_id = Constants.branch_id;
 
+        beginning_balance_subtotal = view.findViewById(R.id.beginning_balance_subtotal);
+        ending_balance_subtotal = view.findViewById(R.id.ending_balance_subtotal);
+        purchase_return_subtotal = view.findViewById(R.id.purchase_return_subtotal);
+        purchase_subtotal = view.findViewById(R.id.purchase_subtotal);
+        tv_inventory_adjust = view.findViewById(R.id.tv_inventory_adjust);
         periodic_table = view.findViewById(R.id.periodic_table);
         periodic_table.setVisibility(View.GONE);
         spinner_branch = view.findViewById(R.id.spinner_branch);
@@ -265,13 +271,13 @@ public class periodic_main extends Fragment implements DatePickerSelectionInterf
         periodic_table.setVisibility(View.GONE);
         txt_error.setVisibility(View.GONE);
         btn_generate.setEnabled(false);
-        String URL = getString(R.string.URL_online) + "income_statement/periodic_table.php";
+        String URL = getString(R.string.URL_online) + "income_statement/periodic_table2.php";
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
 
                 try{
-                 //   ((MainActivity)getActivity()).openDialog(response);
+                    //((MainActivity)getActivity()).openDialog(response);
                     progressBar.setVisibility(View.GONE);
                     periodic_table.setVisibility(View.VISIBLE);
                     btn_generate.setEnabled(true);
@@ -309,6 +315,7 @@ public class periodic_main extends Fragment implements DatePickerSelectionInterf
 
                     JSONArray jsonArray_total_cost = jsonObject.getJSONArray("cost_total");
                     JSONObject jsonObject_revenue_total_cost = (JSONObject)jsonArray_total_cost.get(0);
+                    tv_inventory_adjust.setText(jsonObject_revenue_total_cost.getString("inventory_adjust"));
                     tv_total_goods.setText(jsonObject_revenue_total_cost.getString("total_cost_goods"));
                     tv_total_gross.setText(jsonObject_revenue_total_cost.getString("total_gross_profit"));
 
@@ -316,6 +323,82 @@ public class periodic_main extends Fragment implements DatePickerSelectionInterf
                     recyclerView_total_cost.setLayoutManager(new LinearLayoutManager(getActivity()));
                     recyclerView_total_cost.setAdapter(adapter_cost);
                     recyclerView_total_cost.setNestedScrollingEnabled(false);
+
+
+                    //------- BEGINNING
+                    cost_beginning_models = new ArrayList<>();
+                    JSONArray jsonArray_cost_beginning = jsonObject.getJSONArray("cost_beginning");
+                    for (int i=0; i<jsonArray_cost_beginning.length(); i++){
+                        JSONObject jsonObject1 = (JSONObject)jsonArray_cost_beginning.get(i);
+
+                        cost_beginning_models.add(new periodic_model(jsonObject1.getString("name"),
+                                jsonObject1.getString("value")));
+                    }
+                    periodic_adapter adapter_cost_beginning = new periodic_adapter(getContext(), cost_beginning_models);
+                    recyclerView_beginning_balance.setLayoutManager(new LinearLayoutManager(getActivity()));
+                    recyclerView_beginning_balance.setAdapter(adapter_cost_beginning);
+                    recyclerView_beginning_balance.setNestedScrollingEnabled(false);
+
+                    JSONArray jsonArray_begining_subtotal = jsonObject.getJSONArray("cost_beginning_total");
+                    JSONObject jsonObject_begining_subtotal = (JSONObject)jsonArray_begining_subtotal.get(0);
+                    beginning_balance_subtotal.setText(jsonObject_begining_subtotal.getString("sub_total"));
+
+
+                    //------- PURCHASES
+                    cost_purchases_models = new ArrayList<>();
+                    JSONArray jsonArray_cost_purchases = jsonObject.getJSONArray("cost_purchases");
+                    for (int i=0; i<jsonArray_cost_purchases.length(); i++){
+                        JSONObject jsonObject1 = (JSONObject)jsonArray_cost_purchases.get(i);
+
+                        cost_purchases_models.add(new periodic_model(jsonObject1.getString("name"),
+                                jsonObject1.getString("value")));
+                    }
+                    periodic_adapter adapter_cost_purchases = new periodic_adapter(getContext(), cost_purchases_models);
+                    recyclerView_purchases.setLayoutManager(new LinearLayoutManager(getActivity()));
+                    recyclerView_purchases.setAdapter(adapter_cost_purchases);
+                    recyclerView_purchases.setNestedScrollingEnabled(false);
+
+                    JSONArray jsonArray_purchases_subtotal = jsonObject.getJSONArray("cost_purchases_total");
+                    JSONObject jsonObject_purchases_subtotal = (JSONObject)jsonArray_purchases_subtotal.get(0);
+                    purchase_subtotal.setText(jsonObject_purchases_subtotal.getString("sub_total"));
+
+
+                    //------- PURCHASES RETURN
+                    cost_purchases_return_models = new ArrayList<>();
+                    JSONArray jsonArray_cost_purchases_return = jsonObject.getJSONArray("cost_purchases_return");
+                    for (int i=0; i<jsonArray_cost_purchases_return.length(); i++){
+                        JSONObject jsonObject1 = (JSONObject)jsonArray_cost_purchases_return.get(i);
+
+                        cost_purchases_return_models.add(new periodic_model(jsonObject1.getString("name"),
+                                jsonObject1.getString("value")));
+                    }
+                    periodic_adapter adapter_cost_purchases_return = new periodic_adapter(getContext(), cost_purchases_return_models);
+                    recyclerView_purchases_return.setLayoutManager(new LinearLayoutManager(getActivity()));
+                    recyclerView_purchases_return.setAdapter(adapter_cost_purchases_return);
+                    recyclerView_purchases_return.setNestedScrollingEnabled(false);
+
+                    JSONArray jsonArray_purchases_return = jsonObject.getJSONArray("cost_purchases_return_total");
+                    JSONObject jsonObject_purchases_return = (JSONObject)jsonArray_purchases_return.get(0);
+                    purchase_return_subtotal.setText(jsonObject_purchases_return.getString("sub_total"));
+
+
+                    //------- ENDING BALANCE
+                    cost_ending_balance_models = new ArrayList<>();
+                    JSONArray jsonArray_cost_ending = jsonObject.getJSONArray("cost_ending");
+                    for (int i=0; i<jsonArray_cost_ending.length(); i++){
+                        JSONObject jsonObject1 = (JSONObject)jsonArray_cost_ending.get(i);
+
+                        cost_ending_balance_models.add(new periodic_model(jsonObject1.getString("name"),
+                                jsonObject1.getString("value")));
+                    }
+                    periodic_adapter adapter_cost_ending = new periodic_adapter(getContext(), cost_ending_balance_models);
+                    recyclerView_ending_balance.setLayoutManager(new LinearLayoutManager(getActivity()));
+                    recyclerView_ending_balance.setAdapter(adapter_cost_ending);
+                    recyclerView_ending_balance.setNestedScrollingEnabled(false);
+
+                    JSONArray jsonArray_ending_balance = jsonObject.getJSONArray("cost_ending_total");
+                    JSONObject jsonObject_ending_balance = (JSONObject)jsonArray_ending_balance.get(0);
+                    ending_balance_subtotal.setText(jsonObject_ending_balance.getString("sub_total"));
 
 
                     //////////////////// OPERATING EXPENSES (OE)
@@ -337,62 +420,6 @@ public class periodic_main extends Fragment implements DatePickerSelectionInterf
                     recyclerView_operating.setLayoutManager(new LinearLayoutManager(getActivity()));
                     recyclerView_operating.setAdapter(adapter_operating_expe);
                     recyclerView_operating.setNestedScrollingEnabled(false);
-
-                    //------- BEGINNING
-                    cost_beginning_models = new ArrayList<>();
-                    JSONArray jsonArray_cost_beginning = jsonObject.getJSONArray("cost_beginning");
-                    for (int i=0; i<jsonArray_cost_beginning.length(); i++){
-                        JSONObject jsonObject1 = (JSONObject)jsonArray_cost_beginning.get(i);
-
-                        cost_beginning_models.add(new periodic_model(jsonObject1.getString("name"),
-                                jsonObject1.getString("value")));
-                    }
-                    periodic_adapter adapter_cost_beginning = new periodic_adapter(getContext(), cost_beginning_models);
-                    recyclerView_beginning_balance.setLayoutManager(new LinearLayoutManager(getActivity()));
-                    recyclerView_beginning_balance.setAdapter(adapter_cost_beginning);
-                    recyclerView_beginning_balance.setNestedScrollingEnabled(false);
-
-                    //------- PURCHASES
-                    cost_purchases_models = new ArrayList<>();
-                    JSONArray jsonArray_cost_purchases = jsonObject.getJSONArray("cost_purchases");
-                    for (int i=0; i<jsonArray_cost_purchases.length(); i++){
-                        JSONObject jsonObject1 = (JSONObject)jsonArray_cost_purchases.get(i);
-
-                        cost_purchases_models.add(new periodic_model(jsonObject1.getString("name"),
-                                jsonObject1.getString("value")));
-                    }
-                    periodic_adapter adapter_cost_purchases = new periodic_adapter(getContext(), cost_purchases_models);
-                    recyclerView_purchases.setLayoutManager(new LinearLayoutManager(getActivity()));
-                    recyclerView_purchases.setAdapter(adapter_cost_purchases);
-                    recyclerView_purchases.setNestedScrollingEnabled(false);
-
-                    //------- PURCHASES RETURN
-                    cost_purchases_return_models = new ArrayList<>();
-                    JSONArray jsonArray_cost_purchases_return = jsonObject.getJSONArray("cost_purchases_return");
-                    for (int i=0; i<jsonArray_cost_purchases_return.length(); i++){
-                        JSONObject jsonObject1 = (JSONObject)jsonArray_cost_purchases_return.get(i);
-
-                        cost_purchases_return_models.add(new periodic_model(jsonObject1.getString("name"),
-                                jsonObject1.getString("value")));
-                    }
-                    periodic_adapter adapter_cost_purchases_return = new periodic_adapter(getContext(), cost_purchases_return_models);
-                    recyclerView_purchases_return.setLayoutManager(new LinearLayoutManager(getActivity()));
-                    recyclerView_purchases_return.setAdapter(adapter_cost_purchases_return);
-                    recyclerView_purchases_return.setNestedScrollingEnabled(false);
-
-                    //------- ENDING BALANCE
-                    cost_ending_balance_models = new ArrayList<>();
-                    JSONArray jsonArray_cost_ending = jsonObject.getJSONArray("cost_ending");
-                    for (int i=0; i<jsonArray_cost_ending.length(); i++){
-                        JSONObject jsonObject1 = (JSONObject)jsonArray_cost_ending.get(i);
-
-                        cost_ending_balance_models.add(new periodic_model(jsonObject1.getString("name"),
-                                jsonObject1.getString("value")));
-                    }
-                    periodic_adapter adapter_cost_ending = new periodic_adapter(getContext(), cost_ending_balance_models);
-                    recyclerView_ending_balance.setLayoutManager(new LinearLayoutManager(getActivity()));
-                    recyclerView_ending_balance.setAdapter(adapter_cost_ending);
-                    recyclerView_ending_balance.setNestedScrollingEnabled(false);
 
 
                     //////////////////// OTHER INCOME & EXPENSES (OIE)
@@ -416,7 +443,7 @@ public class periodic_main extends Fragment implements DatePickerSelectionInterf
                     recyclerView_other_income.setNestedScrollingEnabled(false);
 
 
-                    //////////////////// OTHER INCOME & EXPENSES (OIE)
+                    //////////////////// INCOME TAX RETURN (ITR)
                     income_return_models = new ArrayList<>();
                     JSONArray jsonArray_income_return = jsonObject.getJSONArray("income_return");
                     for (int i=0; i<jsonArray_income_return.length(); i++){

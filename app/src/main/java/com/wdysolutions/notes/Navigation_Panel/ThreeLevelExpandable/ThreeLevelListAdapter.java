@@ -34,6 +34,7 @@ import com.wdysolutions.notes.Notes_Pig.Farm_Statistics.by_Month.bymonth_main;
 import com.wdysolutions.notes.Notes_Pig.Farm_Statistics.by_Region.byregion_main;
 import com.wdysolutions.notes.Notes_Pig.Farm_Statistics.by_Week.byweek_main;
 import com.wdysolutions.notes.Globals.Price_Watch.Price_watch_main;
+import com.wdysolutions.notes.Notes_Pig.Parity_Report.Parity_report_main;
 import com.wdysolutions.notes.Notes_Pig.Swine_Delivery_Report.daily_swine_delivery_main;
 import com.wdysolutions.notes.Notes_Pig.Swine_Population.LineGraph.lineGraph_main;
 import com.wdysolutions.notes.Notes_Pig.Swine_Population.byAge.ByAge_main;
@@ -179,7 +180,7 @@ public class ThreeLevelListAdapter extends BaseExpandableListAdapter {
                     }else if(selected.equals("Purchase Order")){
                         switch_module(new Purchase_Order(), context);
                     }else if(selected.equals("Parity Report")){
-                       // switch_module(new Parity_Report(), context);
+                        switch_module(new Parity_report_main(), context);
                     }
                 }
                 return false;
