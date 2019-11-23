@@ -2,14 +2,13 @@ package com.wdysolutions.notes.Notes_Pig.Farm_Statistics.Dialog_Table_Details;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.wdysolutions.notes.MainActivity;
 import com.wdysolutions.notes.Notes_Pig.Swine_Card.RFscanner_main;

@@ -2,25 +2,18 @@
 package com.wdysolutions.notes.Notes_Egg.Layer_Reports.brooding_report_tableview;
 
 import android.content.Context;
-import android.os.Bundle;
-import android.support.v4.app.DialogFragment;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.evrencoskun.tableview.adapter.AbstractTableAdapter;
 import com.evrencoskun.tableview.adapter.recyclerview.holder.AbstractViewHolder;
-import com.wdysolutions.notes.Constants;
-import com.wdysolutions.notes.MainActivity;
 import com.wdysolutions.notes.Notes_Egg.Layer_Reports.brooding_report_tableview.holder.BR_CellViewHolder;
 import com.wdysolutions.notes.Notes_Egg.Layer_Reports.brooding_report_tableview.holder.BR_ColumnHeaderViewHolder;
 import com.wdysolutions.notes.Notes_Egg.Layer_Reports.brooding_report_tableview.holder.BR_RowHeaderViewHolder;
 import com.wdysolutions.notes.Notes_Egg.Layer_Reports.brooding_report_tableview.model.BR_Cell;
 import com.wdysolutions.notes.Notes_Egg.Layer_Reports.brooding_report_tableview.model.BR_ColumnHeader;
 import com.wdysolutions.notes.Notes_Egg.Layer_Reports.brooding_report_tableview.model.BR_RowHeader;
-import com.wdysolutions.notes.Notes_Pig.Swine_Population.Dialog_Table.dialogTable_main;
 import com.wdysolutions.notes.R;
 
 /**

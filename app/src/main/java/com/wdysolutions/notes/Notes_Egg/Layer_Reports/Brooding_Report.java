@@ -3,11 +3,9 @@ package com.wdysolutions.notes.Notes_Egg.Layer_Reports;
 import android.annotation.TargetApi;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v4.app.Fragment;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,16 +27,11 @@ import com.wdysolutions.notes.AppController;
 import com.wdysolutions.notes.Constants;
 import com.wdysolutions.notes.DatePicker.DatePickerCustom;
 import com.wdysolutions.notes.DatePicker.DatePickerSelectionInterfaceCustom;
-import com.wdysolutions.notes.MainActivity;
 
 import com.wdysolutions.notes.Notes_Egg.Layer_Reports.brooding_report_tableview.BR_TableViewAdapter;
 import com.wdysolutions.notes.Notes_Egg.Layer_Reports.brooding_report_tableview.model.BR_Cell;
 import com.wdysolutions.notes.Notes_Egg.Layer_Reports.brooding_report_tableview.model.BR_ColumnHeader;
 import com.wdysolutions.notes.Notes_Egg.Layer_Reports.brooding_report_tableview.model.BR_RowHeader;
-import com.wdysolutions.notes.Notes_Pig.Swine_Population.byAge.tableview.SP_TableViewAdapter;
-import com.wdysolutions.notes.Notes_Pig.Swine_Population.byAge.tableview.model.SP_Cell;
-import com.wdysolutions.notes.Notes_Pig.Swine_Population.byAge.tableview.model.SP_ColumnHeader;
-import com.wdysolutions.notes.Notes_Pig.Swine_Population.byAge.tableview.model.SP_RowHeader;
 import com.wdysolutions.notes.R;
 import com.wdysolutions.notes.SharedPref;
 
@@ -84,7 +77,11 @@ public class Brooding_Report extends Fragment implements DatePickerSelectionInte
     LinearLayout by_batch_layout;
     Spinner spinner_type,spinner_from,spinner_to;
     ArrayList<spinner_type_model> type_list;
-    ArrayList<spinner_type_model> from_list;
+    ArrayList<spinner_type_model> from_list,to_list;
+    String selected_from,selected_to,selected_type;
+
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -225,45 +222,54 @@ public class Brooding_Report extends Fragment implements DatePickerSelectionInte
         AppController.getInstance().addToRequestQueue(stringRequest);
     }
 
+
     public void single_batch_brooding_details(){
 
-        String URL = getString(R.string.URL_online)+"brooding_report/single_batch_brooding_details.php";
+        //populate single batch spinners
+
+        //type spinner
+        type_list= new ArrayList<>();
+        type_list.add(new spinner_type_model("Please Choose", "0"));
+        type_list.add(new spinner_type_model("Daily", "Daily"));
+        type_list.add(new spinner_type_model("Weekly", "Weekly"));
+
+        ArrayAdapter<String> spinner_type_adpter = new ArrayAdapter<>(getActivity(), R.layout.custom_spinner_drop, populateType());
+        spinner_type_adpter.setDropDownViewResource(R.layout.custom_spinner_drop);
+        spinner_type.setAdapter(spinner_type_adpter);
+        spinner_type.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
+
+                spinner_type_model type_model = type_list.get(position);
+                selected_type = type_model.getId();
+                if(!selected_type.equals("0")){
+                    get_from_spinner();
+                }else{
+                    spinner_from.setAdapter(null);
+                }
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+            }
+        });
+
+        all_batch_layout.setVisibility(View.GONE);
+        by_batch_layout.setVisibility(View.VISIBLE);
+
+    }
+
+    public void get_from_spinner(){
+
+        String URL = getString(R.string.URL_online)+"brooding_report/from_spinner.php";
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                all_batch_layout.setVisibility(View.GONE);
-                by_batch_layout.setVisibility(View.VISIBLE);
 
-                Toast.makeText(getContext(), response, Toast.LENGTH_SHORT).show();
                 JSONObject jsonObject1 = null;
                 try {
                     jsonObject1 = new JSONObject(response);
 
-
-                    //populate single batch spinners
-
-                    //type spinner
-                    type_list= new ArrayList<>();
-                    type_list.add(new spinner_type_model("Please Choose", "0"));
-                    type_list.add(new spinner_type_model("Daily", "Daily"));
-                    type_list.add(new spinner_type_model("Weekly", "Weekly"));
-
-                    ArrayAdapter<String> spinner_type_adpter = new ArrayAdapter<>(getActivity(), R.layout.custom_spinner_drop, populateType());
-                    spinner_type_adpter.setDropDownViewResource(R.layout.custom_spinner_drop);
-                    spinner_type.setAdapter(spinner_type_adpter);
-                    spinner_type.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                        @Override
-                        public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
-
-
-                        }
-                        @Override
-                        public void onNothingSelected(AdapterView<?> adapterView) {
-                        }
-                    });
-
                     //from spinner
-
                     from_list = new ArrayList<>();
                     from_list.add(new spinner_type_model("Please Choose", "0"));
                     JSONArray jsonArray = jsonObject1.getJSONArray("data");
@@ -280,7 +286,13 @@ public class Brooding_Report extends Fragment implements DatePickerSelectionInte
                     spinner_from.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                         @Override
                         public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
+                            spinner_type_model from_model = from_list.get(position);
+                            selected_from = from_model.getId();
+                            if(!selected_from.equals("0")){
+                                get_to_spinner();
+                            }else{
 
+                            }
                         }
                         @Override
                         public void onNothingSelected(AdapterView<?> adapterView) {
@@ -322,7 +334,76 @@ public class Brooding_Report extends Fragment implements DatePickerSelectionInte
         AppController.getInstance().addToRequestQueue(stringRequest);
     }
 
+    public void get_to_spinner(){
 
+        String URL = getString(R.string.URL_online)+"brooding_report/to_spinner.php";
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                all_batch_layout.setVisibility(View.GONE);
+                by_batch_layout.setVisibility(View.VISIBLE);
+
+                JSONObject jsonObject1 = null;
+                try {
+                    jsonObject1 = new JSONObject(response);
+
+                    //from spinner
+                    to_list = new ArrayList<>();
+                    to_list.add(new spinner_type_model("Please Choose", "0"));
+                    JSONArray jsonArray = jsonObject1.getJSONArray("data");
+                    for (int i=0; i<jsonArray.length(); i++){
+                        JSONObject jsonObject_ = (JSONObject)jsonArray.get(i);
+                        String name = jsonObject_.getString("name");
+                        String id = jsonObject_.getString("id");
+                        to_list.add(new spinner_type_model(name,id));
+                    }
+
+                    ArrayAdapter<String> spinner_from_adpter = new ArrayAdapter<>(getActivity(), R.layout.custom_spinner_drop, populateTo());
+                    spinner_from_adpter.setDropDownViewResource(R.layout.custom_spinner_drop);
+                    spinner_to.setAdapter(spinner_from_adpter);
+                    spinner_to.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                        @Override
+                        public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
+                            spinner_type_model from_model = from_list.get(position);
+                            selected_from = from_model.getId();
+                          //  get_to_spinner();
+                        }
+                        @Override
+                        public void onNothingSelected(AdapterView<?> adapterView) {
+                        }
+                    });
+
+
+                }catch (Exception e){}
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+                Toast.makeText(getActivity(), "Error Connection", Toast.LENGTH_SHORT).show();
+
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                HashMap<String,String> hashMap = new HashMap<>();
+                //user
+                hashMap.put("company_id", company_id);
+                hashMap.put("category_id", category_id);
+                hashMap.put("user_id", user_id);
+                hashMap.put("company_code", company_code);
+                hashMap.put("branch_id", selected_branch_id);
+
+                hashMap.put("growing_id", selected_Batch);
+                hashMap.put("from_week", selected_from);
+
+                return hashMap;
+            }
+        };
+        AppController.getInstance().setVolleyDuration(stringRequest);
+        AppController.getInstance().addToRequestQueue(stringRequest);
+    }
 
     private List<String> populateBranch(){
         List<String> lables_ = new ArrayList<>();
@@ -339,6 +420,7 @@ public class Brooding_Report extends Fragment implements DatePickerSelectionInte
         }
         return lables_;
     }
+
     private List<String> populateFrom(){
         List<String> lables_ = new ArrayList<>();
         for (int i = 0; i < from_list.size(); i++) {
@@ -347,7 +429,13 @@ public class Brooding_Report extends Fragment implements DatePickerSelectionInte
         return lables_;
     }
 
-
+    private List<String> populateTo(){
+        List<String> lables_ = new ArrayList<>();
+        for (int i = 0; i < to_list.size(); i++) {
+            lables_.add(to_list.get(i).getData1());
+        }
+        return lables_;
+    }
 
     private void openDatePicker() {
         DatePickerCustom datePickerFragment = new DatePickerCustom();
@@ -369,7 +457,6 @@ public class Brooding_Report extends Fragment implements DatePickerSelectionInte
         selected_date = date;
         tv_date.setText(selected_date);
     }
-
 
     public void get_brooding_overall(){
 
@@ -425,7 +512,6 @@ public class Brooding_Report extends Fragment implements DatePickerSelectionInte
         AppController.getInstance().setVolleyDuration(stringRequest);
         AppController.getInstance().addToRequestQueue(stringRequest);
     }
-
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     private void initializeTableView() {

@@ -1,7 +1,11 @@
 package com.wdysolutions.notes.Globals.Micro_Filming.Fullscreen_image;
 
 import android.content.Context;
-import android.support.v4.view.PagerAdapter;
+
+import androidx.annotation.Nullable;
+import androidx.viewpager.widget.PagerAdapter;
+
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,8 +13,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.DataSource;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.bumptech.glide.load.resource.drawable.GlideDrawable;
+import com.bumptech.glide.load.engine.GlideException;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
 import com.github.chrisbanes.photoview.PhotoView;
@@ -61,16 +66,19 @@ public class imageViewPagerAdapter extends PagerAdapter {
         if (!getImg_path.equals("")){
             Glide.with(context)
                     .load(getImg_path)
-                    .crossFade()
-                    .diskCacheStrategy(DiskCacheStrategy.SOURCE)
-                    .listener(new RequestListener<String, GlideDrawable>() {
+                    .placeholder(R.drawable.no_image)
+                    .error(R.drawable.no_image)
+                    .listener(new RequestListener<Drawable>() {
                         @Override
-                        public boolean onException(Exception e, String model, Target<GlideDrawable> target, boolean isFirstResource) {
+                        public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
+                            // log exception«
                             loadImage(imageView, getImg_path);
-                            return false;
+                            return false; // important to return false so the error placeholder can be placed
                         }
+
                         @Override
-                        public boolean onResourceReady(GlideDrawable resource, String model, Target<GlideDrawable> target, boolean isFromMemoryCache, boolean isFirstResource) {
+                        public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
+
                             return false;
                         }
                     })

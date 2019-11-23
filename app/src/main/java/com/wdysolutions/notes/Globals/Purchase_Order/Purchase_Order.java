@@ -4,11 +4,11 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,6 +25,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.wdysolutions.notes.AppController;
+import com.wdysolutions.notes.Authenticate_DialogFragment;
 import com.wdysolutions.notes.Constants;
 import com.wdysolutions.notes.DatePicker.DatePickerCustom;
 import com.wdysolutions.notes.DatePicker.DatePickerSelectionInterfaceCustom;
@@ -44,7 +45,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Purchase_Order extends Fragment implements DatePickerSelectionInterfaceCustom,Purchase_Order_adapter.EventListener, Dialog_Action.uploadDialogInterface{
+public class Purchase_Order extends Fragment implements Authenticate_DialogFragment.uploadDialogInterface,DatePickerSelectionInterfaceCustom,Purchase_Order_adapter.EventListener, Dialog_Action.uploadDialogInterface{
 
     //user
     SharedPref sharedPref;
@@ -75,6 +76,8 @@ public class Purchase_Order extends Fragment implements DatePickerSelectionInter
 
     //selected
     String selected_po_number;
+    String selected_supplier_id;
+    String selected_declared_stat;
     String selected_dialog_id;
 
     @Override
@@ -232,7 +235,8 @@ public class Purchase_Order extends Fragment implements DatePickerSelectionInter
                         String branch_id = Obj.getString("br_id");
                         String po_number = Obj.getString("po_number");
                         String date = Obj.getString("date");
-                        String supplier = Obj.getString("supplier_id");
+                        String supplier_id = Obj.getString("supplier_id");
+                        String supplier = Obj.getString("supplier_name");
                         String remarks = Obj.getString("remarks");
                         String prod_category = Obj.getString("prod_category");
                         String po_stat = Obj.getString("po_stat");
@@ -240,7 +244,7 @@ public class Purchase_Order extends Fragment implements DatePickerSelectionInter
                         String total = Obj.getString("total");
                         String encodedBy = Obj.getString("encodedBy");
                         String dec_status = Obj.getString("dec_status");
-
+                        String dec_status_id = Obj.getString("dec_status_id");
                         //total amount
                         String sub_amount=total.replaceAll(",", "");
                         t_amount += Double.valueOf(sub_amount);
@@ -255,8 +259,8 @@ public class Purchase_Order extends Fragment implements DatePickerSelectionInter
                         String approved_by = Obj.getString("approved_by");
 
                         po_main_list.add(new Purchase_Order_model(id,count,branch_id,po_number,date,
-                                supplier,remarks,prod_category,po_stat,rr_status,total,
-                                encodedBy,dec_status,po_stat_color,rr_status_color,dec_status_color,approved_by,checked_by));
+                                supplier_id,supplier,remarks,prod_category,po_stat,rr_status,total,
+                                encodedBy,dec_status_id,dec_status,po_stat_color,rr_status_color,dec_status_color,approved_by,checked_by));
 
                     }
                     //total amount
@@ -308,15 +312,15 @@ public class Purchase_Order extends Fragment implements DatePickerSelectionInter
     }
 
     public void approve_po(final String user_id,final int position){
+      // ((MainActivity)getActivity()).openDialog(selected_po_number+" "+selected_declared_stat+" "+ selected_supplier_id);
         showLoading(loadingScan, "Loading...").show();
-        String URL = getString(R.string.URL_online)+"purchase_order/approve_po.php";
+        String URL = getString(R.string.URL_online)+"purchase_order/aprove_po.php";
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try{
                     showLoading(loadingScan, null).dismiss();
                     if(response.equals("1")){
-
                             Purchase_Order_model po_model_list = po_main_list.get(position);
                             String id = po_model_list.getId();
                             String count = po_model_list.getCount();
@@ -324,6 +328,7 @@ public class Purchase_Order extends Fragment implements DatePickerSelectionInter
                             String po_number = po_model_list.getPurchase_num();
                             String date = po_model_list.getDate();
                             String supplier = po_model_list.getSupplier();
+                            String supplier_id = po_model_list.getSupplier_id();
                             String remarks = po_model_list.getRemarks();
                             String prod_category =po_model_list.getCategory();
                             String po_stat = po_model_list.getPo_status();
@@ -331,6 +336,7 @@ public class Purchase_Order extends Fragment implements DatePickerSelectionInter
                             String total = po_model_list.getUnrecieved_total();
                             String encodedBy = po_model_list.getEncoded_by();
                             String dec_status =po_model_list.getDeclared_status();
+                            String dec_status_id =po_model_list.getDeclared_status_id();
                             //colors
                             String po_stat_color = po_model_list.getPo_status_color();
                             String rr_status_color = po_model_list.getRr_status_color();
@@ -338,19 +344,19 @@ public class Purchase_Order extends Fragment implements DatePickerSelectionInter
 
                             //checked by or approved by
                             String checked_by = po_model_list.getChecked_by();
-                            String approved_by = po_model_list.getApproved_by();
+                            String approved00_by = po_model_list.getApproved_by();
                          //   po_main_list.remove(i);
                         Purchase_Order_model newval;
                         if(user_id.equals("")){
                              newval = new Purchase_Order_model(id,count,branch_id,po_number,date,
-                                    supplier,remarks,prod_category,po_stat,rr_status,total,
-                                    encodedBy,dec_status,po_stat_color,rr_status_color,dec_status_color,"",checked_by);
+                                     supplier_id,supplier,remarks,prod_category,po_stat,rr_status,total,
+                                    encodedBy,dec_status_id,dec_status,po_stat_color,rr_status_color,dec_status_color,"",checked_by);
 
                             Toast.makeText(getContext(), "Disapprove success!", Toast.LENGTH_SHORT).show();
                         }else{
                             newval = new Purchase_Order_model(id,count,branch_id,po_number,date,
-                                    supplier,remarks,prod_category,po_stat,rr_status,total,
-                                    encodedBy,dec_status,po_stat_color,rr_status_color,dec_status_color,user_name,checked_by);
+                                    supplier_id, supplier,remarks,prod_category,"Finished",rr_status,total,
+                                    encodedBy,dec_status_id,dec_status,"green",rr_status_color,dec_status_color,user_name,checked_by);
 
                             Toast.makeText(getContext(), "Approve success!", Toast.LENGTH_SHORT).show();
                         }
@@ -387,7 +393,8 @@ public class Purchase_Order extends Fragment implements DatePickerSelectionInter
 
                 //module
                 hashMap.put("po_number", selected_po_number);
-
+                hashMap.put("supplier_id", selected_supplier_id);
+                hashMap.put("declared_stat", selected_declared_stat);
                 return hashMap;
             }
         };
@@ -445,7 +452,9 @@ public class Purchase_Order extends Fragment implements DatePickerSelectionInter
                     });
             alertDialog.setNegativeButton("OK",  new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int which) {
-                    approve_po(user_id,position);
+                    check_user_account(position);
+
+
                 }
             });
             alertDialog.setCancelable(false);
@@ -461,7 +470,9 @@ public class Purchase_Order extends Fragment implements DatePickerSelectionInter
                     });
             alertDialog.setNegativeButton("OK",  new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int which) {
-                    approve_po(user_id,position);
+                    check_user_account(position);
+
+
                 }
             });
             alertDialog.setCancelable(false);
@@ -506,9 +517,12 @@ public class Purchase_Order extends Fragment implements DatePickerSelectionInter
     }
 
     @Override
-    public void view_modal(final int position,String po_number,String id,int view_details, int micro_filming, int approve,int disapprove) {
+    public void view_modal(final int position,String supplier_id,String declared_status,String po_number,String id,int view_details, int micro_filming, int approve,int disapprove) {
         selected_dialog_id=id;
         selected_po_number = po_number;
+         selected_supplier_id = supplier_id;
+         selected_declared_stat = declared_status;
+
         Bundle bundle = new Bundle();
         bundle.putInt("view_details", view_details);
         bundle.putInt("micro_filming", micro_filming);
@@ -531,4 +545,70 @@ public class Purchase_Order extends Fragment implements DatePickerSelectionInter
         fragment.setCancelable(true);
 
     }
+
+    //Auth
+    int auth_selected_position =-1;
+    public void check_user_account(final int position){
+        auth_selected_position = position;
+        String URL = getString(R.string.URL_online)+"checkSession_user.php";
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+                if (response.equals("1")){
+                    approve_po(user_id,auth_selected_position);
+                } else { //authenticate
+
+                    FragmentTransaction ft = getFragmentManager().beginTransaction();
+                    Fragment prev = getFragmentManager().findFragmentByTag("dialog");
+                    if (prev != null) {
+                        ft.remove(prev);
+                    }
+                    ft.addToBackStack(null);
+
+                    Authenticate_DialogFragment fragment = new Authenticate_DialogFragment();
+                    fragment.setTargetFragment(Purchase_Order.this, 0);
+                    FragmentManager manager = getFragmentManager();
+                    fragment.show(ft, "UploadDialogFragment");
+                    fragment.setCancelable(true);
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                showLoading(loadingScan, null).dismiss();
+                Toast.makeText(getActivity(), "Error something went wrong", Toast.LENGTH_SHORT).show();
+
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                HashMap<String,String> hashMap = new HashMap<>();
+                //user
+                hashMap.put("company_id", company_id);
+                hashMap.put("category_id", category_id);
+                hashMap.put("user_id", user_id);
+                hashMap.put("company_code", company_code);
+                hashMap.put("branch_id", selected_branch_id);
+
+                //module
+                hashMap.put("module", "purchase_approval_module");
+
+                return hashMap;
+            }
+        };
+        AppController.getInstance().setVolleyDuration(stringRequest);
+        AppController.getInstance().addToRequestQueue(stringRequest);
+    }
+
+    @Override
+    public void senddata(String check_dialog) {
+        if(check_dialog.equals("okay")){
+            approve_po(user_id,auth_selected_position);
+         //   remove_selected_rs();
+        }else{
+            Toast.makeText(getContext(), "error", Toast.LENGTH_SHORT).show();
+        }
+    }
+
 }

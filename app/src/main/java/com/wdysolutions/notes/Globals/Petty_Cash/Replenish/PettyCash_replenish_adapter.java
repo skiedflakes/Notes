@@ -1,27 +1,18 @@
 package com.wdysolutions.notes.Globals.Petty_Cash.Replenish;
 
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v4.app.DialogFragment;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v7.widget.RecyclerView;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.wdysolutions.notes.Globals.Petty_Cash.Replenish.modal_view.PettyCash_replenish_modal_main;
-import com.wdysolutions.notes.MainActivity;
 import com.wdysolutions.notes.R;
 
 import java.util.ArrayList;
-import java.util.EventListener;
 
 public class PettyCash_replenish_adapter extends RecyclerView.Adapter<PettyCash_replenish_adapter.MyHolder> {
 
@@ -103,6 +94,7 @@ public class PettyCash_replenish_adapter extends RecyclerView.Adapter<PettyCash_
         }
 
         if(!getApproved_by.equals("")){
+            myHolder.actions.setImageDrawable(context.getResources().getDrawable(R.drawable.approved));
             myHolder.actions.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -110,6 +102,7 @@ public class PettyCash_replenish_adapter extends RecyclerView.Adapter<PettyCash_
                 }
             });
         }else{
+            myHolder.actions.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_settings));
             myHolder.actions.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

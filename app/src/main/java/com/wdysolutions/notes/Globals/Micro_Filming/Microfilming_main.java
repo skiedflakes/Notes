@@ -3,13 +3,11 @@ package com.wdysolutions.notes.Globals.Micro_Filming;
 import android.app.Dialog;
 import android.graphics.Paint;
 import android.os.Bundle;
-import android.support.v4.app.DialogFragment;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v7.widget.DividerItemDecoration;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.fragment.app.DialogFragment;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,10 +22,8 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.google.gson.Gson;
 import com.wdysolutions.notes.AppController;
 import com.wdysolutions.notes.Constants;
-import com.wdysolutions.notes.MainActivity;
 import com.wdysolutions.notes.R;
 import com.wdysolutions.notes.SharedPref;
 
@@ -209,9 +205,9 @@ public class Microfilming_main extends DialogFragment implements clickRecycler {
 
     private String url_img(String url_img){
         if (Constants.variants.equals("main_")){
-            return url_img.replace("..", "http://192.168.0.110/dev");
+            return url_img.replace("..", "https://notes.wdysolutions.com/");
         } else if (Constants.variants.equals("demo")){
-            return url_img.replace("..", "http://192.168.0.110/dev");
+            return url_img.replace("..", "https://demo.wdysolutions.com/");
         } else { // local
             return url_img.replace("..", "http://192.168.0.110/dev");
         }

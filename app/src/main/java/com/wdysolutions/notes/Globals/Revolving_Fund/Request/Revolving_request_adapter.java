@@ -1,20 +1,15 @@
 package com.wdysolutions.notes.Globals.Revolving_Fund.Request;
 
 import android.content.Context;
-import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v4.app.DialogFragment;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v7.widget.RecyclerView;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.wdysolutions.notes.Globals.Revolving_Fund.Request.modal_view.Revolving_request_modal_view;
-import com.wdysolutions.notes.MainActivity;
 import com.wdysolutions.notes.R;
 
 import java.util.ArrayList;
@@ -114,6 +109,7 @@ public class Revolving_request_adapter extends RecyclerView.Adapter<Revolving_re
             myHolder.txt_status.setTextColor(context.getResources().getColor(R.color.color_orange));
         }
         if(!getApproved_by.equals("")){
+            myHolder.actions.setImageDrawable(context.getResources().getDrawable(R.drawable.approved));
             myHolder.actions.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -121,6 +117,7 @@ public class Revolving_request_adapter extends RecyclerView.Adapter<Revolving_re
                 }
             });
         }else{
+            myHolder.actions.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_settings));
             myHolder.actions.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

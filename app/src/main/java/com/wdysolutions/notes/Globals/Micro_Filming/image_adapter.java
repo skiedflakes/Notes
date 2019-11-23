@@ -2,18 +2,24 @@ package com.wdysolutions.notes.Globals.Micro_Filming;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.RecyclerView;
+
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.DataSource;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.bumptech.glide.load.resource.drawable.GlideDrawable;
+import com.bumptech.glide.load.engine.GlideException;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
 import com.wdysolutions.notes.Globals.Micro_Filming.Fullscreen_image.Microfilming_fullscreen_img;
@@ -63,26 +69,33 @@ public class image_adapter extends RecyclerView.Adapter<image_adapter.MyHolder> 
     }
 
     private void loadImages(final MyHolder myHolder, final String getImg_path) {
-        if (!getImg_path.equals("")){
-            myHolder.loading_img.setVisibility(View.VISIBLE);
-            Glide.with(context)
-                    .load(getImg_path)
-                    .crossFade()
-                    .diskCacheStrategy(DiskCacheStrategy.SOURCE)
-                    .listener(new RequestListener<String, GlideDrawable>() {
-                        @Override
-                        public boolean onException(Exception e, String model, Target<GlideDrawable> target, boolean isFirstResource) {
-                            loadImages(myHolder, getImg_path);
-                            return false;
-                        }
-                        @Override
-                        public boolean onResourceReady(GlideDrawable resource, String model, Target<GlideDrawable> target, boolean isFromMemoryCache, boolean isFirstResource) {
-                            myHolder.loading_img.setVisibility(View.GONE);
-                            return false;
-                        }
-                    })
-                    .into(myHolder.img);
-        }
+        try {
+            if (!getImg_path.equals("")) {
+                myHolder.loading_img.setVisibility(View.VISIBLE);
+                Glide.with(context)
+                        .load(getImg_path)
+                        .placeholder(R.drawable.no_image)
+                        .error(R.drawable.no_image)
+                        .listener(new RequestListener<Drawable>() {
+                            @Override
+                            public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
+                                // log exception«
+
+                                Toast.makeText(context, "image not loaded.", Toast.LENGTH_SHORT).show();
+                                loadImages(myHolder, getImg_path);
+                                return false; // important to return false so the error placeholder can be placed
+                            }
+
+                            @Override
+                            public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
+                                myHolder.loading_img.setVisibility(View.GONE);
+                                return false;
+                            }
+                        })
+                        .into(myHolder.img);
+            }
+
+        }catch (Exception e){}
     }
 
     @Override

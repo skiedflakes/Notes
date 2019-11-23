@@ -2,7 +2,7 @@ package com.wdysolutions.notes.Notes_Pig.Farm_Statistics.Graph;
 
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v4.app.DialogFragment;
+import androidx.fragment.app.DialogFragment;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -29,7 +29,6 @@ import com.github.mikephil.charting.listener.ChartTouchListener;
 import com.github.mikephil.charting.listener.OnChartGestureListener;
 import com.wdysolutions.notes.AppController;
 import com.wdysolutions.notes.Constants;
-import com.wdysolutions.notes.MainActivity;
 import com.wdysolutions.notes.R;
 import com.wdysolutions.notes.SharedPref;
 

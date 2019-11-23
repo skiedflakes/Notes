@@ -269,11 +269,11 @@
                                 android:layout_marginTop="1dp"
                                 android:background="@color/white">
 
-                                <android.support.v7.widget.RecyclerView
+                                <androidx.recyclerview.widget.RecyclerView
                                     android:id="@+id/recyclerView"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:scrollbars="vertical"></android.support.v7.widget.RecyclerView>
+                                    android:scrollbars="vertical"></androidx.recyclerview.widget.RecyclerView>
                             </RelativeLayout>
 
                             <LinearLayout
@@ -349,14 +349,14 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content">
 
-                                <android.support.v7.widget.RecyclerView
+                                <androidx.recyclerview.widget.RecyclerView
                                     android:id="@+id/recyclerView_beginning_balance"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:background="@color/white"
                                     android:scrollbars="vertical">
 
-                                </android.support.v7.widget.RecyclerView>
+                                </androidx.recyclerview.widget.RecyclerView>
                             </RelativeLayout>
 
                             <LinearLayout
@@ -412,14 +412,14 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content">
 
-                                <android.support.v7.widget.RecyclerView
+                                <androidx.recyclerview.widget.RecyclerView
                                     android:id="@+id/recyclerView_purchases"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:background="@color/white"
                                     android:scrollbars="vertical">
 
-                                </android.support.v7.widget.RecyclerView>
+                                </androidx.recyclerview.widget.RecyclerView>
                             </RelativeLayout>
 
                             <LinearLayout
@@ -474,14 +474,14 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content">
 
-                                <android.support.v7.widget.RecyclerView
+                                <androidx.recyclerview.widget.RecyclerView
                                     android:id="@+id/recyclerView_purchases_return"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:background="@color/white"
                                     android:scrollbars="vertical">
 
-                                </android.support.v7.widget.RecyclerView>
+                                </androidx.recyclerview.widget.RecyclerView>
                             </RelativeLayout>
 
                             <LinearLayout
@@ -537,14 +537,14 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content">
 
-                                <android.support.v7.widget.RecyclerView
+                                <androidx.recyclerview.widget.RecyclerView
                                     android:id="@+id/recyclerView_ending_balance"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:background="@color/white"
                                     android:scrollbars="vertical">
 
-                                </android.support.v7.widget.RecyclerView>
+                                </androidx.recyclerview.widget.RecyclerView>
                             </RelativeLayout>
 
                             <LinearLayout
@@ -587,14 +587,14 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content">
 
-                                <android.support.v7.widget.RecyclerView
+                                <androidx.recyclerview.widget.RecyclerView
                                     android:id="@+id/recyclerView_total_cost"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:background="@color/white"
                                     android:scrollbars="vertical">
 
-                                </android.support.v7.widget.RecyclerView>
+                                </androidx.recyclerview.widget.RecyclerView>
                             </RelativeLayout>
 
                             <LinearLayout
@@ -762,14 +762,14 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="1dp">
 
-                                <android.support.v7.widget.RecyclerView
+                                <androidx.recyclerview.widget.RecyclerView
                                     android:id="@+id/recyclerView_operating"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:background="@color/white"
                                     android:scrollbars="vertical">
 
-                                </android.support.v7.widget.RecyclerView>
+                                </androidx.recyclerview.widget.RecyclerView>
                             </RelativeLayout>
 
                             <LinearLayout
@@ -901,14 +901,14 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="1dp">
 
-                                <android.support.v7.widget.RecyclerView
+                                <androidx.recyclerview.widget.RecyclerView
                                     android:id="@+id/recyclerView_other_income"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:background="@color/white"
                                     android:scrollbars="vertical">
 
-                                </android.support.v7.widget.RecyclerView>
+                                </androidx.recyclerview.widget.RecyclerView>
                             </RelativeLayout>
 
                             <LinearLayout
@@ -1041,14 +1041,14 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="1dp">
 
-                                <android.support.v7.widget.RecyclerView
+                                <androidx.recyclerview.widget.RecyclerView
                                     android:id="@+id/recyclerView_income_return"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:background="@color/white"
                                     android:scrollbars="vertical">
 
-                                </android.support.v7.widget.RecyclerView>
+                                </androidx.recyclerview.widget.RecyclerView>
                             </RelativeLayout>
 
                             <LinearLayout

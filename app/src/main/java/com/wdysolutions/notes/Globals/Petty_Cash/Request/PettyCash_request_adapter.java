@@ -1,20 +1,15 @@
 package com.wdysolutions.notes.Globals.Petty_Cash.Request;
 
 import android.content.Context;
-import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v4.app.DialogFragment;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v7.widget.RecyclerView;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.wdysolutions.notes.Globals.Petty_Cash.Request.modal_view.PettyCash_modal_view;
-import com.wdysolutions.notes.MainActivity;
 import com.wdysolutions.notes.R;
 
 import java.util.ArrayList;
@@ -122,6 +117,7 @@ public class PettyCash_request_adapter extends RecyclerView.Adapter<PettyCash_re
         }
 
         if(!getApproved_by.equals("")){
+            myHolder.actions.setImageDrawable(context.getResources().getDrawable(R.drawable.approved));
             myHolder.txt_approved.setText(getApproved_by);
             myHolder.actions.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -130,6 +126,7 @@ public class PettyCash_request_adapter extends RecyclerView.Adapter<PettyCash_re
                 }
             });
         }else{
+            myHolder.actions.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_settings));
             myHolder.txt_approved.setText("Pending");
             myHolder.actions.setOnClickListener(new View.OnClickListener() {
                 @Override
