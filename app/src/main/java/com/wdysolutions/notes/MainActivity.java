@@ -5,6 +5,7 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 
+import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -46,16 +47,13 @@ public class MainActivity extends AppCompatActivity {
         bundle.putString("tracking_num", tracking_num);
         bundle.putString("start_date", start_date);
         bundle.putString("end_date", end_date);
+        DialogFragment dialogFragment = new Microfilming_main();
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        Fragment prev = getSupportFragmentManager().findFragmentByTag("micro");
-        if (prev != null) {
-            ft.remove(prev);
-        }
+        Fragment prev = getSupportFragmentManager().findFragmentByTag("dialog");
+        if (prev != null) {ft.remove(prev);}
         ft.addToBackStack(null);
-        Microfilming_main fragment = new Microfilming_main();
-        fragment.setArguments(bundle);
-        fragment.show(getSupportFragmentManager(), "micro");
-        fragment.setCancelable(true);
+        dialogFragment.setArguments(bundle);
+        dialogFragment.show(ft, "dialog");
     }
 
     public ProgressDialog showLoading(ProgressDialog loading, String msg){
