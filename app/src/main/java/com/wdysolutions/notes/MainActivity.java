@@ -47,13 +47,16 @@ public class MainActivity extends AppCompatActivity {
         bundle.putString("tracking_num", tracking_num);
         bundle.putString("start_date", start_date);
         bundle.putString("end_date", end_date);
-        DialogFragment dialogFragment = new Microfilming_main();
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        Fragment prev = getSupportFragmentManager().findFragmentByTag("dialog");
-        if (prev != null) {ft.remove(prev);}
+        Fragment prev = getSupportFragmentManager().findFragmentByTag("micro");
+        if (prev != null) {
+            ft.remove(prev);
+        }
         ft.addToBackStack(null);
-        dialogFragment.setArguments(bundle);
-        dialogFragment.show(ft, "dialog");
+        Microfilming_main fragment = new Microfilming_main();
+        fragment.setArguments(bundle);
+        fragment.show(getSupportFragmentManager(), "micro");
+        fragment.setCancelable(true);
     }
 
     public ProgressDialog showLoading(ProgressDialog loading, String msg){

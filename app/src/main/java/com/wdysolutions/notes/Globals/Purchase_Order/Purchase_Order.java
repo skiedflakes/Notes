@@ -442,6 +442,7 @@ public class Purchase_Order extends Fragment implements Authenticate_DialogFragm
             openDialog_approve("",false,position);
         }else if(chosen.equals("micro_filming")){
             ((MainActivity)getActivity()).openMicro(selected_po_number, "", "");
+
         }
     }
 
