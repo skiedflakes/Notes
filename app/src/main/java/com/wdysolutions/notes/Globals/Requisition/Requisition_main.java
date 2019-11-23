@@ -3,11 +3,11 @@ package com.wdysolutions.notes.Globals.Requisition;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -334,7 +334,7 @@ public class Requisition_main extends Fragment implements Authenticate_DialogFra
             @Override
             public void onErrorResponse(VolleyError error) {
                 showLoading(loadingScan, null).dismiss();
-                Toast.makeText(getActivity(), "some dr sales failed to delete", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "Error Something went wrong", Toast.LENGTH_SHORT).show();
 
             }
         }){
@@ -343,9 +343,13 @@ public class Requisition_main extends Fragment implements Authenticate_DialogFra
                 HashMap<String,String> hashMap = new HashMap<>();
                 //user
                 hashMap.put("company_id", company_id);
-                hashMap.put("id", user_id);
+                hashMap.put("category_id", category_id);
+                hashMap.put("user_id", user_id);
                 hashMap.put("company_code", company_code);
-                hashMap.put("module", "requisition_approval");
+                hashMap.put("branch_id", selected_branch_id);
+
+                //module
+                hashMap.put("module", "requisition_slip_module");
 
                 return hashMap;
             }

@@ -2,18 +2,16 @@ package com.wdysolutions.notes.Globals.Cash_Voucher.Cash_Voucher_dialog;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.wdysolutions.notes.Globals.Cash_Voucher.Cash_Voucher_request_model;
 import com.wdysolutions.notes.R;
 
 import java.util.ArrayList;
-import java.util.EventListener;
 
 public class Cash_Voucher_request_dialog_adapter extends RecyclerView.Adapter<Cash_Voucher_request_dialog_adapter.MyHolder>{
 

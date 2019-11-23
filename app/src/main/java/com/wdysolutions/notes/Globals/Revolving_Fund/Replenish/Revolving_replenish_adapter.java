@@ -4,11 +4,11 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v4.app.DialogFragment;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.NonNull;
+import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,7 +21,6 @@ import com.wdysolutions.notes.MainActivity;
 import com.wdysolutions.notes.R;
 
 import java.util.ArrayList;
-import java.util.EventListener;
 
 public class Revolving_replenish_adapter extends RecyclerView.Adapter<Revolving_replenish_adapter.MyHolder> {
 
@@ -97,6 +96,7 @@ public class Revolving_replenish_adapter extends RecyclerView.Adapter<Revolving_
         }
 
         if(!getApproved_by.equals("")){
+            myHolder.actions.setImageDrawable(context.getResources().getDrawable(R.drawable.approved));
             myHolder.actions.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -104,6 +104,7 @@ public class Revolving_replenish_adapter extends RecyclerView.Adapter<Revolving_
                 }
             });
         }else{
+            myHolder.actions.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_settings));
             myHolder.actions.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

@@ -1,17 +1,17 @@
 package com.wdysolutions.notes.Globals.Purchase_Order;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.wdysolutions.notes.R;
 
 import java.util.ArrayList;
-import java.util.EventListener;
 
 public class Purchase_Order_adapter extends RecyclerView.Adapter<Purchase_Order_adapter.MyHolder> {
     ArrayList<Purchase_Order_model> mdata;
@@ -42,6 +42,7 @@ public class Purchase_Order_adapter extends RecyclerView.Adapter<Purchase_Order_
     String count =  mdata.get(position).getCount();
     final String purchase_num =  mdata.get(position).getPurchase_num();
     String date =  mdata.get(position).getDate();
+    final String supplier_id =   mdata.get(position).getSupplier_id();
     String supplier =  mdata.get(position).getSupplier();
     String remarks =  mdata.get(position).getRemarks();
     String category =  mdata.get(position).getCategory();
@@ -49,9 +50,10 @@ public class Purchase_Order_adapter extends RecyclerView.Adapter<Purchase_Order_
     String rr_status =  mdata.get(position).getRr_status();
     String unrecieved_total =  mdata.get(position).getUnrecieved_total();
     String encoded_by =  mdata.get(position).getEncoded_by();
-    String declared_status =  mdata.get(position).getDeclared_status();
-    String checked_by =  mdata.get(position).getChecked_by();
-    String approved_by =  mdata.get(position).getApproved_by();
+    final String declared_status_id =  mdata.get(position).getDeclared_status_id();
+    final String declared_status =  mdata.get(position).getDeclared_status();
+    final String checked_by =  mdata.get(position).getChecked_by();
+    final String approved_by =  mdata.get(position).getApproved_by();
 
     //color
     String po_stat_color =  mdata.get(position).getPo_status_color();
@@ -70,10 +72,21 @@ public class Purchase_Order_adapter extends RecyclerView.Adapter<Purchase_Order_
         myHolder.tv_unreceived_total.setText(unrecieved_total);
         myHolder.tv_declared_status.setText(declared_status);
         myHolder.tv_encoded_by.setText(encoded_by);
-        myHolder.tv_checked_by.setText(checked_by);
-        myHolder.tv_approved_by.setText(approved_by);
 
-    //set color if approved
+
+
+        if(checked_by.equals("")){
+            myHolder.tv_approved_by.setText("");
+            myHolder.tv_checked_by.setText("Pending");
+        }else{
+            myHolder.tv_checked_by.setText(checked_by);
+            if(approved_by.equals("")){
+                myHolder.tv_approved_by.setText("Pending");
+            }else{
+                myHolder.tv_approved_by.setText(approved_by);
+            }
+        }
+
 
 
     //set status color
@@ -104,40 +117,40 @@ public class Purchase_Order_adapter extends RecyclerView.Adapter<Purchase_Order_
         }
 
 
-        String checkedby = myHolder.tv_checked_by.getText().toString();
-        String approveby =  myHolder.tv_approved_by.getText().toString();
-        if(!checkedby.equals("")){
 
 
-            if(!approveby.equals("")){
+        if(!checked_by.equals("")){
+            if(!approved_by.equals("")){
+                myHolder.btn_edit.setCompoundDrawablesWithIntrinsicBounds(R.drawable.approved, 0, 0, 0);
                 myHolder.btn_edit.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        listener.view_modal(position,purchase_num,id,1,1, 0,1);
+
+                       listener.view_modal(position,supplier_id,declared_status_id,purchase_num,id,1,1, 0,0);
                     }
                 });
+
             }else{
-
+                myHolder.btn_edit.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_settings, 0, 0, 0);
                 myHolder.btn_edit.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        listener.view_modal(position,purchase_num,id,1,1,1,0);
+                        listener.view_modal(position,supplier_id,declared_status_id,purchase_num,id,1,1,1,0);
                     }
                 });
+
             }
 
         }else{
+            myHolder.btn_edit.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_settings, 0, 0, 0);
             //set on click
             myHolder.btn_edit.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    listener.view_modal(position,purchase_num,id,1,1,0,0);
+                    listener.view_modal(position,"",declared_status_id,purchase_num,id,1,1,0,0);
                 }
             });
         }
-
-
-
 
     }
 
@@ -171,6 +184,6 @@ public class Purchase_Order_adapter extends RecyclerView.Adapter<Purchase_Order_
     }
 
     public interface  EventListener{
-        void view_modal(final int position,String po_number,String id,int view_details,int micro_filming,int approve,int disapprove);
+        void view_modal(final int position,String supplier_id,String declared_status,String po_number,String id,int view_details,int micro_filming,int approve,int disapprove);
     }
 }

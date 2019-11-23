@@ -1,9 +1,9 @@
 package com.wdysolutions.notes.Globals.Cash_Voucher.Cash_Voucher_dialog;
 
 import android.os.Bundle;
-import android.support.v4.app.DialogFragment;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.fragment.app.DialogFragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,7 +21,6 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.wdysolutions.notes.AppController;
 import com.wdysolutions.notes.Constants;
-import com.wdysolutions.notes.MainActivity;
 import com.wdysolutions.notes.R;
 import com.wdysolutions.notes.SharedPref;
 

@@ -7,8 +7,8 @@ package com.wdysolutions.notes.DatePicker;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v4.app.DialogFragment;
+import androidx.annotation.NonNull;
+import androidx.fragment.app.DialogFragment;
 import android.view.Window;
 import android.widget.DatePicker;
 
@@ -45,19 +45,21 @@ public class DatePickerCustom extends DialogFragment implements DatePickerDialog
 
         // if null set to current (max) date -------------------------------------------------------
         if (maxDate != null && maxDate.equals("")){
-            selectedMax = new Date().getTime();
+
         }
         // else set to database (max) date
         else {
             try {
                 Date mxDate = sdf.parse(isMinusDays ? maxDate_minus : maxDate);
                 selectedMax = mxDate.getTime();
+                datePickerDialog.getDatePicker().setMaxDate(selectedMax);
             } catch (ParseException e) {}
         }
 
+
         // set max date
         if (!isFutureDateTrue){
-            datePickerDialog.getDatePicker().setMaxDate(selectedMax);
+
         }
 
 

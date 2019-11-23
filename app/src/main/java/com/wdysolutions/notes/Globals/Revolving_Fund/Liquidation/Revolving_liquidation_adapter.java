@@ -1,22 +1,14 @@
 package com.wdysolutions.notes.Globals.Revolving_Fund.Liquidation;
 
 import android.content.Context;
-import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v4.app.DialogFragment;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v7.widget.RecyclerView;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.wdysolutions.notes.Globals.Revolving_Fund.Request.Revolving_request_adapter;
-import com.wdysolutions.notes.Globals.Revolving_Fund.Request.Revolving_request_model;
-import com.wdysolutions.notes.Globals.Revolving_Fund.Request.modal_view.Revolving_request_modal_view;
-import com.wdysolutions.notes.MainActivity;
 import com.wdysolutions.notes.R;
 
 import java.util.ArrayList;
@@ -90,6 +82,7 @@ public class Revolving_liquidation_adapter extends RecyclerView.Adapter<Revolvin
         }
 
         if(!getApproved_by.equals("")){
+            myHolder.btn_edit.setCompoundDrawablesWithIntrinsicBounds(R.drawable.approved, 0, 0, 0);
             myHolder.btn_edit.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -97,6 +90,7 @@ public class Revolving_liquidation_adapter extends RecyclerView.Adapter<Revolvin
                 }
             });
         }else{
+            myHolder.btn_edit.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_settings, 0, 0, 0);
             myHolder.btn_edit.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

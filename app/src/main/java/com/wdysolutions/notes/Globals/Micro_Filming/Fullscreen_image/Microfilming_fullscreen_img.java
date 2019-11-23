@@ -1,8 +1,8 @@
 package com.wdysolutions.notes.Globals.Micro_Filming.Fullscreen_image;
 
 import android.os.Bundle;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
+import androidx.viewpager.widget.ViewPager;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.wdysolutions.notes.Globals.Micro_Filming.image_model;
 import com.wdysolutions.notes.R;

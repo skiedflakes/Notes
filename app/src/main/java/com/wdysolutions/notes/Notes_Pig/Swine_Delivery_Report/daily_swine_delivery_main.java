@@ -1,13 +1,9 @@
 package com.wdysolutions.notes.Notes_Pig.Swine_Delivery_Report;
 
-import android.annotation.TargetApi;
-import android.content.Context;
-import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,12 +25,6 @@ import com.wdysolutions.notes.AppController;
 import com.wdysolutions.notes.Constants;
 import com.wdysolutions.notes.DatePicker.DatePickerCustom;
 import com.wdysolutions.notes.DatePicker.DatePickerSelectionInterfaceCustom;
-import com.wdysolutions.notes.MainActivity;
-import com.wdysolutions.notes.Notes_Pig.Swine_Delivery_Report.tableview.TableViewAdapter;
-import com.wdysolutions.notes.Notes_Pig.Swine_Delivery_Report.tableview.model.Cell;
-import com.wdysolutions.notes.Notes_Pig.Swine_Delivery_Report.tableview.model.ColumnHeader_swineDelivery;
-import com.wdysolutions.notes.Notes_Pig.Swine_Delivery_Report.tableview.model.RowHeader_swineDelivery;
-import com.wdysolutions.notes.Notes_Pig.Swine_Population.Dialog_Table.dialogTable_adapter;
 import com.wdysolutions.notes.R;
 import com.wdysolutions.notes.SharedPref;
 

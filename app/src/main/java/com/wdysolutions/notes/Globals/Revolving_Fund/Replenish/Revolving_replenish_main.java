@@ -4,11 +4,11 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,6 +23,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.wdysolutions.notes.AppController;
+import com.wdysolutions.notes.Authenticate_DialogFragment;
 import com.wdysolutions.notes.Constants;
 import com.wdysolutions.notes.DatePicker.DatePickerCustom;
 import com.wdysolutions.notes.DatePicker.DatePickerSelectionInterfaceCustom;
@@ -41,7 +42,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-public class Revolving_replenish_main extends Fragment implements DatePickerSelectionInterfaceCustom,
+public class Revolving_replenish_main extends Fragment implements Authenticate_DialogFragment.uploadDialogInterface,DatePickerSelectionInterfaceCustom,
         Revolving_replenish_adapter.EventListener,Dialog_Action.uploadDialogInterface {
 
     TextView btn_start_date, btn_end_date;
@@ -303,7 +304,7 @@ public class Revolving_replenish_main extends Fragment implements DatePickerSele
                     });
             alertDialog.setNegativeButton("OK",  new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int which) {
-                    approve_disapprove(user_id,position);
+                    check_user_account(position);
                 }
             });
             alertDialog.setCancelable(false);
@@ -319,7 +320,7 @@ public class Revolving_replenish_main extends Fragment implements DatePickerSele
                     });
             alertDialog.setNegativeButton("OK",  new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int which) {
-                    approve_disapprove(user_id,position);
+                    check_user_account(position);
                 }
             });
             alertDialog.setCancelable(false);
@@ -413,5 +414,71 @@ public class Revolving_replenish_main extends Fragment implements DatePickerSele
         };
         AppController.getInstance().setVolleyDuration(stringRequest);
         AppController.getInstance().addToRequestQueue(stringRequest);
+    }
+
+
+    //Auth
+    int auth_selected_position =-1;
+    public void check_user_account(final int position){
+        auth_selected_position = position;
+        String URL = getString(R.string.URL_online)+"checkSession_user.php";
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+                if (response.equals("1")){
+                    approve_disapprove(user_id,auth_selected_position);
+                } else { //authenticate
+
+                    FragmentTransaction ft = getFragmentManager().beginTransaction();
+                    Fragment prev = getFragmentManager().findFragmentByTag("dialog");
+                    if (prev != null) {
+                        ft.remove(prev);
+                    }
+                    ft.addToBackStack(null);
+
+                    Authenticate_DialogFragment fragment = new Authenticate_DialogFragment();
+                    fragment.setTargetFragment(Revolving_replenish_main.this, 0);
+                    FragmentManager manager = getFragmentManager();
+                    fragment.show(ft, "UploadDialogFragment");
+                    fragment.setCancelable(true);
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                showLoading(loadingScan, null).dismiss();
+                Toast.makeText(getActivity(), "Error something went wrong", Toast.LENGTH_SHORT).show();
+
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                HashMap<String,String> hashMap = new HashMap<>();
+                //user
+                hashMap.put("company_id", company_id);
+                hashMap.put("category_id", category_id);
+                hashMap.put("user_id", user_id);
+                hashMap.put("company_code", company_code);
+                hashMap.put("branch_id", selected_branch_id);
+
+                //module
+                hashMap.put("module", "rfe_replenish_approval_module");
+
+                return hashMap;
+            }
+        };
+        AppController.getInstance().setVolleyDuration(stringRequest);
+        AppController.getInstance().addToRequestQueue(stringRequest);
+    }
+
+    @Override
+    public void senddata(String check_dialog) {
+        if(check_dialog.equals("okay")){
+            approve_disapprove(user_id,auth_selected_position);
+            //   remove_selected_rs();
+        }else{
+            Toast.makeText(getContext(), "error", Toast.LENGTH_SHORT).show();
+        }
     }
 }

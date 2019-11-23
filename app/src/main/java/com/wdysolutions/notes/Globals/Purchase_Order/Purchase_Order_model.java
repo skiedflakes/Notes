@@ -6,6 +6,7 @@ public class Purchase_Order_model {
     String br_id;
     String purchase_num;
     String date;
+    String supplier_id;
     String supplier;
     String remarks;
     String category;
@@ -14,6 +15,7 @@ public class Purchase_Order_model {
     String rr_status;
     String unrecieved_total;
     String encoded_by;
+    String declared_status_id;
     String declared_status;
 
     //color
@@ -24,15 +26,16 @@ public class Purchase_Order_model {
     String approved_by;
     String checked_by;
 
-    public Purchase_Order_model(String id,String count,String br_id,String purchase_num,String date, String supplier, String remarks
+    public Purchase_Order_model(String id,String count,String br_id,String purchase_num,String date,String supplier_id, String supplier, String remarks
             ,String category,String po_status,String rr_status,String unrecieved_total
-            ,String encoded_by,String declared_status,String po_status_color,String rr_status_color
+            ,String encoded_by,String declared_status_id,String declared_status,String po_status_color,String rr_status_color
             ,String dec_status_color,String approved_by,String checked_by){
         this.date=date;
         this.id=id;
         this.count=count;
         this.br_id=br_id;
         this.purchase_num=purchase_num;
+        this.supplier_id = supplier_id;
         this.supplier=supplier;
         this.remarks=remarks;
         this.category=category;
@@ -40,6 +43,7 @@ public class Purchase_Order_model {
         this.rr_status=rr_status;
         this.unrecieved_total=unrecieved_total;
         this.encoded_by=encoded_by;
+        this.declared_status_id=declared_status_id;
         this.declared_status=declared_status;
         this.po_status_color=po_status_color;
         this.rr_status_color=rr_status_color;
@@ -49,6 +53,13 @@ public class Purchase_Order_model {
 
     }
 
+    public String getDeclared_status_id() {
+        return declared_status_id;
+    }
+
+    public String getSupplier_id() {
+        return supplier_id;
+    }
 
     public String getApproved_by() {
         return approved_by;

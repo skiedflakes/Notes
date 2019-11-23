@@ -1,8 +1,8 @@
 package com.wdysolutions.notes.Globals.Petty_Cash.Liquidation;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -90,6 +90,7 @@ public class PettyCash_liquidation_adapter extends RecyclerView.Adapter<PettyCas
         }
 
         if(!getApproved_by.equals("")){
+            myHolder.btn_edit.setCompoundDrawablesWithIntrinsicBounds(R.drawable.approved, 0, 0, 0);
             myHolder.btn_edit.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -97,6 +98,7 @@ public class PettyCash_liquidation_adapter extends RecyclerView.Adapter<PettyCas
                 }
             });
         }else{
+            myHolder.btn_edit.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_settings, 0, 0, 0);
             myHolder.btn_edit.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

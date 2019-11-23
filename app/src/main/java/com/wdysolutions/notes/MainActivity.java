@@ -4,17 +4,14 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.support.v4.app.DialogFragment;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
+
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.appcompat.app.AppCompatActivity;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.wdysolutions.notes.Globals.Micro_Filming.Microfilming_main;
-import com.wdysolutions.notes.Globals.Purchase_Order.Purchase_Order;
-import com.wdysolutions.notes.Globals.Purchase_Order.purchase_order_dialog.Purchase_Order_dialog_main;
 import com.wdysolutions.notes.Home.frag_Home_main;
 import com.wdysolutions.notes.Login.frag_Login_main;
 

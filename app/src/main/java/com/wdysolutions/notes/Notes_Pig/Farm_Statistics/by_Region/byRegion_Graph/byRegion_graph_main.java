@@ -1,14 +1,9 @@
 package com.wdysolutions.notes.Notes_Pig.Farm_Statistics.by_Region.byRegion_Graph;
 
-import android.content.Context;
 import android.graphics.Color;
-import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.DialogFragment;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.fragment.app.DialogFragment;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,10 +27,6 @@ import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.wdysolutions.notes.AppController;
 import com.wdysolutions.notes.Constants;
-import com.wdysolutions.notes.MainActivity;
-import com.wdysolutions.notes.Notes_Pig.Farm_Statistics.Dialog_Table_Details.dialogTable_adapter;
-import com.wdysolutions.notes.Notes_Pig.Farm_Statistics.Dialog_Table_Details.dialogTable_details;
-import com.wdysolutions.notes.Notes_Pig.Farm_Statistics.Dialog_Table_Details.dialogTable_model;
 import com.wdysolutions.notes.Notes_Pig.Farm_Statistics.Graph.CustomMarkerView;
 import com.wdysolutions.notes.Notes_Pig.Farm_Statistics.Graph.MyValueFormatter;
 import com.wdysolutions.notes.R;

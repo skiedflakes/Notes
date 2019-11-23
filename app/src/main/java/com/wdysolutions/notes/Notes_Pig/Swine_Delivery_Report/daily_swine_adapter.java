@@ -2,21 +2,19 @@ package com.wdysolutions.notes.Notes_Pig.Swine_Delivery_Report;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v4.app.DialogFragment;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.NonNull;
+import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.wdysolutions.notes.MainActivity;
 import com.wdysolutions.notes.Notes_Pig.Swine_Delivery_Report.Swine_Sales_Report.Swine_delivery_sales_main;
-import com.wdysolutions.notes.Notes_Pig.Swine_Population.Dialog_Table.dialogTable_main;
 import com.wdysolutions.notes.R;
 
 import java.util.ArrayList;
