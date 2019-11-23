@@ -1,8 +1,6 @@
 package com.wdysolutions.notes.Notes_Pig.Swine_Card.Action.AI_Natural_Breeding;
 
-import android.app.AlertDialog;
 import android.app.Dialog;
-import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
@@ -14,7 +12,6 @@ import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
@@ -107,7 +104,7 @@ public class AI_Natural_Breeding_main extends DialogFragment implements DatePick
         pen_type = getArguments().getString("pen_type");
         swine_scanned_id = getArguments().getString("swine_scanned_id");
 
-        btn_date = view.findViewById(R.id.btn_date);
+        btn_date = view.findViewById(R.id.tv_date);
         loading_pen = view.findViewById(R.id.loading_pen);
         spinner_building = view.findViewById(R.id.spinner_building);
         spinner_pen = view.findViewById(R.id.spinner_pen);

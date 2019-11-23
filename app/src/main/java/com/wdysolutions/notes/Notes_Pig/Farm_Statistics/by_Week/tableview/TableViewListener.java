@@ -46,12 +46,12 @@ public class TableViewListener implements ITableViewListener {
 
     @Override
     public void onCellClicked(@NonNull RecyclerView.ViewHolder cellView, int column, int row) {
-        showToast("Cell " + column + " " + row + " has been clicked.");
+        showToast("Cell_br " + column + " " + row + " has been clicked.");
     }
 
     @Override
     public void onCellLongPressed(@NonNull RecyclerView.ViewHolder cellView, final int column, int row) {
-        showToast("Cell " + column + " " + row + " has been long pressed.");
+        showToast("Cell_br " + column + " " + row + " has been long pressed.");
     }
 
     @Override

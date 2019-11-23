@@ -103,7 +103,7 @@ public class Not_in_Pig_main extends DialogFragment implements DatePickerSelecti
         pen_id = getArguments().getString("pen_code");
 
         loading_pen = view.findViewById(R.id.loading_pen);
-        btn_date = view.findViewById(R.id.btn_date);
+        btn_date = view.findViewById(R.id.tv_date);
         spinner_building = view.findViewById(R.id.spinner_building);
         spinner_pen = view.findViewById(R.id.spinner_pen);
         edittext_remarks = view.findViewById(R.id.edittext_remarks);

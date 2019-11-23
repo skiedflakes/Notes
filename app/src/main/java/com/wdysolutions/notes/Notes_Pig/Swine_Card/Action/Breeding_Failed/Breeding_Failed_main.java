@@ -79,7 +79,7 @@ public class Breeding_Failed_main extends DialogFragment implements DatePickerSe
 
         loading_pen = view.findViewById(R.id.loading_pen);
         layout_add = view.findViewById(R.id.layout_add);
-        btn_date = view.findViewById(R.id.btn_date);
+        btn_date = view.findViewById(R.id.tv_date);
         spinner_building = view.findViewById(R.id.spinner_building);
         spinner_pen = view.findViewById(R.id.spinner_pen);
         loading_save = view.findViewById(R.id.loading_save);

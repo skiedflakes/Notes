@@ -353,7 +353,7 @@ public class byweek_main extends Fragment implements SpinnerListener {
 
                             counter_clickable = 0;
 
-                            ///////////////////////////////// Cell week
+                            ///////////////////////////////// Cell_br week
                             List<Cell> cell = new ArrayList<>();
                             for (int j=0; j<num_weeks; j++){
                                 JSONObject json = jsonArray_week.getJSONObject(j+(i*num_weeks));

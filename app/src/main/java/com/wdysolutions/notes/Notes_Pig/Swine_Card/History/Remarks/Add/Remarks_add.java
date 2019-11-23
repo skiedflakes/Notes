@@ -1,8 +1,6 @@
 package com.wdysolutions.notes.Notes_Pig.Swine_Card.History.Remarks.Add;
 
-import android.app.AlertDialog;
 import android.app.Dialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentManager;
@@ -82,7 +80,7 @@ public class Remarks_add extends DialogFragment implements DatePickerSelectionIn
         swine_scanned_id = getArguments().getString("swine_scanned_id");
         currentDate = getArguments().getString("currentDate");
 
-        btn_date = view.findViewById(R.id.btn_date);
+        btn_date = view.findViewById(R.id.tv_date);
         edittext_remarks = view.findViewById(R.id.edittext_remarks);
         loading_save = view.findViewById(R.id.loading_save);
         btn_save = view.findViewById(R.id.btn_save);

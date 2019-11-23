@@ -200,7 +200,8 @@ public class SQLite extends SQLiteOpenHelper {
                         || cursor.getString(4).equals("Swine Population")
                         || cursor.getString(4).equals("Parity Report")
                         || cursor.getString(4).equals("Income Statement")
-                        || cursor.getString(4).equals("Price Watch")) {
+                        || cursor.getString(4).equals("Price Watch")
+                        || cursor.getString(4).equals("Layer Reports")) {
                     Menu_model model = new Menu_model(cursor.getString(0), cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4));
                     menuList.add(model);
 
@@ -343,6 +344,29 @@ public class SQLite extends SQLiteOpenHelper {
         return menuList;
     }
 
+
+    public ArrayList<Menu_model> get_layer_reports(String Parent,String program,String branch_id) {
+        ArrayList<Menu_model> menuList = new ArrayList<>();
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.beginTransaction();
+        String coloumn[] = {MENU_ID, LEVEL,PARENT,PROGRAM_TYPE,MENU_NAME,MENU_BRANCH};
+        Cursor cursor = db.query(TABLE_MENU, coloumn, PARENT+" = "+Parent+" and "+MENU_BRANCH+" = "+branch_id, null, null, null, null);
+
+        while (cursor.moveToNext()) {
+            if(cursor.getString(3).equals(program)||cursor.getString(3).equals("G")) {
+                if (cursor.getString(4).equals("Brooding Report")) {
+                    Menu_model model = new Menu_model(cursor.getString(0), cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4));
+                    menuList.add(model);
+                }
+            }
+        }
+
+        db.setTransactionSuccessful();
+        db.endTransaction();
+        cursor.close();
+        db.close();
+        return menuList;
+    }
 
 }
 

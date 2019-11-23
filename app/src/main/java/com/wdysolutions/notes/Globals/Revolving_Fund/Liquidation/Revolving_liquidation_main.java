@@ -2,9 +2,7 @@ package com.wdysolutions.notes.Globals.Revolving_Fund.Liquidation;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.DialogInterface;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -29,8 +27,6 @@ import com.wdysolutions.notes.Constants;
 import com.wdysolutions.notes.DatePicker.DatePickerCustom;
 import com.wdysolutions.notes.DatePicker.DatePickerSelectionInterfaceCustom;
 import com.wdysolutions.notes.Dialog_Action;
-import com.wdysolutions.notes.Globals.Revolving_Fund.Request.Revolving_request_adapter;
-import com.wdysolutions.notes.Globals.Revolving_Fund.Request.Revolving_request_model;
 import com.wdysolutions.notes.MainActivity;
 import com.wdysolutions.notes.R;
 import com.wdysolutions.notes.SharedPref;
@@ -71,7 +67,7 @@ public class Revolving_liquidation_main extends Fragment implements DatePickerSe
         loadingScan = new ProgressDialog(getActivity(), R.style.MyAlertDialogStyle);
 
         btn_start_date = view.findViewById(R.id.btn_start_date);
-        btn_end_date = view.findViewById(R.id.btn_end_date);
+        btn_end_date = view.findViewById(R.id.tv_date);
         btn_generate_report = view.findViewById(R.id.btn_generate_report);
         progressBar2 = view.findViewById(R.id.progressBar2);
         details_ = view.findViewById(R.id.details_);

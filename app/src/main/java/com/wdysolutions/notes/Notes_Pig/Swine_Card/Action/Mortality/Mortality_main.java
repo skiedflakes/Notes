@@ -77,7 +77,7 @@ public class Mortality_main extends DialogFragment implements DatePickerSelectio
         swine_scanned_id = getArguments().getString("swine_scanned_id");
 
         layout_add = view.findViewById(R.id.layout_add);
-        btn_date = view.findViewById(R.id.btn_date);
+        btn_date = view.findViewById(R.id.tv_date);
         spinner_cause = view.findViewById(R.id.spinner_cause);
         editText_remarks = view.findViewById(R.id.editText_remarks);
         loading_save = view.findViewById(R.id.loading_save);

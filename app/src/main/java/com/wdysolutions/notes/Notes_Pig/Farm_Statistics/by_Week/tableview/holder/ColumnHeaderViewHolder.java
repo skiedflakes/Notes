@@ -63,7 +63,7 @@ public class ColumnHeaderViewHolder extends AbstractSorterViewHolder {
 
 
     /**
-     * This method is calling from onBindColumnHeaderHolder on TableViewAdapter
+     * This method is calling from onBindColumnHeaderHolder on TableViewAdapter_br
      */
     public void setColumnHeader(ColumnHeader columnHeader) {
         column_header_textview.setText(String.valueOf(columnHeader.getData()));

@@ -416,7 +416,7 @@ public class bymonth_main extends Fragment {
 
                     counter_clickable = 0;
 
-                    ///////////////////////////////// Cell month
+                    ///////////////////////////////// Cell_br month
                     List<Cell> actual_list = new ArrayList<>();
                     for (int ii=0; ii<cell_size; ii++){
 
@@ -479,16 +479,16 @@ public class bymonth_main extends Fragment {
         } catch (JSONException e) {}
     }
 
-//    public List<List<Cell>> getCellList() {
-//        List<List<Cell>> rowList = new ArrayList<>();
+//    public List<List<Cell_br>> getCellList() {
+//        List<List<Cell_br>> rowList = new ArrayList<>();
 //
 //        for (int i=0; i<cell_size; i++){
-//            List<Cell> cellList = new ArrayList<>();
+//            List<Cell_br> cellList = new ArrayList<>();
 //            for (int ii=0; ii<cell_size; ii++){
 //                String id = String.valueOf(ii);
 //                String cell_data = "cell "+String.valueOf(ii);
 //
-//                cellList.add(new Cell(id, "", "0", "0","","","","","",""));
+//                cellList.add(new Cell_br(id, "", "0", "0","","","","","",""));
 //            }
 //            rowList.add(cellList);
 //        }

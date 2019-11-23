@@ -4,7 +4,6 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -28,8 +27,6 @@ import com.wdysolutions.notes.DatePicker.DatePickerCustom;
 import com.wdysolutions.notes.DatePicker.DatePickerSelectionInterfaceCustom;
 import com.wdysolutions.notes.Dialog_Action;
 import com.wdysolutions.notes.Globals.Cash_Voucher.Cash_Voucher_dialog.Cash_Voucher_request_dialog;
-import com.wdysolutions.notes.Globals.Cash_Voucher.Cash_Voucher_request_main;
-import com.wdysolutions.notes.Globals.Purchase_Order.Purchase_Order;
 import com.wdysolutions.notes.MainActivity;
 import com.wdysolutions.notes.R;
 import com.wdysolutions.notes.SharedPref;
@@ -82,7 +79,7 @@ public class Check_Voucher_request_main extends Fragment implements DatePickerSe
 
         tv_total_amount = view.findViewById(R.id.tv_total_amount);
         btn_start_date = view.findViewById(R.id.btn_start_date);
-        btn_end_date = view.findViewById(R.id.btn_end_date);
+        btn_end_date = view.findViewById(R.id.tv_date);
 
         btn_end_date.setOnClickListener(new View.OnClickListener() {
             @Override
