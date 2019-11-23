@@ -399,7 +399,7 @@ public class PettyCash_liquidation_main extends Fragment implements Authenticate
             public void onResponse(String response) {
 
                 if (response.equals("1")){
-                    approve_disapprove(user_id,auth_selected_position);
+                    approve_po(user_id,auth_selected_position);
                 } else { //authenticate
 
                     FragmentTransaction ft = getFragmentManager().beginTransaction();
@@ -447,7 +447,7 @@ public class PettyCash_liquidation_main extends Fragment implements Authenticate
     @Override
     public void senddata(String check_dialog) {
         if(check_dialog.equals("okay")){
-            approve_disapprove(user_id,auth_selected_position);
+            approve_po(user_id,auth_selected_position);
             //   remove_selected_rs();
         }else{
             Toast.makeText(getContext(), "error", Toast.LENGTH_SHORT).show();
