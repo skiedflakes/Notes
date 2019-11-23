@@ -279,7 +279,7 @@ public class periodic_main extends Fragment implements DatePickerSelectionInterf
             public void onResponse(String response) {
 
                 try{
-                    ((MainActivity)getActivity()).openDialog(response);
+                    //((MainActivity)getActivity()).openDialog(response);
                     progressBar.setVisibility(View.GONE);
                     periodic_table.setVisibility(View.VISIBLE);
                     btn_generate.setEnabled(true);
