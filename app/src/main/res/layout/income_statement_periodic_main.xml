@@ -208,7 +208,7 @@
                         android:background="@color/color_black"
                         android:orientation="vertical"
                         android:padding="1dp"
-                        tools:visibility="gone">
+                        tools:visibility="visible">
 
                         <LinearLayout
                             android:id="@+id/Revenue"
@@ -222,12 +222,12 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginBottom="1dp"
-                                android:background="@color/white"
+                                android:background="#2d3745"
                                 android:gravity="center"
                                 android:padding="5dp"
                                 android:text="REVENUE (REV)"
                                 android:textAllCaps="true"
-                                android:textColor="@android:color/black"
+                                android:textColor="@color/white"
                                 android:textSize="13sp"
                                 android:textStyle="bold" />
 
@@ -242,7 +242,7 @@
                                     android:layout_height="match_parent"
                                     android:layout_marginRight="1dp"
                                     android:layout_weight="3"
-                                    android:background="@color/white"
+                                    android:background="#d3d6de"
                                     android:gravity="center|left"
                                     android:padding="5dp"
                                     android:textAllCaps="false"
@@ -254,7 +254,7 @@
                                     android:layout_width="0dp"
                                     android:layout_height="match_parent"
                                     android:layout_weight="2"
-                                    android:background="@color/white"
+                                    android:background="#d3d6de"
                                     android:gravity="center"
                                     android:padding="5dp"
                                     android:text="Subtotal"
@@ -287,8 +287,8 @@
                                     android:layout_height="match_parent"
                                     android:layout_marginRight="1dp"
                                     android:layout_weight="3"
-                                    android:background="@color/white"
-                                    android:gravity="center|left"
+                                    android:background="#d3d6de"
+                                    android:gravity="center|right"
                                     android:padding="5dp"
                                     android:text="Total Revenue:"
                                     android:textAllCaps="false"
@@ -301,7 +301,7 @@
                                     android:layout_width="0dp"
                                     android:layout_height="match_parent"
                                     android:layout_weight="2"
-                                    android:background="@color/white"
+                                    android:background="#d3d6de"
                                     android:gravity="center|right"
                                     android:padding="5dp"
                                     android:text="total"
@@ -323,12 +323,12 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginBottom="1dp"
-                                android:background="@color/white"
+                                android:background="#2d3745"
                                 android:gravity="center"
                                 android:padding="5dp"
                                 android:text="Cost (CE)"
                                 android:textAllCaps="true"
-                                android:textColor="@android:color/black"
+                                android:textColor="@color/white"
                                 android:textSize="13sp"
                                 android:textStyle="bold" />
 
@@ -336,10 +336,10 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginBottom="1dp"
-                                android:background="@color/white"
+                                android:background="#d3d6de"
                                 android:gravity="center|left"
                                 android:padding="5dp"
-                                android:text="-- BEGINNING BALANCE --"
+                                android:text="BEGINNING BALANCE"
                                 android:textAllCaps="true"
                                 android:textColor="@android:color/black"
                                 android:textSize="13sp"
@@ -359,18 +359,54 @@
                                 </android.support.v7.widget.RecyclerView>
                             </RelativeLayout>
 
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:weightSum="5">
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginRight="1dp"
+                                    android:layout_weight="3"
+                                    android:background="#d3d6de"
+                                    android:gravity="center|right"
+                                    android:padding="5dp"
+                                    android:textAllCaps="false"
+                                    android:textColor="@android:color/black"
+                                    android:textSize="13sp"
+                                    android:textStyle="bold"
+                                    android:text="SUBTOTAL"/>
+
+                                <TextView
+                                    android:id="@+id/beginning_balance_subtotal"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="2"
+                                    android:background="#d3d6de"
+                                    android:gravity="center|right"
+                                    android:padding="5dp"
+                                    android:text="0"
+                                    android:textAllCaps="true"
+                                    android:textStyle="bold"
+                                    android:textColor="@android:color/black"
+                                    android:textSize="13sp" />
+                            </LinearLayout>
+
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginBottom="1dp"
-                                android:background="@color/white"
+                                android:background="#d3d6de"
                                 android:gravity="center|left"
                                 android:padding="5dp"
-                                android:text="-- PURCHASES --"
+                                android:text="PURCHASES"
                                 android:textAllCaps="true"
                                 android:textColor="@android:color/black"
                                 android:textSize="13sp"
-                                android:textStyle="bold" />
+                                android:textStyle="bold"
+                                android:layout_marginTop="1dp"/>
 
                             <RelativeLayout
                                 android:layout_width="match_parent"
@@ -386,17 +422,53 @@
                                 </android.support.v7.widget.RecyclerView>
                             </RelativeLayout>
 
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:weightSum="5">
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginRight="1dp"
+                                    android:layout_weight="3"
+                                    android:background="#d3d6de"
+                                    android:gravity="center|right"
+                                    android:padding="5dp"
+                                    android:textAllCaps="false"
+                                    android:textColor="@android:color/black"
+                                    android:textSize="13sp"
+                                    android:textStyle="bold"
+                                    android:text="SUBTOTAL"/>
+
+                                <TextView
+                                    android:id="@+id/purchase_subtotal"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="2"
+                                    android:background="#d3d6de"
+                                    android:gravity="center|right"
+                                    android:padding="5dp"
+                                    android:text="0"
+                                    android:textAllCaps="true"
+                                    android:textStyle="bold"
+                                    android:textColor="@android:color/black"
+                                    android:textSize="13sp" />
+                            </LinearLayout>
+
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginBottom="1dp"
-                                android:background="@color/white"
+                                android:background="#d3d6de"
                                 android:padding="5dp"
-                                android:text="-- PURCHASE RETURN --"
+                                android:text="PURCHASE RETURN"
                                 android:textAllCaps="true"
                                 android:textColor="@android:color/black"
                                 android:textSize="13sp"
-                                android:textStyle="bold" />
+                                android:textStyle="bold"
+                                android:layout_marginTop="1dp" />
 
                             <RelativeLayout
                                 android:layout_width="match_parent"
@@ -412,18 +484,54 @@
                                 </android.support.v7.widget.RecyclerView>
                             </RelativeLayout>
 
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:weightSum="5">
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginRight="1dp"
+                                    android:layout_weight="3"
+                                    android:background="#d3d6de"
+                                    android:gravity="center|right"
+                                    android:padding="5dp"
+                                    android:textAllCaps="false"
+                                    android:textColor="@android:color/black"
+                                    android:textSize="13sp"
+                                    android:textStyle="bold"
+                                    android:text="SUBTOTAL"/>
+
+                                <TextView
+                                    android:id="@+id/purchase_return_subtotal"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="2"
+                                    android:background="#d3d6de"
+                                    android:gravity="center|right"
+                                    android:padding="5dp"
+                                    android:text="0"
+                                    android:textAllCaps="true"
+                                    android:textStyle="bold"
+                                    android:textColor="@android:color/black"
+                                    android:textSize="13sp" />
+                            </LinearLayout>
+
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginBottom="1dp"
-                                android:background="@color/white"
+                                android:background="#d3d6de"
                                 android:gravity="center|left"
                                 android:padding="5dp"
-                                android:text="-- ENDING BALANCE --"
+                                android:text="ENDING BALANCE"
                                 android:textAllCaps="true"
                                 android:textColor="@android:color/black"
                                 android:textSize="13sp"
-                                android:textStyle="bold" />
+                                android:textStyle="bold"
+                                android:layout_marginTop="1dp" />
 
                             <RelativeLayout
                                 android:layout_width="match_parent"
@@ -438,6 +546,42 @@
 
                                 </android.support.v7.widget.RecyclerView>
                             </RelativeLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:weightSum="5"
+                                android:layout_marginBottom="1dp">
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginRight="1dp"
+                                    android:layout_weight="3"
+                                    android:background="#d3d6de"
+                                    android:gravity="center|right"
+                                    android:padding="5dp"
+                                    android:textAllCaps="false"
+                                    android:textColor="@android:color/black"
+                                    android:textSize="13sp"
+                                    android:textStyle="bold"
+                                    android:text="SUBTOTAL"/>
+
+                                <TextView
+                                    android:id="@+id/ending_balance_subtotal"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="2"
+                                    android:background="#d3d6de"
+                                    android:gravity="center|right"
+                                    android:padding="5dp"
+                                    android:text="0"
+                                    android:textAllCaps="true"
+                                    android:textStyle="bold"
+                                    android:textColor="@android:color/black"
+                                    android:textSize="13sp" />
+                            </LinearLayout>
 
                             <RelativeLayout
                                 android:layout_width="match_parent"
@@ -465,8 +609,44 @@
                                     android:layout_height="match_parent"
                                     android:layout_marginRight="1dp"
                                     android:layout_weight="3"
-                                    android:background="@color/white"
-                                    android:gravity="center|left"
+                                    android:background="#d3d6de"
+                                    android:gravity="center|right"
+                                    android:padding="5dp"
+                                    android:text="INVENTORY ADJUSTMENT:"
+                                    android:textAllCaps="false"
+                                    android:textColor="@android:color/black"
+                                    android:textSize="13sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/tv_inventory_adjust"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="2"
+                                    android:background="#d3d6de"
+                                    android:gravity="center|right"
+                                    android:padding="5dp"
+                                    android:text="total"
+                                    android:textAllCaps="true"
+                                    android:textColor="@android:color/black"
+                                    android:textSize="13sp"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="1dp"
+                                android:orientation="horizontal"
+                                android:weightSum="5">
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginRight="1dp"
+                                    android:layout_weight="3"
+                                    android:background="#d3d6de"
+                                    android:gravity="center|right"
                                     android:padding="5dp"
                                     android:text="Total Cost of Goods Sold:"
                                     android:textAllCaps="false"
@@ -479,7 +659,7 @@
                                     android:layout_width="0dp"
                                     android:layout_height="match_parent"
                                     android:layout_weight="2"
-                                    android:background="@color/white"
+                                    android:background="#d3d6de"
                                     android:gravity="center|right"
                                     android:padding="5dp"
                                     android:text="total"
@@ -500,8 +680,8 @@
                                     android:layout_height="match_parent"
                                     android:layout_marginRight="1dp"
                                     android:layout_weight="3"
-                                    android:background="@color/white"
-                                    android:gravity="center|left"
+                                    android:background="#d3d6de"
+                                    android:gravity="center|right"
                                     android:padding="5dp"
                                     android:text="GROSS PROFIT"
                                     android:textAllCaps="false"
@@ -514,7 +694,7 @@
                                     android:layout_width="0dp"
                                     android:layout_height="match_parent"
                                     android:layout_weight="2"
-                                    android:background="@color/white"
+                                    android:background="#d3d6de"
                                     android:gravity="center|right"
                                     android:padding="5dp"
                                     android:text="total"
@@ -536,12 +716,12 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginBottom="1dp"
-                                android:background="@color/white"
+                                android:background="#2d3745"
                                 android:gravity="center"
                                 android:padding="5dp"
                                 android:text="OPERATING EXPENSES (OE)"
                                 android:textAllCaps="true"
-                                android:textColor="@android:color/black"
+                                android:textColor="@color/white"
                                 android:textSize="13sp"
                                 android:textStyle="bold" />
 
@@ -556,7 +736,7 @@
                                     android:layout_height="match_parent"
                                     android:layout_marginRight="1dp"
                                     android:layout_weight="3"
-                                    android:background="@color/white"
+                                    android:background="#d3d6de"
                                     android:gravity="center|left"
                                     android:padding="5dp"
                                     android:textAllCaps="false"
@@ -568,7 +748,7 @@
                                     android:layout_width="0dp"
                                     android:layout_height="match_parent"
                                     android:layout_weight="2"
-                                    android:background="@color/white"
+                                    android:background="#d3d6de"
                                     android:gravity="center"
                                     android:padding="5dp"
                                     android:text="Subtotal"
@@ -604,8 +784,8 @@
                                     android:layout_height="match_parent"
                                     android:layout_marginRight="1dp"
                                     android:layout_weight="3"
-                                    android:background="@color/white"
-                                    android:gravity="center|left"
+                                    android:background="#d3d6de"
+                                    android:gravity="center|right"
                                     android:padding="5dp"
                                     android:text="Total Operating Expenses:"
                                     android:textAllCaps="false"
@@ -618,7 +798,7 @@
                                     android:layout_width="0dp"
                                     android:layout_height="match_parent"
                                     android:layout_weight="2"
-                                    android:background="@color/white"
+                                    android:background="#d3d6de"
                                     android:gravity="center|right"
                                     android:padding="5dp"
                                     android:text="total"
@@ -640,8 +820,8 @@
                                     android:layout_height="match_parent"
                                     android:layout_marginRight="1dp"
                                     android:layout_weight="3"
-                                    android:background="@color/white"
-                                    android:gravity="center|left"
+                                    android:background="#d3d6de"
+                                    android:gravity="center|right"
                                     android:padding="5dp"
                                     android:text="NET OPERATING INCOME"
                                     android:textAllCaps="false"
@@ -654,7 +834,7 @@
                                     android:layout_width="0dp"
                                     android:layout_height="match_parent"
                                     android:layout_weight="2"
-                                    android:background="@color/white"
+                                    android:background="#d3d6de"
                                     android:gravity="center|right"
                                     android:padding="5dp"
                                     android:text="total"
@@ -675,12 +855,12 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginBottom="1dp"
-                                android:background="@color/white"
+                                android:background="#2d3745"
                                 android:gravity="center"
                                 android:padding="5dp"
                                 android:text="OTHER INCOME and EXPENSES (OIE)"
                                 android:textAllCaps="true"
-                                android:textColor="@android:color/black"
+                                android:textColor="@color/white"
                                 android:textSize="13sp"
                                 android:textStyle="bold" />
 
@@ -695,7 +875,7 @@
                                     android:layout_height="match_parent"
                                     android:layout_marginRight="1dp"
                                     android:layout_weight="3"
-                                    android:background="@color/white"
+                                    android:background="#d3d6de"
                                     android:gravity="center|left"
                                     android:padding="5dp"
                                     android:textAllCaps="false"
@@ -707,7 +887,7 @@
                                     android:layout_width="0dp"
                                     android:layout_height="match_parent"
                                     android:layout_weight="2"
-                                    android:background="@color/white"
+                                    android:background="#d3d6de"
                                     android:gravity="center"
                                     android:padding="5dp"
                                     android:text="Subtotal"
@@ -743,8 +923,8 @@
                                     android:layout_height="match_parent"
                                     android:layout_marginRight="1dp"
                                     android:layout_weight="3"
-                                    android:background="@color/white"
-                                    android:gravity="center|left"
+                                    android:background="#d3d6de"
+                                    android:gravity="center|right"
                                     android:padding="5dp"
                                     android:text="Total Other Income and Expenses:"
                                     android:textAllCaps="false"
@@ -757,7 +937,7 @@
                                     android:layout_width="0dp"
                                     android:layout_height="match_parent"
                                     android:layout_weight="2"
-                                    android:background="@color/white"
+                                    android:background="#d3d6de"
                                     android:gravity="center|right"
                                     android:padding="5dp"
                                     android:text="total"
@@ -779,8 +959,8 @@
                                     android:layout_height="match_parent"
                                     android:layout_marginRight="1dp"
                                     android:layout_weight="3"
-                                    android:background="@color/white"
-                                    android:gravity="center|left"
+                                    android:background="#d3d6de"
+                                    android:gravity="center|right"
                                     android:padding="5dp"
                                     android:text="NET INCOME BEFORE INCOME TAX"
                                     android:textAllCaps="false"
@@ -793,7 +973,7 @@
                                     android:layout_width="0dp"
                                     android:layout_height="match_parent"
                                     android:layout_weight="2"
-                                    android:background="@color/white"
+                                    android:background="#d3d6de"
                                     android:gravity="center|right"
                                     android:padding="5dp"
                                     android:text="total"
@@ -815,12 +995,12 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginBottom="1dp"
-                                android:background="@color/white"
+                                android:background="#2d3745"
                                 android:gravity="center"
                                 android:padding="5dp"
                                 android:text="INCOME TAX RETURN (ITR)"
                                 android:textAllCaps="true"
-                                android:textColor="@android:color/black"
+                                android:textColor="@color/white"
                                 android:textSize="13sp"
                                 android:textStyle="bold" />
 
@@ -835,7 +1015,7 @@
                                     android:layout_height="match_parent"
                                     android:layout_marginRight="1dp"
                                     android:layout_weight="3"
-                                    android:background="@color/white"
+                                    android:background="#d3d6de"
                                     android:gravity="center|left"
                                     android:padding="5dp"
                                     android:textAllCaps="false"
@@ -847,7 +1027,7 @@
                                     android:layout_width="0dp"
                                     android:layout_height="match_parent"
                                     android:layout_weight="2"
-                                    android:background="@color/white"
+                                    android:background="#d3d6de"
                                     android:gravity="center"
                                     android:padding="5dp"
                                     android:text="Subtotal"
@@ -883,8 +1063,8 @@
                                     android:layout_height="match_parent"
                                     android:layout_marginRight="1dp"
                                     android:layout_weight="3"
-                                    android:background="@color/white"
-                                    android:gravity="center|left"
+                                    android:background="#d3d6de"
+                                    android:gravity="center|right"
                                     android:padding="5dp"
                                     android:text="Total Income Tax Return:"
                                     android:textAllCaps="false"
@@ -897,7 +1077,7 @@
                                     android:layout_width="0dp"
                                     android:layout_height="match_parent"
                                     android:layout_weight="2"
-                                    android:background="@color/white"
+                                    android:background="#d3d6de"
                                     android:gravity="center|right"
                                     android:padding="5dp"
                                     android:text="total"
@@ -919,10 +1099,10 @@
                                     android:layout_height="match_parent"
                                     android:layout_marginRight="1dp"
                                     android:layout_weight="3"
-                                    android:background="@color/white"
-                                    android:gravity="center|left"
+                                    android:background="#d3d6de"
+                                    android:gravity="center|right"
                                     android:padding="5dp"
-                                    android:text="NET INCOME BEFORE INCOME TAX"
+                                    android:text="NET INCOME AFTER INCOME TAX"
                                     android:textAllCaps="false"
                                     android:textColor="@android:color/black"
                                     android:textSize="13sp"
@@ -933,7 +1113,7 @@
                                     android:layout_width="0dp"
                                     android:layout_height="match_parent"
                                     android:layout_weight="2"
-                                    android:background="@color/white"
+                                    android:background="#d3d6de"
                                     android:gravity="center|right"
                                     android:padding="5dp"
                                     android:text="total"
