@@ -42,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void openMicro(String tracking_num, String start_date, String end_date){
+        //test
         Bundle bundle = new Bundle();
         bundle.putString("tracking_num", tracking_num);
         bundle.putString("start_date", start_date);
