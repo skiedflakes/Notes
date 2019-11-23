@@ -113,7 +113,7 @@ public class Revolving_request_adapter extends RecyclerView.Adapter<Revolving_re
             myHolder.actions.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    listener.view_modal(position,getId,getDate_requested,getUserID,getBr_id,getPcv,getRemarks,1,1,0,1);
+                    listener.view_modal(position,getId,getDate_requested,getUserID,getBr_id,getPcv,getRemarks,1,1,0,0);
                 }
             });
         }else{

@@ -100,7 +100,7 @@ public class Revolving_replenish_adapter extends RecyclerView.Adapter<Revolving_
             myHolder.actions.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    listener.view_modal(position,getRplnsh_num,getId,getDate,getBr_id,1,1,0,1);
+                    listener.view_modal(position,getRplnsh_num,getId,getDate,getBr_id,1,1,0,0);
                 }
             });
         }else{

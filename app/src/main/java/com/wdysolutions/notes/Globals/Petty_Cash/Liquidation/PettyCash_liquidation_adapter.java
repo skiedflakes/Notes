@@ -94,7 +94,7 @@ public class PettyCash_liquidation_adapter extends RecyclerView.Adapter<PettyCas
             myHolder.btn_edit.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    listener.view_modal(position,getTracking_num,getId,1,1,0,1);
+                    listener.view_modal(position,getTracking_num,getId,1,1,0,0);
                 }
             });
         }else{

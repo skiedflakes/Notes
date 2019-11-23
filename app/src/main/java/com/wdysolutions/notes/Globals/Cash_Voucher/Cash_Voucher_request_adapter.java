@@ -77,7 +77,7 @@ public class Cash_Voucher_request_adapter extends RecyclerView.Adapter<Cash_Vouc
                 @Override
                 public void onClick(View view) {
                     myHolder.btn_edit.setCompoundDrawablesWithIntrinsicBounds(R.drawable.approved, 0, 0, 0);
-                    listener.view_modal(position,cv_number,id,1,1,0,1);
+                    listener.view_modal(position,cv_number,id,1,1,0,0);
                 }
             });
         }else{

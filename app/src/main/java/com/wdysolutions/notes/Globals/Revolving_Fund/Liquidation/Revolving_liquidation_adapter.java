@@ -86,7 +86,7 @@ public class Revolving_liquidation_adapter extends RecyclerView.Adapter<Revolvin
             myHolder.btn_edit.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    listener.view_modal(position,getTracking_num,0,1,0,1);
+                    listener.view_modal(position,getTracking_num,0,1,0,0);
                 }
             });
         }else{

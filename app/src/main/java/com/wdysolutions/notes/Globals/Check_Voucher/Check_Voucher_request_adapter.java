@@ -92,7 +92,7 @@ public class Check_Voucher_request_adapter extends RecyclerView.Adapter<Check_Vo
             myHolder.btn_edit.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    listener.view_modal(position,cv_number,id,1,1,0,1);
+                    listener.view_modal(position,cv_number,id,1,1,0,0);
                 }
             });
         }else{
