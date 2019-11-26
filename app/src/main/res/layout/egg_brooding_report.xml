@@ -7,7 +7,6 @@
     tools:context=".Globals.Requisition.Requisition_main"
     android:clickable="true"
     >
-
     <!-- TODO: Update blank fragment layout -->
     <LinearLayout
         android:layout_width="match_parent"
@@ -256,6 +255,31 @@
 
         </LinearLayout>
     </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_marginTop="5dp">
+
+
+            <ProgressBar
+                android:id="@+id/table_loading_by_batch"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:layout_marginBottom="50dp"
+                android:visibility="gone" />
+
+            <com.evrencoskun.tableview.TableView
+                android:id="@+id/BR_tableview_by_batch"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="visible">
+            </com.evrencoskun.tableview.TableView>
+
+        </RelativeLayout>
     </LinearLayout>
 
 </FrameLayout>

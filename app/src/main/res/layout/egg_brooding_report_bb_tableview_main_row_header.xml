@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cell_container"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:background="@color/cell_background_color"
+    android:orientation="horizontal"
+    android:layout_marginRight="0.2dp">
+
+    <TextView
+        android:id="@+id/data1"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_gravity="center_vertical"
+
+        android:background="#CECDCD"
+        android:gravity="center"
+        android:textColor="#236927"
+        android:textSize="@dimen/text_size"
+        tools:text="Cell Data"
+        android:padding="5dp"
+        android:layout_weight="1"/>
+    <TextView
+        android:id="@+id/data2"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_gravity="center_vertical"
+
+        android:background="#CECDCD"
+        android:gravity="center"
+        android:textColor="#236927"
+        android:textSize="@dimen/text_size"
+        tools:text="Cell Data"
+        android:padding="5dp"
+        android:layout_weight="1"/>
+    <TextView
+        android:id="@+id/data3"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_gravity="center_vertical"
+
+        android:background="#CECDCD"
+        android:gravity="center"
+        android:textColor="#236927"
+        android:textSize="@dimen/text_size"
+        tools:text="Cell Data"
+        android:padding="5dp"
+        android:layout_weight="1"/>
+
+</LinearLayout>
+
