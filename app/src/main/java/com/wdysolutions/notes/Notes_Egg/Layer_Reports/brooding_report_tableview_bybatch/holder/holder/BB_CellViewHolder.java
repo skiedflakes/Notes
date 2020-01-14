@@ -31,7 +31,7 @@ import com.wdysolutions.notes.R;
 
 public class BB_CellViewHolder extends AbstractViewHolder {
 
-    public final TextView data1,data2,data3,data4,data5,data6;
+    public final TextView data1,data2,data3,data4,data5,data6,data7;
    // public final LinearLayout BR_cell_container;
    public final LinearLayout cell_container;
     private BR_Cell cell;
@@ -44,7 +44,7 @@ public class BB_CellViewHolder extends AbstractViewHolder {
         data4 = itemView.findViewById(R.id.data4);
         data5 = itemView.findViewById(R.id.data5);
         data6 = itemView.findViewById(R.id.data6);
-
+        data7 = itemView.findViewById(R.id.data7);
         cell_container = itemView.findViewById(R.id.cell_container);
     }
 

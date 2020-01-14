@@ -16,7 +16,7 @@
         android:layout_height="match_parent"
         android:background="#9E9E9E"
         android:gravity="center"
-        android:text="Batch Name"
+        android:text="AGE"
         android:textColor="@android:color/black"
         android:textSize="@dimen/text_size" />
     </LinearLayout>

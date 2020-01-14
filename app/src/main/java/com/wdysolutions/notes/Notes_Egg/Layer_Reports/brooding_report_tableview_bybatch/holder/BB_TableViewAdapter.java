@@ -47,7 +47,51 @@ public class BB_TableViewAdapter extends AbstractTableAdapter<BB_ColumnHeader, B
     public void onBindCellViewHolder(AbstractViewHolder holder, Object cellItemModel, final int columnPosition, final int rowPosition) {
         BB_Cell cell = (BB_Cell) cellItemModel;
         BB_CellViewHolder cellViewHolder = (BB_CellViewHolder)holder;
+        cellViewHolder.data1.setText(cell.getData1());
+        cellViewHolder.data2.setText(cell.getData2());
+        cellViewHolder.data3.setText(cell.getData3());
+        cellViewHolder.data4.setText(cell.getData4());
+        cellViewHolder.data5.setText(cell.getData5());
+        cellViewHolder.data6.setText(cell.getData6());
+        cellViewHolder.data7.setText(cell.getData7());
 
+        //cell visibility
+        if(cell.getNum_data()==5) {
+            cellViewHolder.data2.setVisibility(View.VISIBLE);
+            cellViewHolder.data3.setVisibility(View.VISIBLE);
+            cellViewHolder.data4.setVisibility(View.VISIBLE);
+            cellViewHolder.data5.setVisibility(View.VISIBLE);
+            cellViewHolder.data6.setVisibility(View.GONE);
+            cellViewHolder.data7.setVisibility(View.GONE);
+        }else if (cell.getNum_data()==7) {
+            cellViewHolder.data2.setVisibility(View.VISIBLE);
+            cellViewHolder.data3.setVisibility(View.VISIBLE);
+            cellViewHolder.data4.setVisibility(View.VISIBLE);
+            cellViewHolder.data5.setVisibility(View.VISIBLE);
+            cellViewHolder.data6.setVisibility(View.VISIBLE);
+            cellViewHolder.data7.setVisibility(View.VISIBLE);
+        }else if (cell.getNum_data()==2) {
+            cellViewHolder.data2.setVisibility(View.VISIBLE);
+            cellViewHolder.data3.setVisibility(View.GONE);
+            cellViewHolder.data4.setVisibility(View.GONE);
+            cellViewHolder.data5.setVisibility(View.GONE);
+            cellViewHolder.data6.setVisibility(View.GONE);
+            cellViewHolder.data7.setVisibility(View.GONE);
+        }else if(cell.getNum_data()==3){
+            cellViewHolder.data2.setVisibility(View.VISIBLE);
+            cellViewHolder.data3.setVisibility(View.VISIBLE);
+            cellViewHolder.data4.setVisibility(View.GONE);
+            cellViewHolder.data5.setVisibility(View.GONE);
+            cellViewHolder.data6.setVisibility(View.GONE);
+            cellViewHolder.data7.setVisibility(View.GONE);
+        }else {
+            cellViewHolder.data2.setVisibility(View.GONE);
+            cellViewHolder.data3.setVisibility(View.GONE);
+            cellViewHolder.data4.setVisibility(View.GONE);
+            cellViewHolder.data5.setVisibility(View.GONE);
+            cellViewHolder.data6.setVisibility(View.GONE);
+            cellViewHolder.data7.setVisibility(View.GONE);
+        }
 
     }
 

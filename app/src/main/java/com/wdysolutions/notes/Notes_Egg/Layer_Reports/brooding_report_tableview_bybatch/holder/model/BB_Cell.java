@@ -23,14 +23,11 @@ package com.wdysolutions.notes.Notes_Egg.Layer_Reports.brooding_report_tableview
 
 public class BB_Cell {
 
-    private String id,data1,data2,data3,data4,data5,data6;
-    Boolean body_weight,mortality,depopulation,feeds;
+    private String id,data1,data2,data3,data4,data5,data6,data7;
+    int num_data;
 
-    public BB_Cell(Boolean body_weight, Boolean feeds, Boolean depopulation, Boolean mortality, String id, String data1, String data2, String data3, String data4, String data5, String data6) {
-        this.body_weight=body_weight;
-        this.feeds=feeds;
-        this.depopulation=depopulation;
-        this.mortality=mortality;
+    public BB_Cell(int num_data, String id, String data1, String data2, String data3, String data4, String data5, String data6,String data7) {
+        this.num_data=num_data;
         this.id = id;
         this.data1 = data1;
         this.data2=data2;
@@ -38,23 +35,20 @@ public class BB_Cell {
         this.data4=data4;
         this.data5=data5;
         this.data6=data6;
+        this.data7=data7;
 
     }
 
-    public Boolean getBody_weight() {
-        return body_weight;
+    public String getId() {
+        return id;
     }
 
-    public Boolean getFeeds() {
-        return feeds;
+    public String getData7() {
+        return data7;
     }
 
-    public Boolean getMortality() {
-        return mortality;
-    }
-
-    public Boolean getDepopulation() {
-        return depopulation;
+    public int getNum_data() {
+        return num_data;
     }
 
     public String getData1() {

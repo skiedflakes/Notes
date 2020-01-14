@@ -191,7 +191,9 @@ public class Brooding_Report extends Fragment implements DatePickerSelectionInte
                                 all_batch_layout.setVisibility(View.VISIBLE);
                                 by_batch_layout.setVisibility(View.GONE);
                             }else{
-
+                                mTableView.setAdapter(null);
+                                all_batch_layout.setVisibility(View.GONE);
+                                by_batch_layout.setVisibility(View.VISIBLE);
                                 single_batch_brooding_details();
                             }
 
@@ -267,15 +269,13 @@ public class Brooding_Report extends Fragment implements DatePickerSelectionInte
                     get_from_spinner();
                 }else{
                     spinner_from.setAdapter(null);
+                    spinner_to.setAdapter(null);
                 }
             }
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
             }
         });
-
-        all_batch_layout.setVisibility(View.GONE);
-        by_batch_layout.setVisibility(View.VISIBLE);
 
     }
 
@@ -292,7 +292,7 @@ public class Brooding_Report extends Fragment implements DatePickerSelectionInte
 
                     //from spinner
                     from_list = new ArrayList<>();
-                    from_list.add(new spinner_type_model("Please Choose", "0"));
+                    from_list.add(new spinner_type_model("Please Choose", ""));
                     JSONArray jsonArray = jsonObject1.getJSONArray("data");
                     for (int i=0; i<jsonArray.length(); i++){
                         JSONObject jsonObject_ = (JSONObject)jsonArray.get(i);
@@ -309,10 +309,10 @@ public class Brooding_Report extends Fragment implements DatePickerSelectionInte
                         public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
                             spinner_type_model from_model = from_list.get(position);
                             selected_from = from_model.getId();
-                            if(!selected_from.equals("0")){
+                            if(!selected_from.equals("")){
                                 get_to_spinner();
                             }else{
-
+                                spinner_to.setAdapter(null);
                             }
                         }
                         @Override
@@ -354,7 +354,7 @@ public class Brooding_Report extends Fragment implements DatePickerSelectionInte
         AppController.getInstance().setVolleyDuration(stringRequest);
         AppController.getInstance().addToRequestQueue(stringRequest);
     }
-
+    int set_pos;
     public void get_to_spinner(){
 
         String URL = getString(R.string.URL_online)+"brooding_report/to_spinner.php";
@@ -370,13 +370,15 @@ public class Brooding_Report extends Fragment implements DatePickerSelectionInte
 
                     //from spinner
                     to_list = new ArrayList<>();
-                    to_list.add(new spinner_type_model("Please Choose", "0"));
+
+                    to_list.add(new spinner_type_model("Please Choose", ""));
                     JSONArray jsonArray = jsonObject1.getJSONArray("data");
                     for (int i=0; i<jsonArray.length(); i++){
                         JSONObject jsonObject_ = (JSONObject)jsonArray.get(i);
                         String name = jsonObject_.getString("name");
                         String id = jsonObject_.getString("id");
                         to_list.add(new spinner_type_model(name,id));
+
                     }
 
                     ArrayAdapter<String> spinner_from_adpter = new ArrayAdapter<>(getActivity(), R.layout.custom_spinner_drop, populateTo());
@@ -394,6 +396,8 @@ public class Brooding_Report extends Fragment implements DatePickerSelectionInte
                         }
                     });
 
+                    Toast.makeText(getContext(), selected_from, Toast.LENGTH_SHORT).show();
+                   // selectValue(spinner_to,selected_from);
 
                 }catch (Exception e){}
 
@@ -425,6 +429,8 @@ public class Brooding_Report extends Fragment implements DatePickerSelectionInte
         AppController.getInstance().setVolleyDuration(stringRequest);
         AppController.getInstance().addToRequestQueue(stringRequest);
     }
+
+
 
     private List<String> populateBranch(){
         List<String> lables_ = new ArrayList<>();
@@ -829,6 +835,7 @@ public class Brooding_Report extends Fragment implements DatePickerSelectionInte
            }
             rowList.add(cell_list);
         }
+
         //without decimal
         NumberFormat formatter = new DecimalFormat("###,###,###");
         String total_initial_population = formatter.format(total_ip);
@@ -866,8 +873,6 @@ public class Brooding_Report extends Fragment implements DatePickerSelectionInte
             feed_actual="0";
         }
 
-
-
         List<BR_Cell> cell_list = new ArrayList<>();
         int last_index = jsonArray_data.length()-1;
 
@@ -894,12 +899,13 @@ public class Brooding_Report extends Fragment implements DatePickerSelectionInte
                 rowList);
     }
 
-    int bb_ColumnHeader_size = 1;
+    int bb_ColumnHeader_size = 8;
     String bb_static_title_row="";
 
     public void generate_bybatch_table(@NonNull JSONObject jObject) throws JSONException {
         JSONArray jsonArray_data = jObject.getJSONArray("data");
         bb_rowheader = new ArrayList<>();
+        bb_rowList = new ArrayList<>();
 
         for (int i = 0; i < jsonArray_data.length(); i++) {
             JSONObject jsonObject1 = (JSONObject) jsonArray_data.get(i);
@@ -911,23 +917,115 @@ public class Brooding_Report extends Fragment implements DatePickerSelectionInte
 
         }
         Constants.BB_ColumnHeader = new ArrayList<>();
-
-
         for (int i=0; i<bb_ColumnHeader_size; i++){
 
             if(i==0){
-                bb_static_title_row="AGE";
-                bb_mTableView.setColumnWidth(0,100);
+                bb_static_title_row="FEEDS";
+                bb_mTableView.setColumnWidth(0,800);
+            }else if(i==1){
+                bb_static_title_row="MORTALITY";
+                bb_mTableView.setColumnWidth(1,900);
+            }else if(i==2){
+                bb_static_title_row="DEPOPULATE";
+                bb_mTableView.setColumnWidth(2,400);
+            }else if(i==3){
+                bb_static_title_row="POPULATION";
+                bb_mTableView.setColumnWidth(3,400);
+            }else if(i==4){
+                bb_static_title_row="MEDICATION";
+                bb_mTableView.setColumnWidth(4,400);
+            }else if(i==5){
+                bb_static_title_row="VACCINATION";
+                bb_mTableView.setColumnWidth(5,400);
+            }else if(i==6){
+                bb_static_title_row="BODY WT";
+                bb_mTableView.setColumnWidth(6,900);
+            }else if(i==7){
+                bb_static_title_row="WATER";
+                bb_mTableView.setColumnWidth(7,400);
             }
             Constants.BB_ColumnHeader.add(new BB_ColumnHeader(String.valueOf(i), bb_static_title_row));
         }
 
+        for(int i=0; i<jsonArray_data.length(); i++){
+            List<BB_Cell> cell_list = new ArrayList<>();
+            JSONObject jsonObject1 = (JSONObject)jsonArray_data.get(i);
 
+            //feeds
+            String feed_type = jsonObject1.getString("feed_type");
+            String feed_act = jsonObject1.getString("feed_act");
+            String adfi = jsonObject1.getString("adfi");
+            String feed_std = jsonObject1.getString("feed_std");
+            String feed_farm_std = jsonObject1.getString("feed_farm_std");
+
+            //mortality
+            String diagnosis = jsonObject1.getString("diagnosis");
+            String mort_qty = jsonObject1.getString("mort_qty");
+            String mort_qty_perc = jsonObject1.getString("mort_qty_perc");
+            String cumm_mort = jsonObject1.getString("cumm_mort");
+            String cumm_mort_perc = jsonObject1.getString("cumm_mort_perc");
+            String cumm_mort_brd_std = jsonObject1.getString("cumm_mort_brd_std");
+            String cumm_mort_frm_std = jsonObject1.getString("cumm_mort_frm_std");
+
+            //dpopulate
+            String dep_reason = jsonObject1.getString("dep_reason");
+            String dep_qty = jsonObject1.getString("dep_qty");
+
+            //population
+            String population = jsonObject1.getString("population");
+
+            //medication
+            String med_type = jsonObject1.getString("med_type");
+            String med_qty = jsonObject1.getString("med_qty");
+
+            //vaccination
+            String vacc_type = jsonObject1.getString("vacc_type");
+            String vac_qty = jsonObject1.getString("vac_qty");
+
+            //body weight
+            String BW_act = jsonObject1.getString("BW_act");
+            String BW_breed_std = jsonObject1.getString("BW_breed_std");
+            String BW_farm_std = jsonObject1.getString("BW_farm_std");
+            String act_BW_vs_BS = jsonObject1.getString("act_BW_vs_BS");
+            String act_BW_vs_FS = jsonObject1.getString("act_BW_vs_FS");
+
+            //water
+            String water_breed_std = jsonObject1.getString("water_breed_std");
+            String water_farm_std = jsonObject1.getString("water_farm_std");
+            String water_act = jsonObject1.getString("water_act");
+
+            //feeds
+            cell_list.add( new BB_Cell(5,String.valueOf(i),feed_type,feed_act,adfi,feed_std,feed_farm_std,"",""));
+
+            //mortality
+            cell_list.add( new BB_Cell(7,String.valueOf(i),diagnosis,mort_qty,mort_qty_perc,cumm_mort,cumm_mort_perc,cumm_mort_brd_std,cumm_mort_frm_std));
+
+            //dpopulate
+            cell_list.add( new BB_Cell(2,String.valueOf(i),dep_reason,dep_qty,"","","","",""));
+
+            //population
+            cell_list.add( new BB_Cell(1,String.valueOf(i),population,"","","","","",""));
+
+            //medication
+            cell_list.add( new BB_Cell(2,String.valueOf(i),med_type,med_qty,"","","","",""));
+
+            //vaccination
+            cell_list.add( new BB_Cell(2,String.valueOf(i),vacc_type,vac_qty,"","","","",""));
+
+
+            //body weigt
+            cell_list.add( new BB_Cell(5,String.valueOf(i),BW_act,BW_breed_std,BW_farm_std,act_BW_vs_BS,act_BW_vs_FS,"",""));
+
+            //water
+            cell_list.add( new BB_Cell(3,String.valueOf(i),water_breed_std,water_farm_std,water_act,"","","",""));
+
+            //
+            bb_rowList.add(cell_list);
+        }
 
         bb_mTableViewAdapter.setAllItems(Constants.BB_ColumnHeader,
                 bb_rowheader,
                 bb_rowList);
-
     }
 
 }
