@@ -86,12 +86,12 @@ public class Brooding_Report extends Fragment implements DatePickerSelectionInte
     ArrayList<spinner_type_model> from_list,to_list;
     String selected_from,selected_to,selected_type,bg_date;
 
-
     //tableview
     List<List<BB_Cell>> bb_rowList = new ArrayList<>();
     ArrayList<BB_RowHeader> bb_rowheader;
     BB_TableViewAdapter bb_mTableViewAdapter;
     TableView bb_mTableView;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -429,7 +429,6 @@ public class Brooding_Report extends Fragment implements DatePickerSelectionInte
         AppController.getInstance().setVolleyDuration(stringRequest);
         AppController.getInstance().addToRequestQueue(stringRequest);
     }
-
 
 
     private List<String> populateBranch(){
