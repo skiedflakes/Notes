@@ -63,26 +63,28 @@ public class imageViewPagerAdapter extends PagerAdapter {
     }
 
     private void loadImage(final ImageView imageView, final String getImg_path) {
-        if (!getImg_path.equals("")){
-            Glide.with(context)
-                    .load(getImg_path)
-                    .placeholder(R.drawable.no_image)
-                    .error(R.drawable.no_image)
-                    .listener(new RequestListener<Drawable>() {
-                        @Override
-                        public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
-                            // log exception«
-                            loadImage(imageView, getImg_path);
-                            return false; // important to return false so the error placeholder can be placed
-                        }
+        try {
+            if (!getImg_path.equals("")) {
+                Glide.with(context)
+                        .load(getImg_path)
+                        .placeholder(R.drawable.no_image)
+                        .error(R.drawable.no_image)
+                        .listener(new RequestListener<Drawable>() {
+                            @Override
+                            public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
+                                // log exception«
+                                loadImage(imageView, getImg_path);
+                                return false; // important to return false so the error placeholder can be placed
+                            }
 
-                        @Override
-                        public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
+                            @Override
+                            public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
 
-                            return false;
-                        }
-                    })
-                    .into(imageView);
-        }
+                                return false;
+                            }
+                        })
+                        .into(imageView);
+            }
+        }catch (Exception e){}
     }
 }

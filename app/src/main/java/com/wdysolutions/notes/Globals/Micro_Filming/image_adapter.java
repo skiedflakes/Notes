@@ -79,9 +79,6 @@ public class image_adapter extends RecyclerView.Adapter<image_adapter.MyHolder> 
                         .listener(new RequestListener<Drawable>() {
                             @Override
                             public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
-                                // log exception«
-
-                                Toast.makeText(context, "image not loaded.", Toast.LENGTH_SHORT).show();
                                 loadImages(myHolder, getImg_path);
                                 return false; // important to return false so the error placeholder can be placed
                             }
