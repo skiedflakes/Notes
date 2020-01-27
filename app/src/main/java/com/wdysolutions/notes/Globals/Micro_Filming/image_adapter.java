@@ -74,15 +74,14 @@ public class image_adapter extends RecyclerView.Adapter<image_adapter.MyHolder> 
                 myHolder.loading_img.setVisibility(View.VISIBLE);
                 Glide.with(context)
                         .load(getImg_path)
-                        .placeholder(R.drawable.no_image)
-                        .error(R.drawable.no_image)
+                        //.placeholder(R.drawable.no_image)
+                        //.error(R.drawable.no_image)
                         .listener(new RequestListener<Drawable>() {
                             @Override
                             public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
                                 loadImages(myHolder, getImg_path);
                                 return false; // important to return false so the error placeholder can be placed
                             }
-
                             @Override
                             public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
                                 myHolder.loading_img.setVisibility(View.GONE);

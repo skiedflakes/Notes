@@ -79,7 +79,6 @@ public class imageViewPagerAdapter extends PagerAdapter {
 
                             @Override
                             public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
-
                                 return false;
                             }
                         })

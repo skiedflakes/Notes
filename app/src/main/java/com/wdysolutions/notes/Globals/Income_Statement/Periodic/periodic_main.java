@@ -26,6 +26,7 @@ import com.wdysolutions.notes.AppController;
 import com.wdysolutions.notes.Constants;
 import com.wdysolutions.notes.DatePicker.DatePickerCustom;
 import com.wdysolutions.notes.DatePicker.DatePickerSelectionInterfaceCustom;
+import com.wdysolutions.notes.MainActivity;
 import com.wdysolutions.notes.R;
 import com.wdysolutions.notes.SharedPref;
 
@@ -312,6 +313,7 @@ public class periodic_main extends Fragment implements DatePickerSelectionInterf
                         cost_models.add(new periodic_model(jsonObject1.getString("name"),
                                 jsonObject1.getString("value")));
                     }
+
 
                     JSONArray jsonArray_total_cost = jsonObject.getJSONArray("cost_total");
                     JSONObject jsonObject_revenue_total_cost = (JSONObject)jsonArray_total_cost.get(0);
