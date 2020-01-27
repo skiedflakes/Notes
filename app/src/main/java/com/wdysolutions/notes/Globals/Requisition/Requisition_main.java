@@ -130,7 +130,6 @@ public class Requisition_main extends Fragment implements Authenticate_DialogFra
                 fragmentTransaction.add(R.id.container_home, fragment);
                 fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
-
             }
         });
 
