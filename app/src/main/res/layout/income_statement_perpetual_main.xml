@@ -221,12 +221,12 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginBottom="1dp"
-                                android:background="@color/white"
+                                android:background="#2d3745"
                                 android:gravity="center"
                                 android:padding="5dp"
                                 android:text="REVENUE (REV)"
                                 android:textAllCaps="true"
-                                android:textColor="@android:color/black"
+                                android:textColor="@color/white"
                                 android:textSize="13sp"
                                 android:textStyle="bold" />
 
@@ -320,16 +320,18 @@
                             android:layout_marginBottom="1dp"
                             android:orientation="vertical">
 
+
+
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginBottom="1dp"
-                                android:background="@color/white"
+                                android:background="#2d3745"
                                 android:gravity="center"
                                 android:padding="5dp"
                                 android:text="Cost (CE)"
                                 android:textAllCaps="true"
-                                android:textColor="@android:color/black"
+                                android:textColor="@color/white"
                                 android:textSize="13sp"
                                 android:textStyle="bold" />
 
@@ -476,12 +478,12 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginBottom="1dp"
-                                android:background="@color/white"
+                                android:background="#2d3745"
                                 android:gravity="center"
                                 android:padding="5dp"
                                 android:text="OPERATING EXPENSES (OE)"
                                 android:textAllCaps="true"
-                                android:textColor="@android:color/black"
+                                android:textColor="@color/white"
                                 android:textSize="13sp"
                                 android:textStyle="bold" />
 
@@ -612,15 +614,16 @@
                             android:orientation="vertical">
 
                             <TextView
+
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginBottom="1dp"
-                                android:background="@color/white"
+                                android:background="#2d3745"
                                 android:gravity="center"
                                 android:padding="5dp"
                                 android:text="OTHER INCOME and EXPENSES (OIE)"
                                 android:textAllCaps="true"
-                                android:textColor="@android:color/black"
+                                android:textColor="@color/white"
                                 android:textSize="13sp"
                                 android:textStyle="bold" />
 
@@ -751,18 +754,20 @@
                             android:layout_height="match_parent"
                             android:orientation="vertical">
 
+
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginBottom="1dp"
-                                android:background="@color/white"
+                                android:background="#2d3745"
                                 android:gravity="center"
                                 android:padding="5dp"
                                 android:text="INCOME TAX RETURN (ITR)"
                                 android:textAllCaps="true"
-                                android:textColor="@android:color/black"
+                                android:textColor="@color/white"
                                 android:textSize="13sp"
                                 android:textStyle="bold" />
+
 
                             <LinearLayout
                                 android:layout_width="match_parent"

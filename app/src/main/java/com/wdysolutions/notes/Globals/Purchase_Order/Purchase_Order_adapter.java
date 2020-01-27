@@ -60,6 +60,10 @@ public class Purchase_Order_adapter extends RecyclerView.Adapter<Purchase_Order_
     String rr_status_color =  mdata.get(position).getRr_status_color();
     String dec_status_color =  mdata.get(position).getDec_status_color();
 
+    //check null
+
+
+
     //set text
         myHolder.tv_counter.setText(count);
         myHolder.tv_purchase_num.setText(purchase_num);
@@ -71,21 +75,24 @@ public class Purchase_Order_adapter extends RecyclerView.Adapter<Purchase_Order_
         myHolder.tv_rr_status.setText(rr_status);
         myHolder.tv_unreceived_total.setText(unrecieved_total);
         myHolder.tv_declared_status.setText(declared_status);
-        myHolder.tv_encoded_by.setText(encoded_by);
 
-
+        if(encoded_by.equals("")||encoded_by.equals("null")) {
+            myHolder.tv_encoded_by.setText("");
+        }else{
+            myHolder.tv_encoded_by.setText(encoded_by);
+        }
         if(po_status.equals("Saved")){
             myHolder.po_status.setText("Pending");
         }else{
             myHolder.po_status.setText(po_status);
         }
 
-        if(checked_by.equals("")){
+        if(checked_by.equals("")||checked_by.equals("null")){
             myHolder.tv_approved_by.setText("");
             myHolder.tv_checked_by.setText("Pending");
         }else{
             myHolder.tv_checked_by.setText(checked_by);
-            if(approved_by.equals("")){
+            if(approved_by.equals("")||approved_by.equals("null")){
                 myHolder.tv_approved_by.setText("Pending");
             }else{
                 myHolder.tv_approved_by.setText(approved_by);
