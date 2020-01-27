@@ -314,6 +314,7 @@ public class periodic_main extends Fragment implements DatePickerSelectionInterf
                                 jsonObject1.getString("value")));
                     }
 
+
                     JSONArray jsonArray_total_cost = jsonObject.getJSONArray("cost_total");
                     JSONObject jsonObject_revenue_total_cost = (JSONObject)jsonArray_total_cost.get(0);
                     tv_inventory_adjust.setText(jsonObject_revenue_total_cost.getString("inventory_adjust"));
