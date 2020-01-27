@@ -67,13 +67,18 @@ public class Purchase_Order_adapter extends RecyclerView.Adapter<Purchase_Order_
         myHolder.tv_supplier.setText(supplier);
         myHolder.tv_remarks.setText(remarks);
         myHolder.tv_category.setText(category);
-        myHolder.po_status.setText(po_status);
+
         myHolder.tv_rr_status.setText(rr_status);
         myHolder.tv_unreceived_total.setText(unrecieved_total);
         myHolder.tv_declared_status.setText(declared_status);
         myHolder.tv_encoded_by.setText(encoded_by);
 
 
+        if(po_status.equals("Saved")){
+            myHolder.po_status.setText("Pending");
+        }else{
+            myHolder.po_status.setText(po_status);
+        }
 
         if(checked_by.equals("")){
             myHolder.tv_approved_by.setText("");
@@ -95,7 +100,7 @@ public class Purchase_Order_adapter extends RecyclerView.Adapter<Purchase_Order_
         }else if(po_stat_color.equals("green")){
             myHolder.po_status.setTextColor(context.getResources().getColor(R.color.color_green));
         }else{
-            myHolder.po_status.setTextColor(context.getResources().getColor(R.color.color_text_light_black));
+            myHolder.po_status.setTextColor(context.getResources().getColor(R.color.color_orange));
         }
 
         if(rr_status_color.equals("red")){

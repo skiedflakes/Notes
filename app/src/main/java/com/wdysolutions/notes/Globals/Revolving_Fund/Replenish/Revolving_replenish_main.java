@@ -341,6 +341,7 @@ public class Revolving_replenish_main extends Fragment implements Authenticate_D
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
+                Toast.makeText(getActivity(), response, Toast.LENGTH_SHORT).show();
                 try{
                     showLoading(loadingScan, null).dismiss();
                     if(response.equals("1")){

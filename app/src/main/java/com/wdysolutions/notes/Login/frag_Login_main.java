@@ -76,12 +76,12 @@ public class frag_Login_main extends Fragment {
     public void checkAccount(final String username, final String password){
         btn_save.setText("Checking...");
         btn_save.setClickable(false);
-        String URL = getString(R.string.URL_online)+"login3.php";
+        String URL =  getString(R.string.URL_online)+"login3.php";
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
 
-                //((MainActivity)getActivity()).openDialog(response);
+               // ((MainActivity)getActivity()).openDialog(response);
            
                 try {
                     JSONObject jsonObject = new JSONObject(response);
