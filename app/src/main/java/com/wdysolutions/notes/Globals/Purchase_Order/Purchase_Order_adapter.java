@@ -87,7 +87,7 @@ public class Purchase_Order_adapter extends RecyclerView.Adapter<Purchase_Order_
             myHolder.po_status.setText(po_status);
         }
 
-        if(checked_by.equals("")||checked_by.equals("null")){
+        if(checked_by.equals("")){
             myHolder.tv_approved_by.setText("");
             myHolder.tv_checked_by.setText("Pending");
         }else{
