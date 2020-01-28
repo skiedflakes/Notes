@@ -150,7 +150,6 @@ public class Purchase_Order_adapter extends RecyclerView.Adapter<Purchase_Order_
                         listener.view_modal(position,supplier_id,declared_status_id,purchase_num,id,1,1,1,0);
                     }
                 });
-
             }
 
         }else{
