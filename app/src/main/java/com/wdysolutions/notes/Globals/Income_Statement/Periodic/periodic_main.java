@@ -224,9 +224,11 @@ public class periodic_main extends Fragment implements DatePickerSelectionInterf
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                loading_main.setVisibility(View.GONE);
-                error_main.setVisibility(View.VISIBLE);
-                Toast.makeText(getActivity(), getResources().getString(R.string.volley_error_msg), Toast.LENGTH_SHORT).show();
+                try {
+                    loading_main.setVisibility(View.GONE);
+                    error_main.setVisibility(View.VISIBLE);
+                    Toast.makeText(getActivity(), getResources().getString(R.string.volley_error_msg), Toast.LENGTH_SHORT).show();
+                } catch (Exception e){}
             }
         }){
             @Override
